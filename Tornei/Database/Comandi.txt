@@ -1,0 +1,11 @@
+﻿crea le schede dal database
+Scaffold-DbContext 'Data Source=DATABASESQL;Initial Catalog=Tornei;Persist Security Info=True;User ID=sa;Password=Manager2023.#;Connection Lifetime=0;MultipleActiveResultSets=True;TrustServerCertificate=True;' Microsoft.EntityFrameworkCore.SqlServer -Output Models -DataAnnotations
+
+aggiunge le nuove tabelle alla migrazione
+add-migration inizio
+
+per toglierla usare
+Remove-Migration 
+
+Aggiorna realmente il database
+update-database

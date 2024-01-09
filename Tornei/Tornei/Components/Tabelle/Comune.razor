@@ -1,0 +1,99 @@
+﻿@* INSERT HERE ALL COMUNE CRUD *@
+
+@* @page "/comune/{CodComune}"
+@page "/comune"
+
+<h3>Comune</h3>
+@using Database.Services;
+@using Database.Models;
+@inject NavigationManager navigationManager
+
+
+<EditForm Model="@objComune" OnValidSubmit="SaveOrUpdateComune">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="CodComune">CodComune:</label>
+        <InputText id="CodComune" @bind-Value="objComune.CodComune" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="DesComune">DesComune:</label>
+        <InputText id="DesComune" @bind-Value="objComune.DesComune" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="Provincia">Provincia:</label>
+        <InputText id="Provincia" @bind-Value="objComune.Provincia" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="Regione">Regione:</label>
+        <InputText id="Regione" @bind-Value="objComune.Regione" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="Nazione">Nazione:</label>
+        <InputText id="Nazione" @bind-Value="objComune.Nazione" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="Cap">CAP:</label>
+        <InputText id="Cap" @bind-Value="objComune.Cap" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="Obsoleto">Obsoleto:</label>
+        <InputCheckbox id="Obsoleto" @bind-Value="objComune.Obsoleto" class="form-check-input" />
+    </div>
+
+    <div class="form-group">
+        <label for="CodComuneNuovo">CodComuneNuovo:</label>
+        <InputText id="CodComuneNuovo" @bind-Value="objComune.CodComuneNuovo" class="form-control" />
+    </div>
+
+    <!-- Add other input fields as needed -->
+
+    <div class="form-group" mt-3>
+        <button type="submit" class="btn btn-primary">Save or Update</button>
+    </div>
+</EditForm>
+
+
+
+@code {
+    @inject ComuneService comuneService;
+    [Parameter]
+    public string CodComune { get; set; }
+
+    Comune objComune = new Comune();
+ 
+    private async Task LoadComuneData()
+    {
+        if (!string.IsNullOrEmpty(CodComune))
+        {
+            // Fetch the Comune data based on the provided CodComune
+            objComune = await comuneService.GetComuneByIdAsync(CodComune);
+        }
+        
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!string.IsNullOrEmpty(CodComune))
+        {
+           await LoadComuneData();
+        }
+    }
+
+    private async Task SaveOrUpdateComune()
+    {
+             
+        await comuneService.AddUpdateComuneAsync(objComune);
+        
+
+        navigationManager.NavigateTo("/comuneList");
+    }
+}
+ *@

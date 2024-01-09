@@ -1,0 +1,26 @@
+﻿@* <div>
+   <p>Output: @Messaggio</p>
+</div>
+
+<button onclick="document.getElementById('mio-dialogo').showModal()">
+   Mostra Popup
+</button> *@
+
+<dialog id="mio-dialogo" @onclose="Chiudi" @oncancel="Cancella">
+   <p> prova</p>
+   <form method="dialog">
+      <button>Chiudi</button>
+      <button>Annulla</button>
+   </form>
+</dialog>
+
+
+@code {
+
+    string Messaggio;
+
+   void Chiudi(EventArgs e) => Messaggio += "onclose,";
+   void Cancella(EventArgs e) => Messaggio += "oncancel,";
+
+
+}

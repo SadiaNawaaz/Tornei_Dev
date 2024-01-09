@@ -1,0 +1,198 @@
+C:\4_Manager\Tornei\Database\bin\Debug\net8.0\Database.deps.json
+C:\4_Manager\Tornei\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+C:\4_Manager\Tornei\Database\bin\Debug\net8.0\Database.dll
+C:\4_Manager\Tornei\Database\bin\Debug\net8.0\Database.pdb
+C:\4_Manager\Tornei\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+C:\4_Manager\Tornei\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\4_Manager\Tornei\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+C:\4_Manager\Tornei\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+C:\4_Manager\Tornei\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+C:\4_Manager\Tornei\Database\obj\Debug\net8.0\Database.sourcelink.json
+C:\4_Manager\Tornei\Database\obj\Debug\net8.0\Database.dll
+C:\4_Manager\Tornei\Database\obj\Debug\net8.0\refint\Database.dll
+C:\4_Manager\Tornei\Database\obj\Debug\net8.0\Database.pdb
+C:\4_Manager\Tornei\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+C:\4_Manager\Tornei\Database\obj\Debug\net8.0\ref\Database.dll
+D:\Documents\Torni\Tornei\Database\bin\Debug\net8.0\Database.deps.json
+D:\Documents\Torni\Tornei\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+D:\Documents\Torni\Tornei\Database\bin\Debug\net8.0\Database.dll
+D:\Documents\Torni\Tornei\Database\bin\Debug\net8.0\Database.pdb
+D:\Documents\Torni\Tornei\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+D:\Documents\Torni\Tornei\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\Tornei\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+D:\Documents\Torni\Tornei\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+D:\Documents\Torni\Tornei\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\Tornei\Database\obj\Debug\net8.0\Database.sourcelink.json
+D:\Documents\Torni\Tornei\Database\obj\Debug\net8.0\Database.dll
+D:\Documents\Torni\Tornei\Database\obj\Debug\net8.0\refint\Database.dll
+D:\Documents\Torni\Tornei\Database\obj\Debug\net8.0\Database.pdb
+D:\Documents\Torni\Tornei\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+D:\Documents\Torni\Tornei\Database\obj\Debug\net8.0\ref\Database.dll
+C:\Users\Administrator\Desktop\Tornei\Database\bin\Debug\net8.0\Database.deps.json
+C:\Users\Administrator\Desktop\Tornei\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+C:\Users\Administrator\Desktop\Tornei\Database\bin\Debug\net8.0\Database.dll
+C:\Users\Administrator\Desktop\Tornei\Database\bin\Debug\net8.0\Database.pdb
+C:\Users\Administrator\Desktop\Tornei\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\Tornei\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\Tornei\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\Tornei\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\Tornei\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\Tornei\Database\obj\Debug\net8.0\Database.dll
+C:\Users\Administrator\Desktop\Tornei\Database\obj\Debug\net8.0\refint\Database.dll
+C:\Users\Administrator\Desktop\Tornei\Database\obj\Debug\net8.0\Database.pdb
+C:\Users\Administrator\Desktop\Tornei\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+C:\Users\Administrator\Desktop\Tornei\Database\obj\Debug\net8.0\ref\Database.dll
+D:\Documents\Torni\Tornei version with my comment\Tornei\Database\bin\Debug\net8.0\Database.deps.json
+D:\Documents\Torni\Tornei version with my comment\Tornei\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+D:\Documents\Torni\Tornei version with my comment\Tornei\Database\bin\Debug\net8.0\Database.dll
+D:\Documents\Torni\Tornei version with my comment\Tornei\Database\bin\Debug\net8.0\Database.pdb
+D:\Documents\Torni\Tornei version with my comment\Tornei\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+D:\Documents\Torni\Tornei version with my comment\Tornei\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\Tornei version with my comment\Tornei\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+D:\Documents\Torni\Tornei version with my comment\Tornei\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+D:\Documents\Torni\Tornei version with my comment\Tornei\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\Tornei version with my comment\Tornei\Database\obj\Debug\net8.0\Database.dll
+D:\Documents\Torni\Tornei version with my comment\Tornei\Database\obj\Debug\net8.0\refint\Database.dll
+D:\Documents\Torni\Tornei version with my comment\Tornei\Database\obj\Debug\net8.0\Database.pdb
+D:\Documents\Torni\Tornei version with my comment\Tornei\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+D:\Documents\Torni\Tornei version with my comment\Tornei\Database\obj\Debug\net8.0\ref\Database.dll
+D:\Documents\Torni\19 dec 2023\Tornei (4)\Database\bin\Debug\net8.0\Database.deps.json
+D:\Documents\Torni\19 dec 2023\Tornei (4)\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+D:\Documents\Torni\19 dec 2023\Tornei (4)\Database\bin\Debug\net8.0\Database.dll
+D:\Documents\Torni\19 dec 2023\Tornei (4)\Database\bin\Debug\net8.0\Database.pdb
+D:\Documents\Torni\19 dec 2023\Tornei (4)\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+D:\Documents\Torni\19 dec 2023\Tornei (4)\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\19 dec 2023\Tornei (4)\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+D:\Documents\Torni\19 dec 2023\Tornei (4)\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+D:\Documents\Torni\19 dec 2023\Tornei (4)\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\19 dec 2023\Tornei (4)\Database\obj\Debug\net8.0\Database.dll
+D:\Documents\Torni\19 dec 2023\Tornei (4)\Database\obj\Debug\net8.0\refint\Database.dll
+D:\Documents\Torni\19 dec 2023\Tornei (4)\Database\obj\Debug\net8.0\Database.pdb
+D:\Documents\Torni\19 dec 2023\Tornei (4)\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+D:\Documents\Torni\19 dec 2023\Tornei (4)\Database\obj\Debug\net8.0\ref\Database.dll
+D:\Documents\Torni\19 dec 2023\Tornei\Database\bin\Debug\net8.0\Database.deps.json
+D:\Documents\Torni\19 dec 2023\Tornei\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+D:\Documents\Torni\19 dec 2023\Tornei\Database\bin\Debug\net8.0\Database.dll
+D:\Documents\Torni\19 dec 2023\Tornei\Database\bin\Debug\net8.0\Database.pdb
+D:\Documents\Torni\19 dec 2023\Tornei\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+D:\Documents\Torni\19 dec 2023\Tornei\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\19 dec 2023\Tornei\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+D:\Documents\Torni\19 dec 2023\Tornei\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+D:\Documents\Torni\19 dec 2023\Tornei\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\19 dec 2023\Tornei\Database\obj\Debug\net8.0\Database.dll
+D:\Documents\Torni\19 dec 2023\Tornei\Database\obj\Debug\net8.0\refint\Database.dll
+D:\Documents\Torni\19 dec 2023\Tornei\Database\obj\Debug\net8.0\Database.pdb
+D:\Documents\Torni\19 dec 2023\Tornei\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+D:\Documents\Torni\19 dec 2023\Tornei\Database\obj\Debug\net8.0\ref\Database.dll
+D:\Documents\Torni\23 dec\Tornei (6)\Database\bin\Debug\net8.0\Database.deps.json
+D:\Documents\Torni\23 dec\Tornei (6)\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+D:\Documents\Torni\23 dec\Tornei (6)\Database\bin\Debug\net8.0\Database.dll
+D:\Documents\Torni\23 dec\Tornei (6)\Database\bin\Debug\net8.0\Database.pdb
+D:\Documents\Torni\23 dec\Tornei (6)\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+D:\Documents\Torni\23 dec\Tornei (6)\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\23 dec\Tornei (6)\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+D:\Documents\Torni\23 dec\Tornei (6)\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+D:\Documents\Torni\23 dec\Tornei (6)\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\23 dec\Tornei (6)\Database\obj\Debug\net8.0\Database.dll
+D:\Documents\Torni\23 dec\Tornei (6)\Database\obj\Debug\net8.0\refint\Database.dll
+D:\Documents\Torni\23 dec\Tornei (6)\Database\obj\Debug\net8.0\Database.pdb
+D:\Documents\Torni\23 dec\Tornei (6)\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+D:\Documents\Torni\23 dec\Tornei (6)\Database\obj\Debug\net8.0\ref\Database.dll
+D:\Documents\Torni\26 Dec 2023\Database\bin\Debug\net8.0\Database.deps.json
+D:\Documents\Torni\26 Dec 2023\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+D:\Documents\Torni\26 Dec 2023\Database\bin\Debug\net8.0\Database.dll
+D:\Documents\Torni\26 Dec 2023\Database\bin\Debug\net8.0\Database.pdb
+D:\Documents\Torni\26 Dec 2023\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+D:\Documents\Torni\26 Dec 2023\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\26 Dec 2023\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+D:\Documents\Torni\26 Dec 2023\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+D:\Documents\Torni\26 Dec 2023\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\26 Dec 2023\Database\obj\Debug\net8.0\Database.dll
+D:\Documents\Torni\26 Dec 2023\Database\obj\Debug\net8.0\refint\Database.dll
+D:\Documents\Torni\26 Dec 2023\Database\obj\Debug\net8.0\Database.pdb
+D:\Documents\Torni\26 Dec 2023\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+D:\Documents\Torni\26 Dec 2023\Database\obj\Debug\net8.0\ref\Database.dll
+C:\Users\Administrator\Desktop\26 Dec 2023\Database\bin\Debug\net8.0\Database.deps.json
+C:\Users\Administrator\Desktop\26 Dec 2023\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+C:\Users\Administrator\Desktop\26 Dec 2023\Database\bin\Debug\net8.0\Database.dll
+C:\Users\Administrator\Desktop\26 Dec 2023\Database\bin\Debug\net8.0\Database.pdb
+C:\Users\Administrator\Desktop\26 Dec 2023\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\26 Dec 2023\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\26 Dec 2023\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\26 Dec 2023\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\26 Dec 2023\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\26 Dec 2023\Database\obj\Debug\net8.0\Database.dll
+C:\Users\Administrator\Desktop\26 Dec 2023\Database\obj\Debug\net8.0\refint\Database.dll
+C:\Users\Administrator\Desktop\26 Dec 2023\Database\obj\Debug\net8.0\Database.pdb
+C:\Users\Administrator\Desktop\26 Dec 2023\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+C:\Users\Administrator\Desktop\26 Dec 2023\Database\obj\Debug\net8.0\ref\Database.dll
+D:\Documents\Torni\29 Dec 2023\Database\bin\Debug\net8.0\Database.deps.json
+D:\Documents\Torni\29 Dec 2023\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+D:\Documents\Torni\29 Dec 2023\Database\bin\Debug\net8.0\Database.dll
+D:\Documents\Torni\29 Dec 2023\Database\bin\Debug\net8.0\Database.pdb
+D:\Documents\Torni\29 Dec 2023\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+D:\Documents\Torni\29 Dec 2023\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\29 Dec 2023\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+D:\Documents\Torni\29 Dec 2023\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+D:\Documents\Torni\29 Dec 2023\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\29 Dec 2023\Database\obj\Debug\net8.0\Database.dll
+D:\Documents\Torni\29 Dec 2023\Database\obj\Debug\net8.0\refint\Database.dll
+D:\Documents\Torni\29 Dec 2023\Database\obj\Debug\net8.0\Database.pdb
+D:\Documents\Torni\29 Dec 2023\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+D:\Documents\Torni\29 Dec 2023\Database\obj\Debug\net8.0\ref\Database.dll
+D:\TFS Code\Italy project\Tornei 30-12\Database\bin\Debug\net8.0\Database.deps.json
+D:\TFS Code\Italy project\Tornei 30-12\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+D:\TFS Code\Italy project\Tornei 30-12\Database\bin\Debug\net8.0\Database.dll
+D:\TFS Code\Italy project\Tornei 30-12\Database\bin\Debug\net8.0\Database.pdb
+D:\TFS Code\Italy project\Tornei 30-12\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+D:\TFS Code\Italy project\Tornei 30-12\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+D:\TFS Code\Italy project\Tornei 30-12\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+D:\TFS Code\Italy project\Tornei 30-12\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+D:\TFS Code\Italy project\Tornei 30-12\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+D:\TFS Code\Italy project\Tornei 30-12\Database\obj\Debug\net8.0\Database.dll
+D:\TFS Code\Italy project\Tornei 30-12\Database\obj\Debug\net8.0\refint\Database.dll
+D:\TFS Code\Italy project\Tornei 30-12\Database\obj\Debug\net8.0\Database.pdb
+D:\TFS Code\Italy project\Tornei 30-12\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+D:\TFS Code\Italy project\Tornei 30-12\Database\obj\Debug\net8.0\ref\Database.dll
+C:\Users\INAM\Desktop\Tornei 30-12\Database\bin\Debug\net8.0\Database.deps.json
+C:\Users\INAM\Desktop\Tornei 30-12\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+C:\Users\INAM\Desktop\Tornei 30-12\Database\bin\Debug\net8.0\Database.dll
+C:\Users\INAM\Desktop\Tornei 30-12\Database\bin\Debug\net8.0\Database.pdb
+C:\Users\INAM\Desktop\Tornei 30-12\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+C:\Users\INAM\Desktop\Tornei 30-12\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\INAM\Desktop\Tornei 30-12\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+C:\Users\INAM\Desktop\Tornei 30-12\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+C:\Users\INAM\Desktop\Tornei 30-12\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+C:\Users\INAM\Desktop\Tornei 30-12\Database\obj\Debug\net8.0\Database.dll
+C:\Users\INAM\Desktop\Tornei 30-12\Database\obj\Debug\net8.0\refint\Database.dll
+C:\Users\INAM\Desktop\Tornei 30-12\Database\obj\Debug\net8.0\Database.pdb
+C:\Users\INAM\Desktop\Tornei 30-12\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+C:\Users\INAM\Desktop\Tornei 30-12\Database\obj\Debug\net8.0\ref\Database.dll
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\Database\bin\Debug\net8.0\Database.deps.json
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\Database\bin\Debug\net8.0\Database.dll
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\Database\bin\Debug\net8.0\Database.pdb
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\Database\obj\Debug\net8.0\Database.dll
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\Database\obj\Debug\net8.0\refint\Database.dll
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\Database\obj\Debug\net8.0\Database.pdb
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\Database\obj\Debug\net8.0\ref\Database.dll
+D:\Documents\Torni\Tornei (11)\Database\bin\Debug\net8.0\Database.deps.json
+D:\Documents\Torni\Tornei (11)\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+D:\Documents\Torni\Tornei (11)\Database\bin\Debug\net8.0\Database.dll
+D:\Documents\Torni\Tornei (11)\Database\bin\Debug\net8.0\Database.pdb
+D:\Documents\Torni\Tornei (11)\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+D:\Documents\Torni\Tornei (11)\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\Tornei (11)\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+D:\Documents\Torni\Tornei (11)\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+D:\Documents\Torni\Tornei (11)\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\Tornei (11)\Database\obj\Debug\net8.0\Database.dll
+D:\Documents\Torni\Tornei (11)\Database\obj\Debug\net8.0\refint\Database.dll
+D:\Documents\Torni\Tornei (11)\Database\obj\Debug\net8.0\Database.pdb
+D:\Documents\Torni\Tornei (11)\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+D:\Documents\Torni\Tornei (11)\Database\obj\Debug\net8.0\ref\Database.dll

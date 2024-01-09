@@ -1,0 +1,216 @@
+﻿@* Database *@
+@using Database.Services
+
+@* Oggetti Syncfusion *@
+@using Syncfusion.Blazor;
+@using Syncfusion.Blazor.SplitButtons
+
+@* Navigazione *@
+@inject NavigationManager NavigationManager
+
+@* Aggiungo local storage *@
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+
+@* Gestione autenticazione *@
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+
+@* Gestione Layout *@
+@inherits LayoutComponentBase
+
+<div class="page">
+
+   @* Nav bar di sinistra, il nostro menù *@
+   <div class="sidebar" hidden="@HideSideBar">
+      <NavMenu />
+   </div>
+
+   <main>
+      @* Se sono loggato *@
+      @if (UserName != null && UserName != string.Empty)
+      {
+         <div class="top-row">
+
+            @* Pulsante della nav bar *@
+            <div class="container-fluid fs-5 d-flex justify-content-start">
+               <button @onclick="TogleSideBar"><i class="fa-solid fa-bars"></i></button>
+            </div>
+
+            <ul class="navbar-nav px-5 text-white">
+               @* Menù a tendina di destra *@
+               <li class="nav-item dropdown">
+                  @* Intestazione *@
+                  <a href="#" class="nav-link dropdown-toggle text-truncate" data-bs-toggle="dropdown" aria-expanded="false">
+                     <i class="fs-5 bi-bootstrap"></i><span class="ms-1 d-none d-sm-inline">@UserName</span>
+                  </a>
+                  @* Sottomenù *@
+                  <ul class="dropdown-menu dropdown-menu-light dr" aria-labelledby="dropdown">
+                     <li><a class="dropdown-item" href="@CompName">Profilo</a></li>
+                     <li><a class="dropdown-item" href="account/manage">Impostazioni</a></li>
+                     <li class="dropdown-divider"></li>
+                     <li>
+                        @* Logout *@
+                        <form id="logoutForm" action="Account/Logout" method="post">
+                           <AntiforgeryToken />
+                           <input type="hidden" name="ReturnUrl" value="@currentUrl" />
+                           <button type="submit" class="dropdown-item" @onclick="logout">Esci</button>
+                        </form>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </div>
+      }
+      else
+      {
+         @* Se non sono loggato *@
+         <div class="top-row">
+            @* Pulsante della nav bar da non loggato*@
+            <div>
+               <button @onclick="TogleSideBar"><i class="fa-solid fa-bars"></i></button>
+            </div>
+            <div class="container-fluid fs-5 d-flex justify-content-end">
+               <div class=" row ">
+                  <div class="col">
+                     <div>
+                        <a href="Account/Register" class="text-white">Register</a>
+                        <span class="text-white font-weight-bold">/</span>
+                        <a href="Account/Login" class="text-white text-left">Login</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      }
+      <article class="content px-4">
+         @Body
+      </article>
+   </main>
+</div>
+
+@* Per la gestione degli errori *@
+<div id="blazor-error-ui">
+   An unhandled error has occurred.
+   <a href="" class="reload">Reload</a>
+   <a class="dismiss">🗙</a>
+</div>
+
+@code {
+   [Inject]
+   private AuthenticationStateProvider AuthenticationStateProvider { get; set; } // Uso l'autenticazione
+
+   [Inject]
+   private NavigationManager Navigation { get; set; } // Uso la navigazione
+
+   // Lista dei servizi che intendo usare nella pagina
+   @inject UserService userService;
+   @inject SocietaService societaService;
+   @inject AnagraficaService AnargraficaService;
+
+   // Lista delle variabili che uso nella pagina
+   private string UserName = string.Empty;
+   private string DisplayName = string.Empty;
+   private string CompName = string.Empty;
+   private string? currentUrl;
+   string name = null;
+   private bool HideSideBar = false;
+
+   // In fase di inizializzazione
+   protected async override Task OnInitializedAsync()
+   {
+      var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync(); // Controllo lo stato dell'autenticazione
+      var user = authstate.User; // Memorizzo l'utente
+      name = user.Identity.Name; // Memorizzo il nome utente
+   }
+
+   // Apre o nasconde la side bar
+   private void TogleSideBar()
+   {
+      // Se è aperta la chiude o vicevera
+      HideSideBar = !HideSideBar;
+   }
+
+   // dopo render della pagina
+   protected override async Task OnAfterRenderAsync(bool firstRender)
+   {
+      try
+      {
+         // Al primo caricamento
+         if (firstRender)
+         {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync(); // Controllo lo stato dell'autenticazione
+            var user = authState.User; // Memorizzo l'utente
+                                       // verifico se sono autenticato, e l'utente esiste
+            if (user.Identity.IsAuthenticated && user != null)
+            {
+               // Se si memorizzo il nome utente
+               UserName = user.Identity.Name; // Qui ho la mail
+                                              // Cerco l'utente nel DB tramite MAIL
+               var loginuser = await userService.GetUserByEmailAsync(user.Identity.Name);
+               if (loginuser != null) // Se lo trovo
+               {
+                  // Controllo il valore del campo società
+                  var CodSocieta = loginuser.CodSocieta;
+                  if (CodSocieta != 0) // Se è diverso da 0 mi trovo di fronte ad una società
+                  {
+
+                     var societa = await societaService.GetSocietaByCodeAsync(CodSocieta); // Cerco la società per codice, usando il codice appena trovato
+                     DisplayName = societa.DesSocieta ??= "";  // Se diverso da null memorizzo il nome da visualizzare
+                     CompName = "tornei/societa"; // Memorizzo il giusto componente da richiamare per la gestione profilo
+                  }
+                  else
+                  {
+                     // Se mi trovo di fronte ad un provato lo cerco nel DB
+                     var anar = await AnargraficaService.GetAnagraficaByIdAsync(loginuser.CodAnagrafica);  // Cerco il soggetto per codice, usando il codice appena trovato
+                     DisplayName = anar.NomeCompleto ??= "";  // Se diverso da null memorizzo il nome da visualizzare
+                     CompName = "tornei/anagrafica";  // Memorizzo il giusto componente da richiamare per la gestione profilo
+                  }
+                  // [Luca]: we will need more data here in the future [yes we can]
+                  await LocalStorage.SetItemAsync("LoginUserId", loginuser.Id.ToString()); // Memorizzo nel local storage lo userID
+                  await LocalStorage.SetItemAsync("DisplayName", DisplayName); // Memorizzo nel local storage il nome completo
+                  StateHasChanged(); // Aggiorno lo stato
+               }
+            }
+            else
+            {
+               // Se invece non è la prima volta
+               await LocalStorage.RemoveItemAsync("LoginUserId");  // Rimuovo lo user id dallo storage [LUCA] WHy?
+               StateHasChanged(); // Aggiorno lo stato
+            }
+         }
+      }
+      catch (Exception ex)
+      {
+      }
+   }
+
+   // Quando effettuo il logout
+   protected void logout()
+   {
+      // Pulisco le variabili [Luca]: but for what purpose?
+      name = string.Empty;
+      UserName = string.Empty;
+      DisplayName = string.Empty;
+      // Cancello le variabili memorizzate nel local storage
+      LocalStorage.RemoveItemAsync("LoginUserId");
+      LocalStorage.RemoveItemAsync("DisplayName");
+      NavigationManager.NavigateTo($"Account/Login"); // Redirect alla maschera di login [Luca]: I would send to the home page not the login
+      name = string.Empty; // gestione dello stato della nav bar
+      StateHasChanged(); // Aggiorno lo stato
+   }
+
+   // In fase di inizializzazione
+   // [Luca]: I don't understand what these two procedures do, can you comment on the code? from here to the end
+   protected override void OnInitialized()
+   {
+      currentUrl = Navigation.ToBaseRelativePath(Navigation.Uri);
+      Navigation.LocationChanged += OnLocationChanged;
+   }
+
+   private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+   {
+      currentUrl = Navigation.ToBaseRelativePath(e.Location);
+      StateHasChanged();
+   }
+   // END
+
+}

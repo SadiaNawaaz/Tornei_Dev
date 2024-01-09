@@ -1,0 +1,155 @@
+﻿@* Database *@
+@using Database.DTOs
+@using Database.Services
+
+@* Oggetti Syncfusion *@
+@using Syncfusion.Blazor.DropDowns
+
+@* [LUCA]: What is it for? I can't find it mentioned anywhere *@
+@using Tornei.Components.UserDefinedComp
+
+@* Navigazione *@
+@inject NavigationManager NavigationManager
+
+@* Dichiaro che uso in questa pagina il local storage *@
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+
+<div class="nav-scrollable">
+   <nav class="flex-column">
+      <div>
+
+         @* Se esiste almeno un menù *@
+         @if (menues != null && menues.Count > 0)
+         {
+            if (menues.Count == 1)
+            {
+               <span class="badge bg-secondary mt-3 px-3 py-3">
+                  @menues[0].DesMenu
+               </span>
+            }
+            else
+            {
+               <div class="dropdown px-2 py-1 mt-3">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                     @* Scrivo il titolo de menù principale *@
+                            @SelectedMainMenu
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-dark px-4" aria-labelledby="dropdownMenuButton2">
+                     @* Scrivo tutti i menù del livello *@
+                     @foreach (var menuNode in menues)
+                     {
+                        @* Visualizzo i figli *@
+                        <li><a class="dropdown-item px-6" href="#" @onclick="() => OnValueChange(menuNode.CodMenu)">@menuNode.DesMenu</a></li>
+                     }
+                  </ul>
+               </div>
+            }
+         }
+         else
+         {
+         }
+
+         <ul class="navbar-nav justify-content-start flex-grow-1 pe-3 px-3">
+            @* Se ci sono sottomenù *@
+            @if (submenues != null && submenues.Count > 0)
+            {
+               @* Per ogni sottomenù *@
+               @foreach (var menuNode in submenues)
+               {
+                  // Richiamo in modo ricorsivo il componente per caricarli
+                  <MenuComp MenuNode="@menuNode" />
+               }
+            }
+         </ul>
+      </div>
+   </nav>
+</div>
+
+
+@code {
+   @inject MenuService MenuService
+   @inject UserService userService;
+
+   // Dichiaro le liste che utilizzo
+   List<MenuVistaDto> menues = new List<MenuVistaDto>();
+   List<MenuHierarchyDto> submenues = new List<MenuHierarchyDto>();
+
+   // Dichiaro le variabili
+   private bool IsLocalstorageLoaded = false;
+   private bool IsMenuLoaded = false;
+   private string? currentUrl;
+   private string LoginUserId = string.Empty;
+   string name = string.Empty;
+    string SelectedMainMenu = string.Empty;
+    protected async override void OnAfterRender(bool firstRender)
+   {
+      if (firstRender)
+      {
+         var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync(); // Controllo lo stato dell'autenticazione
+         var user = authstate.User; // Memorizzo l'utente
+         name = user.Identity.Name;
+         if (name != null)
+         {
+            var loginuser = await userService.GetUserByEmailAsync(user.Identity.Name);
+            LoginUserId = loginuser.Id;
+         }
+         else
+         {
+            LoginUserId = "";
+         }
+         await LoadMenu();
+         StateHasChanged();
+      }
+   }
+
+   // Procedura che carica il menù
+   private async Task LoadMenu()
+   {
+      try
+      {
+         // Carico il menù di primo livello passandogli l'utente o null se non sono loggato
+         menues = await MenuService.GetFirstLevelMenuItems(LoginUserId ??= string.Empty);          
+         if (menues != null && menues.Count > 0) // Eseguo questo solo se ci soono menù
+         {
+               
+                OnValueChange(menues[0].CodMenu); // lancio l'evento change menù passandogli il codice 0 menù di default
+         }
+      }
+      catch (Exception)
+      {
+         throw;
+      }
+   }
+
+   // Precedura che viene chiamata al cambio dei parametri
+   protected override async Task OnParametersSetAsync()
+   {
+      await LoadMenu(); // Carica il menù principale
+   }
+
+   // In fase di inizializzazione
+   protected async override Task OnInitializedAsync()
+   {
+      try
+      {
+      }
+      catch (Exception)
+      {
+         throw;
+      }
+   }
+
+   // Al cambio del menù selezionato
+   public async void OnValueChange(int menucode)
+   {
+        // trova il menù di livello inferiore ma serve il valore del submenues?
+        var node = menues.FirstOrDefault(x => x.CodMenu == menucode);
+        if (node != null)
+        {
+            SelectedMainMenu = node.DesMenu;
+        }
+        submenues = await MenuService.GetNextLevelMenuItems(LoginUserId, menucode);
+      StateHasChanged();  // Aggiorno lo stato
+   }
+}

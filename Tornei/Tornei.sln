@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tornei", "Tornei\Tornei.csproj", "{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcedureComuni", "ProcedureComuni\ProcedureComuni.csproj", "{73207788-E4D0-4ACA-B865-8B76C62BEFFE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "Database\Database.csproj", "{BDF76FDA-7363-43F6-88E3-95F44EF0D1EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73207788-E4D0-4ACA-B865-8B76C62BEFFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73207788-E4D0-4ACA-B865-8B76C62BEFFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73207788-E4D0-4ACA-B865-8B76C62BEFFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73207788-E4D0-4ACA-B865-8B76C62BEFFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDF76FDA-7363-43F6-88E3-95F44EF0D1EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDF76FDA-7363-43F6-88E3-95F44EF0D1EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDF76FDA-7363-43F6-88E3-95F44EF0D1EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDF76FDA-7363-43F6-88E3-95F44EF0D1EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {116D8FB9-2D5A-4DC9-BAC1-6C6549E91FEF}
+	EndGlobalSection
+EndGlobal

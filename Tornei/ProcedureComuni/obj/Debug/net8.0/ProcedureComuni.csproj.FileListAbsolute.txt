@@ -1,0 +1,156 @@
+C:\4_Manager\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.deps.json
+C:\4_Manager\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.dll
+C:\4_Manager\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.pdb
+C:\4_Manager\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.GeneratedMSBuildEditorConfig.editorconfig
+C:\4_Manager\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfoInputs.cache
+C:\4_Manager\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfo.cs
+C:\4_Manager\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.csproj.CoreCompileInputs.cache
+C:\4_Manager\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.sourcelink.json
+C:\4_Manager\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.dll
+C:\4_Manager\Tornei\ProcedureComuni\obj\Debug\net8.0\refint\ProcedureComuni.dll
+C:\4_Manager\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.pdb
+C:\4_Manager\Tornei\ProcedureComuni\obj\Debug\net8.0\ref\ProcedureComuni.dll
+D:\Documents\Torni\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.deps.json
+D:\Documents\Torni\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfoInputs.cache
+D:\Documents\Torni\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfo.cs
+D:\Documents\Torni\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.sourcelink.json
+D:\Documents\Torni\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\Tornei\ProcedureComuni\obj\Debug\net8.0\refint\ProcedureComuni.dll
+D:\Documents\Torni\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\Tornei\ProcedureComuni\obj\Debug\net8.0\ref\ProcedureComuni.dll
+C:\Users\Administrator\Desktop\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.deps.json
+C:\Users\Administrator\Desktop\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.dll
+C:\Users\Administrator\Desktop\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.pdb
+C:\Users\Administrator\Desktop\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.dll
+C:\Users\Administrator\Desktop\Tornei\ProcedureComuni\obj\Debug\net8.0\refint\ProcedureComuni.dll
+C:\Users\Administrator\Desktop\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.pdb
+C:\Users\Administrator\Desktop\Tornei\ProcedureComuni\obj\Debug\net8.0\ref\ProcedureComuni.dll
+D:\Documents\Torni\Tornei version with my comment\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.deps.json
+D:\Documents\Torni\Tornei version with my comment\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\Tornei version with my comment\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\Tornei version with my comment\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\Tornei version with my comment\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfoInputs.cache
+D:\Documents\Torni\Tornei version with my comment\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfo.cs
+D:\Documents\Torni\Tornei version with my comment\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\Tornei version with my comment\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\Tornei version with my comment\Tornei\ProcedureComuni\obj\Debug\net8.0\refint\ProcedureComuni.dll
+D:\Documents\Torni\Tornei version with my comment\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\Tornei version with my comment\Tornei\ProcedureComuni\obj\Debug\net8.0\ref\ProcedureComuni.dll
+D:\Documents\Torni\19 dec 2023\Tornei (4)\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.deps.json
+D:\Documents\Torni\19 dec 2023\Tornei (4)\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\19 dec 2023\Tornei (4)\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\19 dec 2023\Tornei (4)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\19 dec 2023\Tornei (4)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfoInputs.cache
+D:\Documents\Torni\19 dec 2023\Tornei (4)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfo.cs
+D:\Documents\Torni\19 dec 2023\Tornei (4)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\19 dec 2023\Tornei (4)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\19 dec 2023\Tornei (4)\ProcedureComuni\obj\Debug\net8.0\refint\ProcedureComuni.dll
+D:\Documents\Torni\19 dec 2023\Tornei (4)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\19 dec 2023\Tornei (4)\ProcedureComuni\obj\Debug\net8.0\ref\ProcedureComuni.dll
+D:\Documents\Torni\19 dec 2023\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.deps.json
+D:\Documents\Torni\19 dec 2023\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\19 dec 2023\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\19 dec 2023\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\19 dec 2023\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfoInputs.cache
+D:\Documents\Torni\19 dec 2023\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfo.cs
+D:\Documents\Torni\19 dec 2023\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\19 dec 2023\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\19 dec 2023\Tornei\ProcedureComuni\obj\Debug\net8.0\refint\ProcedureComuni.dll
+D:\Documents\Torni\19 dec 2023\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\19 dec 2023\Tornei\ProcedureComuni\obj\Debug\net8.0\ref\ProcedureComuni.dll
+D:\Documents\Torni\23 dec\Tornei (6)\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.deps.json
+D:\Documents\Torni\23 dec\Tornei (6)\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\23 dec\Tornei (6)\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\23 dec\Tornei (6)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\23 dec\Tornei (6)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfoInputs.cache
+D:\Documents\Torni\23 dec\Tornei (6)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfo.cs
+D:\Documents\Torni\23 dec\Tornei (6)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\23 dec\Tornei (6)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\23 dec\Tornei (6)\ProcedureComuni\obj\Debug\net8.0\refint\ProcedureComuni.dll
+D:\Documents\Torni\23 dec\Tornei (6)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\23 dec\Tornei (6)\ProcedureComuni\obj\Debug\net8.0\ref\ProcedureComuni.dll
+D:\Documents\Torni\26 Dec 2023\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.deps.json
+D:\Documents\Torni\26 Dec 2023\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\26 Dec 2023\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\26 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\26 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfoInputs.cache
+D:\Documents\Torni\26 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfo.cs
+D:\Documents\Torni\26 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\26 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\26 Dec 2023\ProcedureComuni\obj\Debug\net8.0\refint\ProcedureComuni.dll
+D:\Documents\Torni\26 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\26 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ref\ProcedureComuni.dll
+C:\Users\Administrator\Desktop\26 Dec 2023\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.deps.json
+C:\Users\Administrator\Desktop\26 Dec 2023\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.dll
+C:\Users\Administrator\Desktop\26 Dec 2023\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.pdb
+C:\Users\Administrator\Desktop\26 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\26 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\26 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\26 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\26 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.dll
+C:\Users\Administrator\Desktop\26 Dec 2023\ProcedureComuni\obj\Debug\net8.0\refint\ProcedureComuni.dll
+C:\Users\Administrator\Desktop\26 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.pdb
+C:\Users\Administrator\Desktop\26 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ref\ProcedureComuni.dll
+D:\Documents\Torni\29 Dec 2023\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.deps.json
+D:\Documents\Torni\29 Dec 2023\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\29 Dec 2023\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\29 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\29 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfoInputs.cache
+D:\Documents\Torni\29 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfo.cs
+D:\Documents\Torni\29 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\29 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\29 Dec 2023\ProcedureComuni\obj\Debug\net8.0\refint\ProcedureComuni.dll
+D:\Documents\Torni\29 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\29 Dec 2023\ProcedureComuni\obj\Debug\net8.0\ref\ProcedureComuni.dll
+D:\TFS Code\Italy project\Tornei 30-12\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.deps.json
+D:\TFS Code\Italy project\Tornei 30-12\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.dll
+D:\TFS Code\Italy project\Tornei 30-12\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.pdb
+D:\TFS Code\Italy project\Tornei 30-12\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.GeneratedMSBuildEditorConfig.editorconfig
+D:\TFS Code\Italy project\Tornei 30-12\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfoInputs.cache
+D:\TFS Code\Italy project\Tornei 30-12\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfo.cs
+D:\TFS Code\Italy project\Tornei 30-12\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.csproj.CoreCompileInputs.cache
+D:\TFS Code\Italy project\Tornei 30-12\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.dll
+D:\TFS Code\Italy project\Tornei 30-12\ProcedureComuni\obj\Debug\net8.0\refint\ProcedureComuni.dll
+D:\TFS Code\Italy project\Tornei 30-12\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.pdb
+D:\TFS Code\Italy project\Tornei 30-12\ProcedureComuni\obj\Debug\net8.0\ref\ProcedureComuni.dll
+C:\Users\INAM\Desktop\Tornei 30-12\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.deps.json
+C:\Users\INAM\Desktop\Tornei 30-12\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.dll
+C:\Users\INAM\Desktop\Tornei 30-12\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.pdb
+C:\Users\INAM\Desktop\Tornei 30-12\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\INAM\Desktop\Tornei 30-12\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfoInputs.cache
+C:\Users\INAM\Desktop\Tornei 30-12\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfo.cs
+C:\Users\INAM\Desktop\Tornei 30-12\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.csproj.CoreCompileInputs.cache
+C:\Users\INAM\Desktop\Tornei 30-12\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.dll
+C:\Users\INAM\Desktop\Tornei 30-12\ProcedureComuni\obj\Debug\net8.0\refint\ProcedureComuni.dll
+C:\Users\INAM\Desktop\Tornei 30-12\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.pdb
+C:\Users\INAM\Desktop\Tornei 30-12\ProcedureComuni\obj\Debug\net8.0\ref\ProcedureComuni.dll
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.deps.json
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.dll
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.pdb
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfoInputs.cache
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfo.cs
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.csproj.CoreCompileInputs.cache
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.dll
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\ProcedureComuni\obj\Debug\net8.0\refint\ProcedureComuni.dll
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.pdb
+C:\Users\INAM\Desktop\Tornei 03-01 with my comment use this to go on\ProcedureComuni\obj\Debug\net8.0\ref\ProcedureComuni.dll
+D:\Documents\Torni\Tornei (11)\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.deps.json
+D:\Documents\Torni\Tornei (11)\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\Tornei (11)\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\Tornei (11)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\Tornei (11)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfoInputs.cache
+D:\Documents\Torni\Tornei (11)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfo.cs
+D:\Documents\Torni\Tornei (11)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\Tornei (11)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\Tornei (11)\ProcedureComuni\obj\Debug\net8.0\refint\ProcedureComuni.dll
+D:\Documents\Torni\Tornei (11)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\Tornei (11)\ProcedureComuni\obj\Debug\net8.0\ref\ProcedureComuni.dll

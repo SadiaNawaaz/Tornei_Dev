@@ -1,0 +1,39 @@
+﻿<!-- MenuComponent.razor -->
+@using Database.DTOs
+@using Database.Services
+
+<!-- MenuItemTemplate.razor -->
+@if (MenuNode.Figli?.Any() == true)
+@* Se questo menu ha figli *@
+{
+    <li class="nav-item dropdown" style="color:white!important">
+       @* Metto il link del menù  *@
+        <a href="#" class="nav-link dropdown-toggle text-truncate" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fs-5 bi-bootstrap"></i>
+            <span class="ms-1 d-none d-sm-inline" >@MenuNode.DesMenu</span>
+        </a>
+        @* Creo la struttura per i figli *@
+        <ul class="dropdown-menu dropdown-menu-dark myclass dr  px-3" aria-labelledby="dropdown">
+      
+            @* Richiamo il componente menù per ogni figlio *@
+            @foreach (var childNode in MenuNode.Figli)
+            {
+                <MenuComp MenuNode="@childNode" />
+            }
+        </ul>
+    </li>
+}
+else
+{ @* Se non ha figli *@
+   @* Metto il link del menù  *@
+    <li class="nav-item">
+        <a href="@MenuNode.Route" class="nav-link text-truncate">
+            <i class="fs-5 bi-bootstrap"></i><span  style="color:white!important">@MenuNode.DesMenu </span>
+        </a>
+    </li>
+}
+
+@code {
+    [Parameter]
+    public MenuHierarchyDto MenuNode { get; set; }
+}

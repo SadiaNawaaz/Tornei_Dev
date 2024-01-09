@@ -1,0 +1,49 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Tornei.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Tornei.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\Dati\\Tornei\\Profilo\\2269f48b-b580-4d50-81cf-0c3b7bda4a8b.png",
+      "PackagePath": "staticwebassets\\Dati\\Tornei\\Profilo\\2269f48b-b580-4d50-81cf-0c3b7bda4a8b.png"
+    },
+    {
+      "Id": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Tornei.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Tornei.props",
+      "PackagePath": "build\\Tornei.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Tornei.props",
+      "PackagePath": "buildMultiTargeting\\Tornei.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Tornei.props",
+      "PackagePath": "buildTransitive\\Tornei.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

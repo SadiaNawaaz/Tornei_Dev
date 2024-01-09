@@ -1,0 +1,53 @@
+﻿@page "/tornei/tipoaccount/{email}"  
+@inject NavigationManager Navigazione
+@inject IJSRuntime JSRuntime 
+
+<SfDialog Width="700px" Height="350px" IsModal="true">
+   <DialogTemplates>
+      <Header>
+         <h4>
+            Benvenuto nel nostro portale
+         </h4>
+      </Header>
+      <Content>
+         <br />
+         <p>Questa è la tua prima login, ti sei registrato al portale, adesso per poter andare avanti devi completare il tuo profilo.</p>
+         <p>Per prima cosa indica se sei un privato o un'azienda'.</p>
+         <br />
+         <h3 class="bg-secondary text-white">@TipoUtente</h3>
+         <div class="form-group">
+            <label>Seleziona TipoUtente:</label>
+            <input type="radio" name="TipoUtente" value="Societa" @onchange="OnValueChange" />Società / Persona Giuridica
+            <input type="radio" name="TipoUtente" value="Anagrafica" @onchange="OnValueChange" />Persona Fisica
+         </div>
+      </Content>
+   </DialogTemplates>
+</SfDialog>
+
+@code {
+   [Parameter]
+   public string email { get; set; } = string.Empty;
+   private string TipoUtente = string.Empty;
+
+   // In base a cosa scelgo mi porta alla corretta pagina del profilo
+   private void OnValueChange(ChangeEventArgs e)
+   {
+      TipoUtente = e.Value.ToString(); 
+      if (TipoUtente == "Societa")
+      {
+         Navigazione.NavigateTo($"tornei/Societa/{email}");
+      }
+      else
+      {
+         Navigazione.NavigateTo($"tornei/Anagrafica/{email}");
+      }
+   }
+
+   protected override void OnInitialized()
+   {
+      base.OnInitialized();
+
+      // com questo comando la pagina in oggetto viene visualizzata come form modale, il codice deve essere contenuto in un "SfDialog".
+      JSRuntime.InvokeVoidAsync("showModal");
+   }
+}

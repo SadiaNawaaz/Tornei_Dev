@@ -1,0 +1,15 @@
+﻿@page "/esempi/toast"
+@rendermode InteractiveServer
+@inject IToastService ToastService
+
+<h3>Toaster</h3>
+<button class="btn btn-info" @onclick="@(()=> ToastService.ShowInfo("Benvenuto messaggio: Info"))">Info</button>
+<button class="btn btn-success" @onclick="@(()=> ToastService.ShowSuccess("Benvenuto messaggio: Successo"))">Success</button>
+<button class="btn btn-warning" @onclick="@(()=> ToastService.ShowWarning("Benvenuto messaggio: Warning"))">Warning</button>
+<button class="btn btn-danger" @onclick="@(()=> ToastService.ShowError ("Benvenuto messaggio: Errore"))">Errore</button>
+
+<Tornei.Components.Condivisi.MioPopup></Tornei.Components.Condivisi.MioPopup>
+
+@code {
+
+}

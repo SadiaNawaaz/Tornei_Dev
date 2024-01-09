@@ -1,0 +1,48 @@
+﻿<!-- MenuItemTemplate.razor -->
+@using Database.DTOs
+@using Tornei.Models
+@inherits ComponentBase
+
+<div class="nav-item px-3 py-1">
+   @* Scrivo il menù padre *@
+   <NavLink class="nav-link" @onclick="OnClick">
+      @MenuNode.DesMenu 
+   </NavLink>
+
+   @* Se ha figli *@
+   @* [Luca]: Mostrafigli not exist *@
+   @* @if (MenuNode.Figli?.Any() == true && MenuNode.MostraFigi) *@
+   @if (MenuNode.Figli?.Any() == true)
+   {
+      @* Creo il sottomenù e mostri ogni figlio richiamando la procedura *@
+      <div class="nav-submenu">
+         @foreach (var childNode in MenuNode.Figli)
+         {
+            <TreeComp MenuNode="@childNode" OnNodeClick="@OnNodeClick" />
+         }
+      </div>
+   }
+</div>
+
+@code {
+   [Parameter]
+   public MenuHierarchyDto MenuNode { get; set; }
+   [Parameter]
+   public EventCallback<NodeClickEventArgs> OnNodeClick { get; set; }
+
+   private async Task OnClick(MouseEventArgs args)
+   {
+      try
+      {
+         var nodeClickArgs = new NodeClickEventArgs { MouseEventArgs = args, CodMenu = MenuNode.CodMenu };
+         await OnNodeClick.InvokeAsync(nodeClickArgs);
+         await Task.Delay(10); // Ritarda per una breve durata per consentire al componente principale di elaborare l'evento
+                               //StateHasChanged();  // Manually trigger a re-render
+      }
+      catch (Exception)
+      {
+         throw;
+      }
+   }
+
+}

@@ -1,0 +1,323 @@
+﻿@page "/Menu"
+
+@using Database.Models
+@using Database.DTOs
+@using Database.Services
+
+@using Tornei.Models
+@using Tornei.Components.UserDefinedComp
+
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Notifications
+
+@inject NavigationManager navigationManager
+@inject IJSRuntime JSRuntime
+
+<SfToast @ref="toast" Target="#target">
+   <ToastPositionSettings X="calc(100% - 10px)" Y="10px"></ToastPositionSettings>
+</SfToast>
+
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-md-3">
+         <!-- Your tree component goes here -->
+         <div>
+            <ul class=" flex-grow-1 pe-3 px-3" style="background-color:whitesmoke;">
+               @if (menues != null && menues.Count > 0)
+               {
+                  @foreach (var menuNode in menues)
+                  {
+                     <TreeComp MenuNode="@menuNode" OnNodeClick="HandleNodeClick" />
+                  }
+               }
+            </ul>
+         </div>
+      </div>
+      <div class="col-md-9">
+         <EditForm Model="@menuNode" OnValidSubmit="SaveOrUpdateMenu">
+            <DataAnnotationsValidator />
+            <h3>Menu</h3>
+
+            <!-- DesMenu -->
+            <div class="row mb-2">
+               <div class="col-md-2 mb-1">
+                  <div class="form-group">
+                     <label for="DesMenu">Nome Visualizzato:</label>
+                  </div>
+               </div>
+               <div class="col-md-8 ">
+                  <div class="form-group">
+                     <InputText id="DesMenu" @bind-Value="menuNode.DesMenu" class="form-control" />
+                     <ValidationMessage For="@(() => menuNode.DesMenu)" />
+                  </div>
+               </div>
+            </div>
+
+            <!-- Mostra -->
+            <div class="row mb-2">
+               <div class="col-md-2 mb-1">
+                  <div class="form-group">
+                     <label for="Mostra">visibilità</label>
+                  </div>
+               </div>
+               <div class="col-md-8 ">
+                  <div class="form-group">
+                     <SfDropDownList TValue="string" TItem="MostraOption" @bind-Value="Mostra" DataSource="@MostraOptions" Placeholder="Select Show">
+                        <DropDownListFieldSettings Text="Text" Value="Value" />
+                     </SfDropDownList>
+                     <ValidationMessage For="@(() => menuNode.Mostra)" />
+                  </div>
+               </div>
+            </div>
+
+            <!-- DataInizioPubblicazione -->
+            <div class="row mb-2">
+               <div class="col-md-2 mb-1">
+                  <div class="form-group">
+                     <label for="DataInizioPubblicazione">Data d'inizio:</label>
+                  </div>
+               </div>
+               <div class="col-md-8 ">
+                  <div class="form-group">
+
+                     <InputDate id="DataDiNascita" @bind-Value="menuNode.DataInizioPubblicazione" class="form-control" />
+                     <ValidationMessage For="@(() => menuNode.DataInizioPubblicazione)" />
+                  </div>
+               </div>
+            </div>
+
+            <!-- DataFinePubblicazione -->
+            <div class="row mb-2">
+               <div class="col-md-2 mb-1">
+                  <div class="form-group">
+                     <label for="DataFinePubblicazione">DataFinePubblicazione</label>
+                  </div>
+               </div>
+               <div class="col-md-8 ">
+                  <div class="form-group">
+
+                     <InputDate id="DataDiNascita" @bind-Value="menuNode.DataFinePubblicazione" class="form-control" />
+                     <ValidationMessage For="@(() => menuNode.DataFinePubblicazione)" />
+                  </div>
+               </div>
+            </div>
+
+            <!-- Route -->
+            <div class="row mb-2">
+               <div class="col-md-2 ">
+                  <div class="form-group">
+                     <label for="Route">Route:</label>
+                  </div>
+               </div>
+               <div class="col-md-8 ">
+                  <div class="form-group">
+                     <InputText id="Route" @bind-Value="menuNode.Route" class="form-control" />
+                     <ValidationMessage For="@(() => menuNode.Route)" />
+                  </div>
+               </div>
+            </div>
+
+            <!-- CodPaginaHtml -->
+            <div class="row mb-2">
+               <div class="col-md-2 ">
+                  <div class="form-group">
+                     <label for="CodPaginaHtml">Page Code:</label>
+                  </div>
+               </div>
+               <div class="col-md-8 ">
+                  <div class="form-group">
+                     <SfDropDownList TValue="string" TItem="PaginaHTML" @bind-Value="Mostra" DataSource="@paginas" Placeholder="Select Page">
+                        <DropDownListFieldSettings Text="Titolo" Value="CodPaginaHtml" />
+                     </SfDropDownList>
+                     <ValidationMessage For="@(() => menuNode.CodPaginaHtml)" />
+                     <ValidationMessage For="@(() => menuNode.CodPaginaHtml)" />
+                  </div>
+               </div>
+            </div>
+
+            <!-- Parametro -->
+            <div class="row mb-2">
+               <div class="col-md-2 ">
+                  <div class="form-group">
+                     <label for="Parametro">Parametro:</label>
+                  </div>
+               </div>
+               <div class="col-md-8 ">
+                  <div class="form-group">
+                     <InputText id="Parametro" @bind-Value="menuNode.Parametro" class="form-control" />
+                     <ValidationMessage For="@(() => menuNode.Parametro)" />
+                  </div>
+               </div>
+            </div>
+
+            <div class="form-group mt-3 d-flex justify-content-start w-8">
+               <button type="submit" class="btn btn-primary">Salva</button>
+            </div>
+
+         </EditForm>
+      </div>
+   </div>
+</div>
+
+@* Menù a comparsa premendo il tasto destro del mouse sul menù da creare *@
+<div id="context-menu" style="display: none; position: absolute; background-color: white; border: 1px solid #ccc; padding: 10px;">
+   <div @onclick="() => HandleMenuChoice(1)">Delete</div>
+   <div @onclick="() => HandleMenuChoice(2)">Add Brother</div>
+   <div @onclick="() => HandleMenuChoice(3)">Add Child</div>
+</div>
+
+@code {
+   public Menu menuNode = new Menu();
+   @inject MenuService MenuService;
+   string Mostra = "0";
+   int CodMenuPadre = 0;
+   int CodMenu = 0;
+   private SfToast toast;
+
+   // Dichiarazione delle liste per il caricamento delle drop down
+   List<PaginaHTML> paginas = new List<PaginaHTML>();
+   List<MenuHierarchyDto> menues = new List<MenuHierarchyDto>();
+
+   // Implementazione della dropdown con dati in locale
+   private class MostraOption
+   {
+      public string Text { get; set; }
+      public int Value { get; set; }
+   }
+   private List<MostraOption> MostraOptions = new List<MostraOption>
+   {
+      new MostraOption { Text = "Tutti", Value = 0 },
+      new MostraOption { Text = "Solo Loggati", Value = 1 },
+      new MostraOption { Text = "Solo Abilitati", Value = 2 },
+      new MostraOption { Text = "Nessuno", Value = 3 }
+   };
+
+   protected async override Task OnAfterRenderAsync(bool firstRender)
+   {
+      if (firstRender) // Al primo caricamento della pagina
+      {
+         GetMenues(); // Carica l'albero dei menù
+      }
+   }
+
+   // Carica lista dei menù
+   private void GetMenues()
+   {
+      menues = MenuService.GetMenuItems();  // Comando per caricare la lista dei menù
+      StateHasChanged(); // Aggiorno la pagina
+   }
+
+   protected override async void OnInitialized()
+   {
+      try
+      {
+         // Carico la drop down delle pagineHTML
+         paginas = await MenuService.GetPaginaHTMLListAsync();
+      }
+      catch (Exception)
+      {
+         throw;
+      }
+   }
+
+   // Salvo o aggiorno i menù
+   private async void SaveOrUpdateMenu()
+   {
+      try
+      {
+         menuNode.Mostra = Convert.ToInt16(Mostra);
+         menuNode.CodMenuPadre = CodMenuPadre;
+         if (menuNode.CodMenu == 0)
+         {
+            // Se il codice è = 0 sono in fase di inserimento
+            var result = await MenuService.AddMenuAsync(menuNode); // Aggiungo il menù che ho in memoria
+            // Restituisco un messaggio con il risultato
+            await toast.ShowAsync(new ToastModel
+               {
+                  Title = "Success",
+                  Content = result,
+                  CssClass = "e-toast-success"
+               });
+            GetMenues();  // Ricarico la lista dei menù
+         }
+         else
+         {
+            // Se invece ho già il codice sono in modifica quindi lo salvo
+            await MenuService.UpdateMenuAsync(menuNode);
+         }
+      }
+      catch (Exception)
+      {
+         throw;
+      }
+   }
+
+   private async Task HandleNodeClick(NodeClickEventArgs args)
+   {
+      try
+      {
+         CodMenu = args.CodMenu; // Memorizzo il codice del menù
+
+         if (args.MouseEventArgs.Button == 2)  // Controllo se ho premuto il secondo tasto del mouse
+         {
+            // Se si allora uso il comando per lanciare un javascript che apre il menù a popup
+            await JSRuntime.InvokeAsync<string>("showContextMenu", args.MouseEventArgs.ClientX, args.MouseEventArgs.ClientY);
+         }
+         else
+         {
+            // Se invece ho premuto il tasto sinistro seleziono il meù premuto
+            var node = await MenuService.GetMenuByID(CodMenu);
+            if (node != null) // Se è diverso da null
+            {
+               menuNode = node; // mi memorizzo il menù selezionato
+            }
+         }
+         StateHasChanged(); // Aggiorno la pagina
+      }
+      catch (Exception ex)
+      {
+         // Handle the exception
+         throw;
+      }
+   }
+
+   // Se voglio cancellare un menù
+   private async void Delete(int MenuID)
+   {
+      await MenuService.DeleteMenuAsync(MenuID); // Chiamo il comando di cancellazione passandogli il menù
+      GetMenues(); // Aggiorno poi la lista dei menù
+   }
+
+   // Selezione di una delle voci del menù a tendina
+   private async Task HandleMenuChoice(int choice)
+   {
+      try
+      {
+         menuNode = new Menu(); // Creo una variabile che contiene il menù (che è vuota qui)
+         switch (choice)
+         {
+            case 1:
+               // Cancellazione del menù
+               Delete(CodMenu);
+               break;
+            case 2:
+               // Aggiunta di un fratello (passo il menù del quale voglio inserire un fratello)
+               var m = await MenuService.GetMenuByID(CodMenu);
+               if (m != null) // Se lo trovo
+               {
+                  CodMenuPadre = m.CodMenuPadre; // Recupero il padre
+               }
+               break;
+            case 3:
+               // Se voglio aggiungere un figlio mi memorizzo il padre del menù che ho selezionato
+               CodMenuPadre = CodMenu;
+               break;
+         }
+      }
+      catch (Exception ex)
+      {
+         throw;
+      }
+   }
+}
