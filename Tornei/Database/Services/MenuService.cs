@@ -167,14 +167,14 @@ namespace Database.Services
         .Where(x => x.CodMenu == menu.CodMenu)
         .ToListAsync();
 
-            if (result.Any()&& result.Count>1)
+            if (result.Any() && result.Count > 1)
             {
                 _dbContext.MenuRuolos.RemoveRange(result);
                 await _dbContext.SaveChangesAsync();
             }
-         
+
             //update record with changes 
-            
+
             _dbContext.Entry(menu).State = EntityState.Modified; // dichiaro che il menù è stato modificato
             await _dbContext.SaveChangesAsync(); // gli dico di aggiornarlo sul database
             foreach (var i in menu.RoleList)
@@ -196,6 +196,18 @@ namespace Database.Services
             {
                 _dbContext.Menus.Remove(menu); // Lo cancello
                 await _dbContext.SaveChangesAsync(); // salvo la richiesta sul Database
+
+                //delete roles
+                var result = await _dbContext.MenuRuolos
+                    .Where(x => x.CodMenu == menu.CodMenu)
+                     .ToListAsync();
+
+                if (result.Any() && result.Count > 1)
+                {
+                    _dbContext.MenuRuolos.RemoveRange(result);
+                    await _dbContext.SaveChangesAsync();
+                }
+
             }
         }
 

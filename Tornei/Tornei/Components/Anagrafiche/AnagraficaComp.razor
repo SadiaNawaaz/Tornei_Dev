@@ -334,7 +334,8 @@
                     selectedNisComune = ComuneList.FirstOrDefault(x => x.CodComune == anagrafica.CodComuneDiNascita).DesComuneEstesa;
                     string fullPath = anagrafica.Immagine;
                     string fileName = System.IO.Path.GetFileName(fullPath);
-                    desiredPath = @"anagrafica\" + fileName;
+                    imageModel.ImageName = fileName;
+                    desiredPath = @"Dati\Tornei\Profilo\" + fileName;
                     StateHasChanged();
 
                 }
@@ -357,7 +358,7 @@
                         
                         string fullPath = anagrafica.Immagine;
                         string fileName = System.IO.Path.GetFileName(fullPath);
-                        desiredPath = @"anagrafica\" + fileName;
+                        desiredPath = @"Dati\Tornei\Profilo\" + fileName;
                         StateHasChanged();
 
                     }
@@ -386,11 +387,12 @@
 
             //var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
             // var Percorso = Configurazione.GetValue<string>("Percorsi:Profilo");
-            var uploadsFolder = Path.Combine(Environment.WebRootPath, "anagrafica");
+            var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            var Percorso = Configurazione.GetValue<string>("Percorsi:Profilo");
+            var uploadsFolder = Path.Combine(Environment.WebRootPath, Percorso);
 
             var fileName = $"{Guid.NewGuid().ToString()}.png"; // creo il nome dell'immagine
             var filePath = Path.Combine(uploadsFolder, fileName); // imposto il percorso di salvataggio dell'immagine
-            anagrafica.Immagine = filePath; // imposto il nome immagine su anagrafica
             var rescom = ComuneList.FirstOrDefault(x => x.DesComuneEstesa == selectedResComune);
             var niscom = ComuneList.FirstOrDefault(x => x.DesComuneEstesa == selectedNisComune);
             if (rescom != null)
@@ -401,16 +403,26 @@
                 
             if (anagrafica.CodAnagrafica == 0)
             {
+                anagrafica.Immagine = filePath; // imposto il nome immagine su anagrafica
                 await anagraficaService.AddAnagraficaAsync(anagrafica, email); // Aggiorno il profilo e controllo se associarlo
-                await File.WriteAllBytesAsync(filePath, imageModel.ImageData); // Salvo l'immagine nel server
             }
             else
             {
-
+                if (imageModel.ImageData != null)
+                {
+                    anagrafica.Immagine = filePath; // imposto il nome e percorso immagine
+                }
+                else
+                {
+                    anagrafica.Immagine = imageModel.ImageName;
+                }
                 await anagraficaService.UpdateAnagraficaAsync(anagrafica); // Aggiorno il profilo e controllo se associarlo
 
             }
-
+            if (imageModel.ImageData != null)
+            {
+                await File.WriteAllBytesAsync(filePath, imageModel.ImageData); // Salvo l'immagine nel server
+            }
 
             // Pop up operazione riuscita
             await toast.ShowAsync(new ToastModel

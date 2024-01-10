@@ -160,7 +160,7 @@
 
             </EditForm>
         </div>
-        <div class="col-md-3" style="background-color:antiquewhite;">
+        <div class="col-md-3" >
             <!-- Role list  goes here -->
             <div>
                 <SfMultiSelect TValue="string[]" TItem="AspNetRole" Placeholder="Select A Role" @bind-Value="@MultiVal" DataSource="@roles">
@@ -325,6 +325,9 @@
     {
         await MenuService.DeleteMenuAsync(MenuID); // Chiamo il comando di cancellazione passandogli il menù
         GetMenues(); // Aggiorno poi la lista dei menù
+        MultiVal = new string[] { };
+        MultiVals = new();
+        StateHasChanged();
     }
 
     // Selezione di una delle voci del menù a tendina
