@@ -154,3 +154,15 @@ D:\Documents\Torni\Tornei (11)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.
 D:\Documents\Torni\Tornei (11)\ProcedureComuni\obj\Debug\net8.0\refint\ProcedureComuni.dll
 D:\Documents\Torni\Tornei (11)\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.pdb
 D:\Documents\Torni\Tornei (11)\ProcedureComuni\obj\Debug\net8.0\ref\ProcedureComuni.dll
+D:\Documents\Torni\Torni Git\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.deps.json
+D:\Documents\Torni\Torni Git\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\Torni Git\Tornei\ProcedureComuni\bin\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\Torni Git\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Torni\Torni Git\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfoInputs.cache
+D:\Documents\Torni\Torni Git\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.AssemblyInfo.cs
+D:\Documents\Torni\Torni Git\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.csproj.CoreCompileInputs.cache
+D:\Documents\Torni\Torni Git\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.sourcelink.json
+D:\Documents\Torni\Torni Git\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.dll
+D:\Documents\Torni\Torni Git\Tornei\ProcedureComuni\obj\Debug\net8.0\refint\ProcedureComuni.dll
+D:\Documents\Torni\Torni Git\Tornei\ProcedureComuni\obj\Debug\net8.0\ProcedureComuni.pdb
+D:\Documents\Torni\Torni Git\Tornei\ProcedureComuni\obj\Debug\net8.0\ref\ProcedureComuni.dll

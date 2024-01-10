@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Tornei.csproj": {}
+    "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Tornei.csproj": {}
   },
   "projects": {
-    "D:\\Documents\\Torni\\Tornei (11)\\Database\\Database.csproj": {
+    "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\Torni\\Tornei (11)\\Database\\Database.csproj",
+        "projectUniqueName": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\Database.csproj",
         "projectName": "Database",
-        "projectPath": "D:\\Documents\\Torni\\Tornei (11)\\Database\\Database.csproj",
+        "projectPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\Database.csproj",
         "packagesPath": "C:\\Users\\INAM\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\Torni\\Tornei (11)\\Database\\obj\\",
+        "outputPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -76,14 +76,14 @@
         }
       }
     },
-    "D:\\Documents\\Torni\\Tornei (11)\\ProcedureComuni\\ProcedureComuni.csproj": {
+    "D:\\Documents\\Torni\\Torni Git\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\Torni\\Tornei (11)\\ProcedureComuni\\ProcedureComuni.csproj",
+        "projectUniqueName": "D:\\Documents\\Torni\\Torni Git\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj",
         "projectName": "ProcedureComuni",
-        "projectPath": "D:\\Documents\\Torni\\Tornei (11)\\ProcedureComuni\\ProcedureComuni.csproj",
+        "projectPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj",
         "packagesPath": "C:\\Users\\INAM\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\Torni\\Tornei (11)\\ProcedureComuni\\obj\\",
+        "outputPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\ProcedureComuni\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -136,14 +136,14 @@
         }
       }
     },
-    "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Tornei.csproj": {
+    "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Tornei.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Tornei.csproj",
+        "projectUniqueName": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Tornei.csproj",
         "projectName": "Tornei",
-        "projectPath": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Tornei.csproj",
+        "projectPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Tornei.csproj",
         "packagesPath": "C:\\Users\\INAM\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\obj\\",
+        "outputPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -165,11 +165,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Documents\\Torni\\Tornei (11)\\Database\\Database.csproj": {
-                "projectPath": "D:\\Documents\\Torni\\Tornei (11)\\Database\\Database.csproj"
+              "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\Database.csproj": {
+                "projectPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\Database.csproj"
               },
-              "D:\\Documents\\Torni\\Tornei (11)\\ProcedureComuni\\ProcedureComuni.csproj": {
-                "projectPath": "D:\\Documents\\Torni\\Tornei (11)\\ProcedureComuni\\ProcedureComuni.csproj"
+              "D:\\Documents\\Torni\\Torni Git\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj": {
+                "projectPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj"
               }
             }
           }

@@ -64,6 +64,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Dati\Tornei\Profilo\2269f48b-b580-4d50-81cf-0c3b7bda4a8b.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Dati\Tornei\Profilo\f57fb740-c64c-47bb-b728-30e87c75443c.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>Tornei</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Tornei</BasePath>
+      <RelativePath>Dati/Tornei/Profilo/f57fb740-c64c-47bb-b728-30e87c75443c.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Dati\Tornei\Profilo\f57fb740-c64c-47bb-b728-30e87c75443c.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\favicon.png))">
       <SourceType>Package</SourceType>
       <SourceId>Tornei</SourceId>

@@ -34,7 +34,7 @@
             </ul>
          </div>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-6">
          <EditForm Model="@menuNode" OnValidSubmit="SaveOrUpdateMenu">
             <DataAnnotationsValidator />
             <h3>Menu</h3>
@@ -157,7 +157,15 @@
 
          </EditForm>
       </div>
-   </div>
+        <div class="col-md-3" style="background-color:antiquewhite;">
+            <!-- Role list  goes here -->
+            <div>
+                <SfMultiSelect TValue="string[]" TItem="AspNetRole" Placeholder="Select A Role" @bind-Value="@MultiVal" DataSource="@roles">
+                    <MultiSelectFieldSettings Text="Name" Value="Id"></MultiSelectFieldSettings>
+                </SfMultiSelect>
+            </div>
+        </div>
+  </div>
 </div>
 
 @* Menù a comparsa premendo il tasto destro del mouse sul menù da creare *@
@@ -168,8 +176,12 @@
 </div>
 
 @code {
+ 
+
    public Menu menuNode = new Menu();
    @inject MenuService MenuService;
+   @inject RoleService RoleService;
+
    string Mostra = "0";
    int CodMenuPadre = 0;
    int CodMenu = 0;
@@ -178,8 +190,9 @@
    // Dichiarazione delle liste per il caricamento delle drop down
    List<PaginaHTML> paginas = new List<PaginaHTML>();
    List<MenuHierarchyDto> menues = new List<MenuHierarchyDto>();
-
-   // Implementazione della dropdown con dati in locale
+    List<AspNetRole> roles = new List<AspNetRole>();
+    public string[] MultiVal { get; set; } = new string[] { };
+    // Implementazione della dropdown con dati in locale
    private class MostraOption
    {
       public string Text { get; set; }
@@ -198,7 +211,9 @@
       if (firstRender) // Al primo caricamento della pagina
       {
          GetMenues(); // Carica l'albero dei menù
-      }
+            roles = await RoleService.GetRoles();
+            StateHasChanged();
+        }
    }
 
    // Carica lista dei menù
@@ -214,7 +229,9 @@
       {
          // Carico la drop down delle pagineHTML
          paginas = await MenuService.GetPaginaHTMLListAsync();
-      }
+         
+         
+        }
       catch (Exception)
       {
          throw;
@@ -320,4 +337,11 @@
          throw;
       }
    }
+
+    public class Games
+    {
+        public string ID { get; set; }
+        public string Text { get; set; }
+    }
 }
+

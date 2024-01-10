@@ -1,41 +1,45 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Documents\\Torni\\Tornei (11)\\",
+  "WorkspaceRootPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\tornei (11)\\tornei\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|solutionrelative:tornei\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\torni git\\tornei\\tornei\\components\\anagrafiche\\menucrudcomp.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|solutionrelative:tornei\\components\\anagrafiche\\menucrudcomp.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\tornei (11)\\tornei\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|solutionrelative:tornei\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BDF76FDA-7363-43F6-88E3-95F44EF0D1EE}|Database\\Database.csproj|d:\\documents\\torni\\torni git\\tornei\\database\\services\\menuservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDF76FDA-7363-43F6-88E3-95F44EF0D1EE}|Database\\Database.csproj|solutionrelative:database\\services\\menuservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\tornei (11)\\tornei\\components\\anagrafiche\\societacomp.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|solutionrelative:tornei\\components\\anagrafiche\\societacomp.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\tornei (11)\\tornei\\components\\userdefinedcomp\\menucomp.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\torni git\\tornei\\tornei\\components\\userdefinedcomp\\menucomp.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|solutionrelative:tornei\\components\\userdefinedcomp\\menucomp.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\tornei (11)\\tornei\\components\\anagrafiche\\anagraficacomp.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|solutionrelative:tornei\\components\\anagrafiche\\anagraficacomp.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\tornei (11)\\tornei\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\torni git\\tornei\\tornei\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|solutionrelative:tornei\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\tornei (11)\\tornei\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\torni git\\tornei\\tornei\\components\\anagrafiche\\anagraficacomp.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|solutionrelative:tornei\\components\\anagrafiche\\anagraficacomp.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\torni git\\tornei\\tornei\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|solutionrelative:tornei\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\torni git\\tornei\\tornei\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|solutionrelative:tornei\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\torni git\\tornei\\tornei\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|solutionrelative:tornei\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\tornei (11)\\tornei\\components\\userdefinedcomp\\tcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\torni git\\tornei\\tornei\\components\\userdefinedcomp\\tcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|solutionrelative:tornei\\components\\userdefinedcomp\\tcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\tornei (11)\\tornei\\components\\userdefinedcomp\\testcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|d:\\documents\\torni\\torni git\\tornei\\tornei\\components\\userdefinedcomp\\testcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{8F3A2B0F-BBA7-4148-AD9A-9217D7189994}|Tornei\\Tornei.csproj|solutionrelative:tornei\\components\\userdefinedcomp\\testcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
@@ -46,69 +50,85 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:11:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "site.js",
-              "DocumentMoniker": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\js\\site.js",
-              "RelativeDocumentMoniker": "Tornei\\wwwroot\\js\\site.js",
-              "ToolTip": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\js\\site.js",
-              "RelativeToolTip": "Tornei\\wwwroot\\js\\site.js",
-              "ViewState": "AQIAACcAAAAAAAAAAAAAADoAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-01-09T10:36:49.303Z",
-              "EditorCaption": ""
+              "DocumentIndex": 1,
+              "Title": "MenuService.cs",
+              "DocumentMoniker": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\Services\\MenuService.cs",
+              "RelativeDocumentMoniker": "Database\\Services\\MenuService.cs",
+              "ToolTip": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\Services\\MenuService.cs",
+              "RelativeToolTip": "Database\\Services\\MenuService.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAADIAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-09T13:28:43.77Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "AnagraficaComp.razor",
-              "DocumentMoniker": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Components\\Anagrafiche\\AnagraficaComp.razor",
+              "DocumentMoniker": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Components\\Anagrafiche\\AnagraficaComp.razor",
               "RelativeDocumentMoniker": "Tornei\\Components\\Anagrafiche\\AnagraficaComp.razor",
-              "ToolTip": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Components\\Anagrafiche\\AnagraficaComp.razor",
+              "ToolTip": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Components\\Anagrafiche\\AnagraficaComp.razor",
               "RelativeToolTip": "Tornei\\Components\\Anagrafiche\\AnagraficaComp.razor",
-              "ViewState": "AQIAAL4AAAAAAAAAAAAAAMgAAABDAAAA",
+              "ViewState": "AQIAAIAAAAAAAAAAAAAIwJcAAABoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-01-08T11:58:10.913Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SocietaComp.razor",
-              "DocumentMoniker": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Components\\Anagrafiche\\SocietaComp.razor",
-              "RelativeDocumentMoniker": "Tornei\\Components\\Anagrafiche\\SocietaComp.razor",
-              "ToolTip": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Components\\Anagrafiche\\SocietaComp.razor",
-              "RelativeToolTip": "Tornei\\Components\\Anagrafiche\\SocietaComp.razor",
-              "ViewState": "AQIAABEBAAAAAAAAAAAnwEMBAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-01-08T11:45:58.428Z",
+              "WhenOpened": "2024-01-09T13:00:55.364Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
+              "Title": "MenuCrudComp.razor",
+              "DocumentMoniker": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Components\\Anagrafiche\\MenuCrudComp.razor",
+              "RelativeDocumentMoniker": "Tornei\\Components\\Anagrafiche\\MenuCrudComp.razor",
+              "ToolTip": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Components\\Anagrafiche\\MenuCrudComp.razor",
+              "RelativeToolTip": "Tornei\\Components\\Anagrafiche\\MenuCrudComp.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-01-09T12:59:36.968Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "site.js",
+              "DocumentMoniker": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "Tornei\\wwwroot\\js\\site.js",
+              "ToolTip": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "Tornei\\wwwroot\\js\\site.js",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAADYAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-01-09T10:36:49.303Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Program.cs",
+              "DocumentMoniker": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Program.cs",
               "RelativeDocumentMoniker": "Tornei\\Program.cs",
-              "ToolTip": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Program.cs",
+              "ToolTip": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Program.cs",
               "RelativeToolTip": "Tornei\\Program.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAACoAAACYAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAADgAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-01-08T11:44:26.859Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "TComponent.razor",
-              "DocumentMoniker": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Components\\UserDefinedComp\\TComponent.razor",
+              "DocumentMoniker": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Components\\UserDefinedComp\\TComponent.razor",
               "RelativeDocumentMoniker": "Tornei\\Components\\UserDefinedComp\\TComponent.razor",
-              "ToolTip": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Components\\UserDefinedComp\\TComponent.razor",
+              "ToolTip": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Components\\UserDefinedComp\\TComponent.razor",
               "RelativeToolTip": "Tornei\\Components\\UserDefinedComp\\TComponent.razor",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -116,11 +136,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "TestComponent.razor",
-              "DocumentMoniker": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Components\\UserDefinedComp\\TestComponent.razor",
+              "DocumentMoniker": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Components\\UserDefinedComp\\TestComponent.razor",
               "RelativeDocumentMoniker": "Tornei\\Components\\UserDefinedComp\\TestComponent.razor",
-              "ToolTip": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Components\\UserDefinedComp\\TestComponent.razor",
+              "ToolTip": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Components\\UserDefinedComp\\TestComponent.razor",
               "RelativeToolTip": "Tornei\\Components\\UserDefinedComp\\TestComponent.razor",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -128,24 +148,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "NavMenu.razor",
-              "DocumentMoniker": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Components\\Layout\\NavMenu.razor",
+              "DocumentMoniker": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Components\\Layout\\NavMenu.razor",
               "RelativeDocumentMoniker": "Tornei\\Components\\Layout\\NavMenu.razor",
-              "ToolTip": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Components\\Layout\\NavMenu.razor",
               "RelativeToolTip": "Tornei\\Components\\Layout\\NavMenu.razor",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAACUAAABqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-01-08T10:16:21.763Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-01-08T10:16:21.763Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "MenuComp.razor",
-              "DocumentMoniker": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Components\\UserDefinedComp\\MenuComp.razor",
+              "DocumentMoniker": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Components\\UserDefinedComp\\MenuComp.razor",
               "RelativeDocumentMoniker": "Tornei\\Components\\UserDefinedComp\\MenuComp.razor",
-              "ToolTip": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\Components\\UserDefinedComp\\MenuComp.razor",
+              "ToolTip": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Components\\UserDefinedComp\\MenuComp.razor",
               "RelativeToolTip": "Tornei\\Components\\UserDefinedComp\\MenuComp.razor",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -153,11 +172,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\appsettings.json",
+              "DocumentMoniker": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\appsettings.json",
               "RelativeDocumentMoniker": "Tornei\\appsettings.json",
-              "ToolTip": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\appsettings.json",
+              "ToolTip": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\appsettings.json",
               "RelativeToolTip": "Tornei\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAChAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",

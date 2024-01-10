@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZZqHHyAzjsI9DwQEr+mIg2UZDVDbG4tMjIVS0Pbks5My7WmtYSh4XG2XPtN3U9SXrb3fghWnRfEQEjWd55DIKw==",
+  "dgSpecHash": "+0xxlOUZ9hJs7gLD3wMf8v3ccaP5STaOJayz1IEpya94LYcVTS2KpSLjiYfTtyMjYCOsSPQ7VPvZ5RMVxDD95A==",
   "success": true,
-  "projectFilePath": "D:\\Documents\\Torni\\Tornei (11)\\Database\\Database.csproj",
+  "projectFilePath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\Database.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\INAM\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\INAM\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

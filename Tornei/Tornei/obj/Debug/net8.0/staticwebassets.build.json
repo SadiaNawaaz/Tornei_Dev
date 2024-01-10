@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SGyuNwdspDs+NYQpS78DIWasBedNkKW2E3oQP7DEqGA=",
+  "Hash": "YlZLcJ2D0B7n1Tx4QYuzF4NzDFdGPpT3HUKIgBCKq+s=",
   "Source": "Tornei",
   "BasePath": "_content/Tornei",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "Tornei\\wwwroot",
       "Source": "Tornei",
-      "ContentRoot": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\",
+      "ContentRoot": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\",
       "BasePath": "_content/Tornei",
       "Pattern": "**"
     }
@@ -1062,10 +1062,10 @@
       "OriginalItemSpec": "C:\\Users\\INAM\\.nuget\\packages\\syncfusion.blazor.themes\\23.2.7\\staticwebassets\\tailwind-dark.css"
     },
     {
-      "Identity": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Tornei.styles.css",
+      "Identity": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Tornei.styles.css",
       "SourceId": "Tornei",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Tornei",
       "RelativePath": "Tornei.styles.css",
       "AssetKind": "All",
@@ -1078,13 +1078,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Tornei.styles.css"
+      "OriginalItemSpec": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Tornei.styles.css"
     },
     {
-      "Identity": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Tornei.bundle.scp.css",
+      "Identity": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Tornei.bundle.scp.css",
       "SourceId": "Tornei",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/Tornei",
       "RelativePath": "Tornei.bundle.scp.css",
       "AssetKind": "All",
@@ -1097,13 +1097,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Tornei.bundle.scp.css"
+      "OriginalItemSpec": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Tornei.bundle.scp.css"
     },
     {
-      "Identity": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\app.css",
+      "Identity": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\app.css",
       "SourceId": "Tornei",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\",
+      "ContentRoot": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\",
       "BasePath": "_content/Tornei",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -1119,10 +1119,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Identity": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "Tornei",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\",
+      "ContentRoot": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\",
       "BasePath": "_content/Tornei",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -1138,10 +1138,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "Tornei",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\",
+      "ContentRoot": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\",
       "BasePath": "_content/Tornei",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -1157,10 +1157,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\Dati\\Tornei\\Profilo\\2269f48b-b580-4d50-81cf-0c3b7bda4a8b.png",
+      "Identity": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\Dati\\Tornei\\Profilo\\2269f48b-b580-4d50-81cf-0c3b7bda4a8b.png",
       "SourceId": "Tornei",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\",
+      "ContentRoot": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\",
       "BasePath": "_content/Tornei",
       "RelativePath": "Dati/Tornei/Profilo/2269f48b-b580-4d50-81cf-0c3b7bda4a8b.png",
       "AssetKind": "All",
@@ -1176,10 +1176,29 @@
       "OriginalItemSpec": "wwwroot\\Dati\\Tornei\\Profilo\\2269f48b-b580-4d50-81cf-0c3b7bda4a8b.png"
     },
     {
-      "Identity": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\favicon.png",
+      "Identity": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\Dati\\Tornei\\Profilo\\f57fb740-c64c-47bb-b728-30e87c75443c.png",
       "SourceId": "Tornei",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\",
+      "ContentRoot": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\",
+      "BasePath": "_content/Tornei",
+      "RelativePath": "Dati/Tornei/Profilo/f57fb740-c64c-47bb-b728-30e87c75443c.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Dati\\Tornei\\Profilo\\f57fb740-c64c-47bb-b728-30e87c75443c.png"
+    },
+    {
+      "Identity": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\favicon.png",
+      "SourceId": "Tornei",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\",
       "BasePath": "_content/Tornei",
       "RelativePath": "favicon.png",
       "AssetKind": "All",
@@ -1195,10 +1214,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.png"
     },
     {
-      "Identity": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\js\\site.js",
+      "Identity": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\js\\site.js",
       "SourceId": "Tornei",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Documents\\Torni\\Tornei (11)\\Tornei\\wwwroot\\",
+      "ContentRoot": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\wwwroot\\",
       "BasePath": "_content/Tornei",
       "RelativePath": "js/site.js",
       "AssetKind": "All",

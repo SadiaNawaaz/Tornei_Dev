@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Documents\\Torni\\Tornei (11)\\ProcedureComuni\\ProcedureComuni.csproj",
+      "projectUniqueName": "D:\\Documents\\Torni\\Torni Git\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj",
       "projectName": "ProcedureComuni",
-      "projectPath": "D:\\Documents\\Torni\\Tornei (11)\\ProcedureComuni\\ProcedureComuni.csproj",
+      "projectPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj",
       "packagesPath": "C:\\Users\\INAM\\.nuget\\packages\\",
-      "outputPath": "D:\\Documents\\Torni\\Tornei (11)\\ProcedureComuni\\obj\\",
+      "outputPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\ProcedureComuni\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

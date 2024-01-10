@@ -53,7 +53,7 @@ builder.Services.AddScoped<UserService>(); // Gestione Utenti
 builder.Services.AddScoped<SocietaService>(); // Societa Profilo
 builder.Services.AddScoped<AnagraficaService>(); // Anagrafica Profilo
 builder.Services.AddScoped<MenuService>(); // Menu
-
+builder.Services.AddScoped<RoleService>();
 builder.Services.AddDbContext<TorneiContext>(options => options.UseSqlServer(connectionString)); // Connessione dal database Tornei
 //[LUCA]: ServiceLifetime.Scoped  what is this addition in the line above for
 // FINE  MODIFICHE

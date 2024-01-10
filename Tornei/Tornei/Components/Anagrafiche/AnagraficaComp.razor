@@ -1,392 +1,461 @@
 ﻿@page "/tornei/anagrafica/{email}"
 @page "/tornei/anagrafica"
-
-@* Database *@
 @using Database.Models
 @using Database.Services
-
-@* Oggetti Syncfusion *@
-@using Syncfusion.Blazor.Data
+@using Microsoft.AspNetCore.WebUtilities
 @using Syncfusion.Blazor.DropDowns
-@using Syncfusion.Blazor.Notifications
-
-@* Gestione dei percorsi *@
 @inject IWebHostEnvironment Environment
-
-@* Navigazione *@
+@using Syncfusion.Blazor.Notifications
+@using Syncfusion.Blazor.Data
 @inject NavigationManager navigationManager
-
-@* Dichiaro che uso in questa pagina il local storage *@
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 
 @* Syncfusion Toast *@
 <SfToast @ref="toast" Target="#target">
-   <ToastPositionSettings X="calc(100% - 10px)" Y="10px"></ToastPositionSettings>
+    <ToastPositionSettings X="calc(100% - 10px)" Y="10px"></ToastPositionSettings>
 </SfToast>
 
 <EditForm Model="@anagrafica" OnValidSubmit="SaveOrUpdateAnagrafica">
-   <DataAnnotationsValidator />
-   @*    <ValidationSummary /> *@
+    <DataAnnotationsValidator />
+    <ValidationSummary />
 
-   <div class="container">
-      <h1>Anagrafica</h1>
+    <div class="container">
 
-      <div class="row mb-1">
-         <div class="col-md-3 mb-1">
-            <div class="form-group">
-               <label>Cognome:</label>
-            </div>
-         </div>
-         <div class="col-md-8 mb-1">
-            <div class="form-group">
-               <InputText id="Cognome" @bind-Value="anagrafica.Cognome" class="form-control" />
-               <ValidationMessage For="@(() => anagrafica.Cognome)" />
-            </div>
-         </div>
-      </div>
 
-      <div class="row mb-1">
-         <div class="col-md-3 mb-1">
-            <div class="form-group">
-               <label>Nome:</label>
-            </div>
-         </div>
-         <div class="col-md-8 mb-1">
-            <div class="form-group">
-               <InputText id="Nome" @bind-Value="anagrafica.Nome" class="form-control" />
-               <ValidationMessage For="@(() => anagrafica.Nome)" />
-            </div>
-         </div>
-      </div>
+        <h3>
+            Anagrafica
+        </h3>
+        <div class="row mb-1">
 
-      <div class="row mb-1">
-         <div class="col-md-3 mb-1">
-            <div class="form-group">
-               <label>CodFiscale:</label>
+            <div class="col-md-3 mb-1">
+                <div class="form-group">
+                    <label>Cognome:</label>
+                </div>
             </div>
-         </div>
-         <div class="col-md-8 mb-1">
-            <div class="form-group">
-               <InputText id="CodFiscale" @bind-Value="anagrafica.CodFiscale" class="form-control" />
-               <ValidationMessage For="@(() => anagrafica.CodFiscale)" />
+            <div class="col-md-8 mb-1">
+                <div class="form-group">
+                    <InputText id="Cognome" @bind-Value="anagrafica.Cognome" class="form-control" />
+                    <ValidationMessage For="@(() => anagrafica.Cognome)" />
+                </div>
             </div>
-         </div>
-      </div>
+        </div>
 
-      <div class="row mb-1">
-         <div class="col-md-3 mb-1">
-            <div class="form-group">
-               <label>Indirizzo:</label>
+        <div class="row mb-1">
+            <div class="col-md-3 mb-1">
+                <div class="form-group">
+                    <label>Nome:</label>
+                </div>
             </div>
-         </div>
-         <div class="col-md-8 mb-1">
-            <div class="form-group">
-               <InputText id="Indirizzo" @bind-Value="anagrafica.Indirizzo" class="form-control" />
-               <ValidationMessage For="@(() => anagrafica.Indirizzo)" />
+            <div class="col-md-8 mb-1">
+                <div class="form-group">
+                    <InputText id="Nome" @bind-Value="anagrafica.Nome" class="form-control" />
+                    <ValidationMessage For="@(() => anagrafica.Nome)" />
+                </div>
             </div>
-         </div>
-      </div>
+        </div>
 
-      <div class="row mb-1">
-         <div class="col-md-3 mb-1">
-            <div class="form-group">
-               <label>Telefono:</label>
+        <div class="row mb-1">
+            <div class="col-md-3 mb-1">
+                <div class="form-group">
+                    <label>CodFiscale:</label>
+                </div>
             </div>
-         </div>
-         <div class="col-md-8 mb-1">
-            <div class="form-group">
-               @* [LUCA]: Manage with the onkeypress="" event the fact that you can only enter numbers *@
-               @* [XXXX] this is blazor form validation and recomended as this is more secure , this is recomended but if you say we can use java script validation *@
-               <InputText id="Telefono" @bind-Value="anagrafica.Telefono" class="form-control" />
-               <ValidationMessage For="@(() => anagrafica.Telefono)" />
+            <div class="col-md-8 mb-1">
+                <div class="form-group">
+                    <InputText id="CodFiscale" @bind-Value="anagrafica.CodFiscale" class="form-control" />
+                    <ValidationMessage For="@(() => anagrafica.CodFiscale)" />
+                </div>
             </div>
-         </div>
-      </div>
+        </div>
 
-      <div class="row mb-1">
-         <div class="col-md-3 mb-1">
-            <div class="form-group">
-               <label>Cellulare:</label>
+        <div class="row mb-1">
+            <div class="col-md-3 mb-1">
+                <div class="form-group">
+                    <label>Indirizzo:</label>
+                </div>
             </div>
-         </div>
-         <div class="col-md-8 mb-1">
-            <div class="form-group">
-               @* [LUCA]: Manage with the onkeypress="" event the fact that you can only enter numbers *@
-               <InputText id="Cellulare" @bind-Value="anagrafica.Cellulare" class="form-control" />
-               <ValidationMessage For="@(() => anagrafica.Cellulare)" />
+            <div class="col-md-8 mb-1">
+                <div class="form-group">
+                    <InputText id="Indirizzo" @bind-Value="anagrafica.Indirizzo" class="form-control" />
+                    <ValidationMessage For="@(() => anagrafica.Indirizzo)" />
+                </div>
             </div>
-         </div>
-      </div>
+        </div>
 
-      <div class="row mb-1">
-         <div class="col-md-3 mb-1">
-            <div class="form-group">
-               <label>Mail:</label>
+        <div class="row mb-1">
+            <div class="col-md-3 mb-1">
+                <div class="form-group">
+                    <label>Telefono:</label>
+                </div>
             </div>
-         </div>
-         <div class="col-md-8 mb-1">
-            <div class="form-group">
-               <InputText id="Mail" @bind-Value="anagrafica.Mail" class="form-control" />
-               <ValidationMessage For="@(() => anagrafica.Mail)" />
+            <div class="col-md-8 mb-1">
+                <div class="form-group">
+                    @* [LUCA]: Manage with the onkeypress="" event the fact that you can only enter numbers *@
+                    @*    [XXXX] this is blazor form validation and recomended as this is more secure , this is recomended but if you say we can use java script validation *@
+                    <InputText id="Telefono" @bind-Value="anagrafica.Telefono" class="form-control" />
+                    <ValidationMessage For="@(() => anagrafica.Telefono)" />
+                </div>
             </div>
-         </div>
-      </div>
+        </div>
 
-      <div class="row mb-1">
-         <div class="col-md-3 mb-1">
-            <div class="form-group">
-               <label>NoMail:</label>
+        <div class="row mb-1">
+            <div class="col-md-3 mb-1">
+                <div class="form-group">
+                    <label>Cellulare:</label>
+                </div>
             </div>
-         </div>
-         <div class="col-md-8 mb-1">
-            <div class="form-group">
-               <InputCheckbox id="NoMail" @bind-Value="anagrafica.NoMail" class="form-check-input" />
+            <div class="col-md-8 mb-1">
+                <div class="form-group">
+                    @* [LUCA]: Manage with the onkeypress="" event the fact that you can only enter numbers *@
+                    <InputText id="Cellulare" @bind-Value="anagrafica.Cellulare" class="form-control" />
+                    <ValidationMessage For="@(() => anagrafica.Cellulare)" />
+                </div>
             </div>
-         </div>
-      </div>
+        </div>
 
-      <div class="row mb-1">
-         <div class="col-md-3 mb-1">
-            <div class="form-group">
-               <label for="CodComuneDiNascita">Comune Di Nascita:</label>
+        <div class="row mb-1">
+            <div class="col-md-3 mb-1">
+                <div class="form-group">
+                    <label>Mail:</label>
+                </div>
             </div>
-         </div>
-         <div class="col-md-8 mb-1">
-            <div class="form-group">
-               @* [Luca]: this field don't work try to find "Arezzo" my city *@
-               <SfAutoComplete TValue="string" TItem="Comune" Query="@LocalDataQuery" @bind-Value="anagrafica.CodComuneDiNascita" Placeholder="Seleziona Comune" DataSource="@ComuneList" PopupHeight="300px" PopupWidth="300px" EnableVirtualization="true" ShowPopupButton="true">
-                  <AutoCompleteFieldSettings  Value="DesComuneEstesa" />
-               </SfAutoComplete>
+            <div class="col-md-8 mb-1">
+                <div class="form-group">
+                    <InputText id="Mail" @bind-Value="anagrafica.Mail" class="form-control" />
+                    <ValidationMessage For="@(() => anagrafica.Mail)" />
+                </div>
             </div>
-         </div>
-      </div>
+        </div>
 
-      <div class="row mb-1">
-         <div class="col-md-3 mb-1">
-            <div class="form-group">
-               <label for="DataDiNascita">Data Di Nascita:</label>
+        <div class="row mb-1">
+            <div class="col-md-3 mb-1">
+                <div class="form-group">
+                    <label>NoMail:</label>
+                </div>
             </div>
-         </div>
-         <div class="col-md-8 mb-1">
-            <div class="form-group">
-               <InputDate id="DataDiNascita" @bind-Value="anagrafica.DataDiNascita" class="form-control" />
+            <div class="col-md-8 mb-1">
+                <div class="form-group">
+                    <InputCheckbox id="NoMail" @bind-Value="anagrafica.NoMail" class="form-check-input" />
+                </div>
             </div>
-         </div>
-      </div>
+        </div>
 
-      <div class="row mb-1">
-         <div class="col-md-3 mb-1">
-            <div class="form-group">
-               <label for="Sesso">Sesso:</label>
+        <div class="row mb-1">
+            <div class="col-md-3 mb-1">
+                <div class="form-group">
+                    <label for="CodComuneDiNascita">Comune Di Nascita:</label>
+                </div>
             </div>
-         </div>
-         <div class="col-md-8 mb-1">
-            <div class="form-group">
-               <label for="Sesso">Sesso:</label>
-               <SfDropDownList TValue="string" TItem="string" @bind-Value="anagrafica.Sesso" DataSource="@GenderList" Placeholder="Select Gender">
-               </SfDropDownList>
+            <div class="col-md-8 mb-1">
+                <div class="form-group">
+                    // [Luca]:
+                    <SfAutoComplete TValue="string" TItem="Comune" Query="@LocalDataQuery" @bind-Value="selectedNisComune" Placeholder="Seleziona Comune" DataSource="@ComuneList" PopupHeight="300px" PopupWidth="300px" EnableVirtualization="true" ShowPopupButton="true">
+                        <AutoCompleteFieldSettings Value="DesComuneEstesa"  />
+                    </SfAutoComplete>
+                </div>
             </div>
-         </div>
-      </div>
+        </div>
 
-      <div class="row mb-1">
-         <div class="col-md-3 mb-1">
-            <div class="form-group">
-               <label for="CodComuneResidenza">Comune Residenza:</label>
+        <div class="row mb-1">
+            <div class="col-md-3 mb-1">
+                <div class="form-group">
+                    <label for="DataDiNascita">Data Di Nascita:</label>
+                </div>
             </div>
-         </div>
-         <div class="col-md-8 mb-1">
-            <div class="form-group">
-               <SfAutoComplete TValue="string" TItem="Comune" Query="@LocalDataQuery" @bind-Value="anagrafica.CodComuneResidenza" Placeholder="Select a Comune" DataSource="@ComuneList" PopupHeight="300px" PopupWidth="300px" EnableVirtualization="true" ShowPopupButton="true">
-                  <AutoCompleteFieldSettings Value="DesComuneEstesa" />
-               </SfAutoComplete>
+            <div class="col-md-8 mb-1">
+                <div class="form-group">
+                    <InputDate id="DataDiNascita" @bind-Value="anagrafica.DataDiNascita" class="form-control" />
+                </div>
             </div>
-         </div>
-      </div>
+        </div>
 
-      <div class="row mb-1">
-         <div class="col-md-3 mb-1">
-            <div class="form-group">
-               <label for="IndirizzoResidenza">Indirizzo Residenza:</label>
+        <div class="row mb-1">
+            <div class="col-md-3 mb-1">
+                <div class="form-group">
+                    <label for="Sesso">Sesso:</label>
+                </div>
             </div>
-         </div>
-         <div class="col-md-8 mb-1">
-            <div class="form-group">
-               <InputText id="IndirizzoResidenza" @bind-Value="anagrafica.IndirizzoResidenza" class="form-control" />
-            </div>
-         </div>
-      </div>
-      <div class="row mb-1">
-         <div class="col-md-3 mb-1">
-            <div class="form-group">
-               <label for="immagine">Immagine:</label>
-            </div>
-         </div>
-         <div class="col-md-8">
-            <div class="form-group">
-               <InputFile OnChange="HandleFileChange" class="form-control" />
-               @if (imageModel.ImageData != null)
-               {
-                  <img src="@($"data:image/png;base64,{Convert.ToBase64String(imageModel.ImageData)}")" alt="Scegli immagine" style="max-width: 300px; max-height: 300px; margin-right:12px" />
-                  <button style="margin:5px" class="btn btn-danger" @onclick="DeleteImage" type="button">Delete Image</button>
-               }
-            </div>
-         </div>
-      </div>
+            <div class="col-md-8 mb-1">
+                <div class="form-group">
+                    <label for="Sesso">Sesso:</label>
+                    <SfDropDownList TValue="string" TItem="string" @bind-Value="anagrafica.Sesso" DataSource="@GenderList" Placeholder="Select Gender">
+                    </SfDropDownList>
+                </div>
 
-      <div class="row mb-1">
-         <div class="offset-md-3 col-md-8 mb-1">
-            <div class="form-group">
-               <button type="submit" class="btn btn-primary">Salva</button>
             </div>
-         </div>
-      </div>
-   </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-3 mb-1">
+                <div class="form-group">
+                    <label for="CodComuneResidenza">Comune Residenza:</label>
+                </div>
+            </div>
+            <div class="col-md-8 mb-1">
+                <div class="form-group">
+
+                    <SfAutoComplete TValue="string" TItem="Comune" Query="@LocalDataQuery" @bind-Value="selectedResComune" Placeholder="Select a Comune" DataSource="@ComuneList" PopupHeight="300px" PopupWidth="300px" EnableVirtualization="true" ShowPopupButton="true">
+                        <AutoCompleteFieldSettings Value="DesComuneEstesa" />
+                    </SfAutoComplete>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-1">
+            <div class="col-md-3 mb-1">
+                <div class="form-group">
+                    <label for="IndirizzoResidenza">Indirizzo Residenza:</label>
+                </div>
+            </div>
+            <div class="col-md-8 mb-1">
+                <div class="form-group">
+                    <InputText id="IndirizzoResidenza" @bind-Value="anagrafica.IndirizzoResidenza" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-md-3 mb-1">
+                <div class="form-group">
+                    <label for="immagine">Immagine:</label>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="form-group">
+
+                    <InputFile OnChange="HandleFileChange" class="form-control" />
+
+                    @if (@desiredPath != null)
+                    {
+                        <img src="@desiredPath" alt="Selected Image" style="max-width: 300px; max-height: 300px;" />
+                    }
+                    @if (imageModel.ImageData != null)
+                    {
+
+
+
+                        <img src="@($"data:image/png;base64,{Convert.ToBase64String(imageModel.ImageData)}")" alt="Scegli immagine" style="max-width: 300px; max-height: 300px; margin-right:12px" />
+
+                        <button style="margin:5px" class="btn btn-danger" @onclick="DeleteImage" type="button">Delete Image</button>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="offset-md-3 col-md-8 mb-1">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Salva</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </EditForm>
 
 @code {
+    [Parameter]
+    public string email { get; set; } = string.Empty;
+    private List<string> GenderList = new List<string> { "Male", "Female" };
+    private Anagrafica anagrafica = new Anagrafica();
 
-   [Parameter]
-   public string email { get; set; } = string.Empty;
+    private bool isEditMode = false;
+    public Query LocalDataQuery = new Query().Take(6);
 
-   private List<string> GenderList = new List<string> { "Maschio", "Femmina" }; // Lista valori per Sesso
+    @inject ComuneService comuneService;
+    @inject AnagraficaService anagraficaService ;
 
+    private ImageModel imageModel = new ImageModel();
 
-   private bool isEditMode = false;  // Indica se sono in modifica oppure no
-   public Query LocalDataQuery = new Query().Take(6);
+    string selectedResComune=string.Empty;
+    string selectedNisComune=string.Empty;
+    List<Comune> ComuneList = new List<Comune>();
+    private SfToast toast;
+    string desiredPath;
 
-   @inject ComuneService comuneService; // Dichiaro di voler usare le procedure per la gestione dei comuni
-   @inject AnagraficaService anagraficaService; // Dichiaro di voler usare le procedure per la gestione dell'anagrafica
+    #region Initialization
+    int CodAnagrafica = 0;
 
-   private Anagrafica anagrafica = new Anagrafica(); // Creo l'oggetto anagrafica
+    protected override void OnInitialized()
+    {
+        // Uso la virtualizzazione blazor per evitare di caricare la query competa, in pratica carica solo un po di record alla volta
+        anagrafica.DataDiNascita = DateOnly.FromDateTime(DateTime.Now);
+        this.ComuneList = Enumerable.Range(1, 150).Select(i => new Comune()).ToList();
+       
+        
+        
+        
+        var uri = navigationManager.ToAbsoluteUri(navigationManager.Uri);
 
-   private ImageModel imageModel = new ImageModel(); // Dichiaro l'oggetto immagine
-
-
-   string selectedComune; // [LUCA] this variable is never used is it needed?
-   List<Comune> ComuneList = new List<Comune>(); // Carico la lista dei comuni
-
-   private SfToast toast; // Dichiaro la variabile che contiene il toast
-
-   // [Luca]: what is this empty procedure for?
-   public AnagraficaComp()
-   {
-   }
-
-   // In fase di inizializzazione
-   protected override void OnInitialized()
-   {
-      // Uso la virtualizzazione blazor per evitare di caricare la query competa, in pratica carica solo un po di record alla volta
-      // [Luca]: Why is the birth date valued with the current date? it is not a mandatory field, if it is not filled in it is stored as null
-      anagrafica.DataDiNascita = DateOnly.FromDateTime(DateTime.Now);
-      // [Luca]: but why do I only upload the first 150?
-      this.ComuneList = Enumerable.Range(1, 150).Select(i => new Comune()).ToList(); // Carico la lista dei comuni
-   }
-
-   // dopo render della pagina
-   protected override async void OnAfterRender(bool firstRender)
-   {
-      try
-      {
-         // Al primo caricamento
-         if (firstRender)
-         {
-            ComuneList = await comuneService.GetComunesAsync(); // Carico la lista dei comuni
-            GetProfile(); // Mi carico il profilo dal locale storage
-            StateHasChanged();  // Aggiorno lo stato
-         }
-      }
-      catch (Exception)
-      {
-         throw;
-      }
-   }
-
-   // Recupero l'anagrafica utente dal local storage
-   private async void GetProfile()
-   {
-      try
-      {
-         var encodedUserId = await LocalStorage.GetItemAsStringAsync("LoginUserId"); // Leggo lo user ID dal local storage dove l'ho memorizzato
-         var userid = encodedUserId?.Replace("\"", ""); // Lo codifico rimpiazzando le / con niente
-         if (userid != null) // Se è diverso da null
-         {
-            var anarg = await anagraficaService.GetAnagraficaByUserIdAsync(userid.ToString());
-            if (anarg != null) // Se l'anagrafica viene trovata
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("CodAnagrafica", out var id))
+        {
+            if (string.IsNullOrEmpty(id))
             {
-               anagrafica = anarg; // Passo l'anagrafica letta
-               StateHasChanged(); // [Luca]: StateHasChanged this function is also called after the GetProfile function, so I don't think it is necessary to call it inside too, or am I wrong see  procedure OnAfterRender
+                CodAnagrafica = 0;
             }
-         }
-      }
-      catch (Exception)
-      {
-         throw;
-      }
-   }
-
-   // Salva o aggiorna l'anagrafica
-   private async Task SaveOrUpdateAnagrafica()
-   {
-      // Controllo se sono in fase di modifica
-      if (isEditMode)
-      {
-         // Se sono in modifica aggiorno
-         await anagraficaService.UpdateAnagraficaAsync(anagrafica);
-      }
-      else
-      {
-         // Fase di inserimento
-         // Leggo il percorso dove uploadare l'immagine
-         var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-         var Percorso = Configurazione.GetValue<string>("Percorsi:Profilo");
-         var uploadsFolder = Path.Combine(Environment.WebRootPath, Percorso);
-         // File lettura percorso
-
-         var fileName = $"{Guid.NewGuid().ToString()}.png"; // creo il nome dell'immagine
-         var filePath = Path.Combine(uploadsFolder, fileName); // imposto il percorso di salvataggio dell'immagine
-         anagrafica.Immagine = filePath; // imposto il nome e percorso immagine
-
-         // Eseguo questa operazione solo se non ho ancora associato l'anagrafica al profilo
-         if (anagrafica.CodAnagrafica == 0)
-         {
-            await anagraficaService.AddAnagraficaAsync(anagrafica, email); // Aggiorno il profilo e controllo se associarlo
-            await File.WriteAllBytesAsync(filePath, imageModel.ImageData); // Salvo l'immagine nel server
-         }
-
-         // Pop up operazione riuscita
-         await toast.ShowAsync(new ToastModel
+            else
             {
-               Title = "Successo",
-               Content = "Operatione conclusa con successo",
-               CssClass = "e-toast-success"
-            });
-         navigationManager.NavigateTo("/"); // al termine vado alla home page
-      }
-   }
+                CodAnagrafica = Convert.ToInt32(id);
+            }
+        }
+    }
 
-   // Gestione immagine
-   private async Task HandleFileChange(InputFileChangeEventArgs e)
-   {
-      try
-      {
-         // Carico l'immagine dal file upload al modello
-         var imageBytes = new byte[e.File.Size]; // Trovo i bite dell'immagine
-         await e.File.OpenReadStream().ReadAsync(imageBytes); // Leggo uno stream per i bite dell'immagine
-         imageModel.ImageData = imageBytes; // Nel campo immagine ci metto ciò che ho letto dallo stream
-         imageModel.ImageName = e.File.Name; // Nel campo nome ci metto il nome dell'immagine
-         StateHasChanged(); // Notifica al componente che il suo stato è cambiato. Quando applicabile, questo lo farà fa sì che il componente venga nuovamente renderizzato.
-      }
-      catch (Exception ex)
-      {
-      }
-   }
 
-   // Cancello l'immagine
-   private void DeleteImage()
-   {
-      imageModel.ImageData = null;
-      imageModel.ImageName = null;
-      StateHasChanged(); // Notifica al componente che il suo stato è cambiato. Quando applicabile, questo lo farà fa sì che il componente venga nuovamente renderizzato.
-   }
+
+    protected override async void OnAfterRender(bool firstRender)
+    {
+        try
+        {
+            if (firstRender)
+            {
+                ComuneList = await comuneService.GetComunesAsync();
+                GetProfile();
+                StateHasChanged();
+            }
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+    #endregion
+
+    private async void GetProfile()
+    {
+        try
+        {
+            if (CodAnagrafica != 0)
+            {
+                var anarg = await anagraficaService.GetAnagraficaByIdAsync(CodAnagrafica);
+                if (anarg != null)
+                {
+                    anagrafica = anarg;
+                    selectedResComune = ComuneList.FirstOrDefault(x => x.CodComune == anagrafica.CodComuneResidenza).DesComuneEstesa;
+                    selectedNisComune = ComuneList.FirstOrDefault(x => x.CodComune == anagrafica.CodComuneDiNascita).DesComuneEstesa;
+                    string fullPath = anagrafica.Immagine;
+                    string fileName = System.IO.Path.GetFileName(fullPath);
+                    desiredPath = @"anagrafica\" + fileName;
+                    StateHasChanged();
+
+                }
+            }
+            else
+            {
+
+                var encodedUserId = await LocalStorage.GetItemAsStringAsync("LoginUserId");
+
+                var userid = encodedUserId?.Replace("\"", "");
+                if (userid != null)
+                {
+                    // userid = "fca9bf6f-b554-48e2-a8cc-9462b9f32145";
+                    var anarg = await anagraficaService.GetAnagraficaByUserIdAsync(userid.ToString());
+                    if (anarg != null)
+                    {
+                        anagrafica = anarg;
+                        selectedResComune = ComuneList.FirstOrDefault(x => x.CodComune == anagrafica.CodComuneResidenza).DesComuneEstesa;
+                        selectedNisComune = ComuneList.FirstOrDefault(x => x.CodComune == anagrafica.CodComuneDiNascita).DesComuneEstesa;
+                        
+                        string fullPath = anagrafica.Immagine;
+                        string fileName = System.IO.Path.GetFileName(fullPath);
+                        desiredPath = @"anagrafica\" + fileName;
+                        StateHasChanged();
+
+                    }
+                }
+            }
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+    }
+    // Salva o aggiorna l'anagrafica
+    private async Task SaveOrUpdateAnagrafica()
+    {
+        if (isEditMode)
+        {
+            // Se sono in modifica aggiorno
+            //  await anagraficaService.UpdateAnagraficaAsync(anagrafica);
+        }
+        else
+        {
+            /* var uploadsFolder = Path.Combine(Environment.WebRootPath, "Societa");
+                var fileName = $"{Guid.NewGuid().ToString()}.png";
+                var filePath = Path.Combine(uploadsFolder, fileName);*/
+
+            //var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            // var Percorso = Configurazione.GetValue<string>("Percorsi:Profilo");
+            var uploadsFolder = Path.Combine(Environment.WebRootPath, "anagrafica");
+
+            var fileName = $"{Guid.NewGuid().ToString()}.png"; // creo il nome dell'immagine
+            var filePath = Path.Combine(uploadsFolder, fileName); // imposto il percorso di salvataggio dell'immagine
+            anagrafica.Immagine = filePath; // imposto il nome immagine su anagrafica
+            var rescom = ComuneList.FirstOrDefault(x => x.DesComuneEstesa == selectedResComune);
+            var niscom = ComuneList.FirstOrDefault(x => x.DesComuneEstesa == selectedNisComune);
+            if (rescom != null)
+                anagrafica.CodComuneResidenza = rescom.CodComune;
+            if (niscom != null)
+                anagrafica.CodComuneDiNascita = niscom.CodComune;
+            
+                
+            if (anagrafica.CodAnagrafica == 0)
+            {
+                await anagraficaService.AddAnagraficaAsync(anagrafica, email); // Aggiorno il profilo e controllo se associarlo
+                await File.WriteAllBytesAsync(filePath, imageModel.ImageData); // Salvo l'immagine nel server
+            }
+            else
+            {
+
+                await anagraficaService.UpdateAnagraficaAsync(anagrafica); // Aggiorno il profilo e controllo se associarlo
+
+            }
+
+
+            // Pop up operazione riuscita
+            await toast.ShowAsync(new ToastModel
+                {
+                    Title = "Successo",
+                    Content = "Operatione conclusa con successo",
+                    CssClass = "e-toast-success"
+                });
+            navigationManager.NavigateTo("/");
+        }
+    }
+
+
+    // Gestione immagine
+    private async Task HandleFileChange(InputFileChangeEventArgs e)
+    {
+        try
+        {
+            // Carico l'immagine dal file upload al modello
+            // var imageBytes = new byte[e.File.Size];
+            // await e.File.OpenReadStream().ReadAsync(imageBytes);
+            // imageModel.ImageData = imageBytes;
+            // imageModel.ImageName = e.File.Name;
+            int filesize = 10051200;
+            using var memorystream = new MemoryStream();
+            await e.File.OpenReadStream(filesize).CopyToAsync(memorystream);
+            var imageBytes = memorystream.ToArray();
+            imageModel.ImageData = imageBytes;
+            imageModel.ImageName = e.File.Name;
+            desiredPath = null;
+            StateHasChanged();
+
+            // Notifica al componente che il suo stato è cambiato. Quando applicabile, questo lo farà fa sì che il componente venga nuovamente renderizzato.
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+        }
+    }
+
+    // Cancello l'immagine
+    private void DeleteImage()
+    {
+        imageModel.ImageData = null;
+        imageModel.ImageName = null;
+        StateHasChanged(); // Notifica al componente che il suo stato è cambiato. Quando applicabile, questo lo farà fa sì che il componente venga nuovamente renderizzato.
+    }
 }
