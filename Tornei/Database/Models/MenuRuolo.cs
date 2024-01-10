@@ -6,10 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Database.Models;
 
-[Keyless]
+//[Keyless]
 [Table("MenuRuolo")]
 public partial class MenuRuolo
 {
+    [Key]
     public int Id { get; set; }
 
     [StringLength(450)]

@@ -10,6 +10,8 @@ namespace Database.Services
 {
     public class MenuService
     {
+        int flag = 0;
+
         private readonly TorneiContext _dbContext; // Replace YourDbContext with the actual name of your DbContext
 
         public MenuService(TorneiContext dbContext)
@@ -129,7 +131,6 @@ namespace Database.Services
         {
             try
             {
-
                 using (var context = new TorneiContext())
                 {
                     // trovo il menù più grande (per codice)
@@ -139,6 +140,15 @@ namespace Database.Services
                     menu.CodMenu = nextCode; // Lo assegno alla tabella
                     context.Menus.Add(menu); // Aggiungo il menù al database
                     await context.SaveChangesAsync(); // effettuo la sincronizzazione, salvo realmente su DB
+                    foreach (var i in menu.RoleList)
+                    {
+                        int maxid = await context.MenuRuolos.MaxAsync(x => (int?)x.Id) ?? 0;
+                        int nextid = maxid + 1;
+                        i.Id = nextid;
+                        i.CodMenu = menu.CodMenu;
+                        context.MenuRuolos.Add(i);
+                        await context.SaveChangesAsync();
+                    }
                     return "Saved Successfully"; // Ritorno messaggio di aggiunta riuscita con successo
                 }
             }
@@ -151,8 +161,31 @@ namespace Database.Services
         // Aggiorno il menù
         public async Task UpdateMenuAsync(Menu menu)
         {
+
+            //removal of existing  MenuRole with menu.codMenu
+            var result = await _dbContext.MenuRuolos
+        .Where(x => x.CodMenu == menu.CodMenu)
+        .ToListAsync();
+
+            if (result.Any()&& result.Count>1)
+            {
+                _dbContext.MenuRuolos.RemoveRange(result);
+                await _dbContext.SaveChangesAsync();
+            }
+         
+            //update record with changes 
+            
             _dbContext.Entry(menu).State = EntityState.Modified; // dichiaro che il menù è stato modificato
             await _dbContext.SaveChangesAsync(); // gli dico di aggiornarlo sul database
+            foreach (var i in menu.RoleList)
+            {
+                int maxid = await _dbContext.MenuRuolos.MaxAsync(x => (int?)x.Id) ?? 0;
+                int nextid = maxid + 1;
+                i.Id = nextid;
+                i.CodMenu = menu.CodMenu;
+                _dbContext.MenuRuolos.Add(i);
+                await _dbContext.SaveChangesAsync();
+            }
         }
 
         // Cancello il menù
@@ -177,21 +210,25 @@ namespace Database.Services
 
         public async Task<List<MenuRuolo>> GetRolsByMenu(int MenuId)
         {
-           return await _dbContext.MenuRuolos.Where(x=>x.CodMenu==MenuId).ToListAsync();
-            
+            return await _dbContext.MenuRuolos.Where(x => x.CodMenu == MenuId).ToListAsync();
+
         }
 
-    // Trovo il menù tramite codice
-    public async Task<Menu> GetMenuByID(int id)
+        // Trovo il menù tramite codice
+        public async Task<Menu> GetMenuByID(int id)
         {
+            Menu tempObj = new();
             using (var context = new TorneiContext()) // Dichiaro che uso il Database (context)
             {
                 var risultato = await context.Menus.FirstOrDefaultAsync(x => x.CodMenu == id); // Ricerco per codice
-                return risultato; // Ritorno il codice trovato
+                var menurole = await context.MenuRuolos.Where(x => x.CodMenu == id).ToListAsync();
+                tempObj = risultato;
+                tempObj.RoleList = menurole;
+                return tempObj; // Ritorno il codice trovato
             }
         }
 
-       
+
 
 
     }
