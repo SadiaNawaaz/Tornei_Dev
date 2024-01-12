@@ -47,6 +47,9 @@ builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityEmailSender
 builder.Services.AddSyncfusionBlazor(); // Suncfusion
 builder.Services.AddBlazoredToast(); // Aggiungo i popup bellini TOAST
 
+
+
+
 // Dichiarare qui tutte le interfacce da usare con il relativo servizio
 builder.Services.AddScoped<ComuneService>(); // Comune
 builder.Services.AddScoped<UserService>(); // Gestione Utenti

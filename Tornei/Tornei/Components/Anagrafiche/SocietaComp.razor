@@ -7,6 +7,7 @@
 @using Database.Services
 
 @* Oggetti Syncfusion *@
+@using Microsoft.AspNetCore.WebUtilities
 @using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.DropDowns
 @using Syncfusion.Blazor.Notifications
@@ -252,7 +253,7 @@
             </div>
         </div>
     </div>
-
+    <SfSpinner @bind-Visible="visible"></SfSpinner>
 </EditForm>
 
 @code {
@@ -262,6 +263,7 @@
     public string comuneTitle = string.Empty;
     private List<string> QualificaClubValues = new List<string> { "NC", "1 LV", "2 LV", "3 LV", "4 LV", "A" }; // Lista valori per Qualifica club
     string desiredPath;
+    public bool visible { get; set; } = false;
     @inject ComuneService comuneService; // Dichiaro di voler usare le procedure per la gestione dei comuni
     @inject SocietaService societaService; // Dichiaro di voler usare le procedure per la gestione della società
 
@@ -277,8 +279,12 @@
     private SfToast toast;
 
     // In fase di inizializzazione
+  
+
     protected override void OnInitialized()
     {
+        ShowSppiner();
+      
         // [Luca]: but why do I only upload the first 150?
         //this.ComuneList = Enumerable.Range(1, 150).Select(i => new Comune()).ToList(); // Carico la lista dei comuni
     }
@@ -293,6 +299,7 @@
             {
                 ComuneList = await comuneService.GetComunesAsync(); // Carico la lista dei comuni
                 GetProfile(); // Mi carico il profilo dal locale storage
+                HideSppiner();
                 StateHasChanged(); // Aggiorno lo stato
             }
         }
@@ -459,6 +466,15 @@
         imageModel.ImageData = null;
         imageModel.ImageName = null;
         StateHasChanged(); // Notifica al componente che il suo stato è cambiato. Quando applicabile, questo lo farà fa sì che il componente venga nuovamente renderizzato.
+    }
+    public void ShowSppiner()
+    {
+        this.visible = true;
+    }
+    public async void HideSppiner()
+    {
+        // await Task.Delay(5000);
+        this.visible = false;
     }
 
 }

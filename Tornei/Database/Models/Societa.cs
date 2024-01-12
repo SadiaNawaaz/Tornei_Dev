@@ -81,4 +81,13 @@ public partial class Societa
    [ForeignKey("CodComune")]
    [InverseProperty("Societa")]
    public virtual Comune CodComuneNavigation { get; set; } = null!;
+
+
+
+    [NotMapped]
+    public List<MenuRuolo>? RoleList { get; set; }
+    [NotMapped]
+    public List<AspNetUserRoles>? UserRoleList { get; set; }
+    [NotMapped]
+    public List<AspNetRole>? AspRoleList { get; set; }
 }

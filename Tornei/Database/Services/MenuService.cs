@@ -159,7 +159,7 @@ namespace Database.Services
         }
 
         // Aggiorno il menù
-        public async Task UpdateMenuAsync(Menu menu)
+        public async Task<string> UpdateMenuAsync(Menu menu)
         {
 
             //removal of existing  MenuRole with menu.codMenu
@@ -186,6 +186,8 @@ namespace Database.Services
                 _dbContext.MenuRuolos.Add(i);
                 await _dbContext.SaveChangesAsync();
             }
+            return "Saved Successfully"; // Ritorno messaggio di aggiunta riuscita con successo
+
         }
 
         // Cancello il menù

@@ -14,7 +14,12 @@
 <SfToast @ref="toast" Target="#target">
     <ToastPositionSettings X="calc(100% - 10px)" Y="10px"></ToastPositionSettings>
 </SfToast>
-
+@* <div class="row">
+    <div id="container2">
+        <SfSpinner Visible="true" Type="SpinnerType.Bootstrap5" CssClass="e-spin-overlay"></SfSpinner>
+    </div>
+</div>
+ *@
 <EditForm Model="@anagrafica" OnValidSubmit="SaveOrUpdateAnagrafica">
     <DataAnnotationsValidator />
     <ValidationSummary />
@@ -148,7 +153,6 @@
             </div>
             <div class="col-md-8 mb-1">
                 <div class="form-group">
-                    // [Luca]:
                     <SfAutoComplete TValue="string" TItem="Comune" Query="@LocalDataQuery" @bind-Value="selectedNisComune" Placeholder="Seleziona Comune" DataSource="@ComuneList" PopupHeight="300px" PopupWidth="300px" EnableVirtualization="true" ShowPopupButton="true">
                         <AutoCompleteFieldSettings Value="DesComuneEstesa"  />
                     </SfAutoComplete>
@@ -251,14 +255,24 @@
         </div>
 
     </div>
+   <SfSpinner @bind-Visible="visible"></SfSpinner>
 </EditForm>
-
+<style>
+    .row{
+        display:flex;
+    }
+    #container2{
+        height:120px;
+        width:120px;
+        position:relative;
+    }
+</style>
 @code {
     [Parameter]
     public string email { get; set; } = string.Empty;
     private List<string> GenderList = new List<string> { "Male", "Female" };
     private Anagrafica anagrafica = new Anagrafica();
-
+    public bool visible { get; set; } = false;
     private bool isEditMode = false;
     public Query LocalDataQuery = new Query().Take(6);
 
@@ -278,6 +292,7 @@
 
     protected override void OnInitialized()
     {
+        ShowSppiner();
         // Uso la virtualizzazione blazor per evitare di caricare la query competa, in pratica carica solo un po di record alla volta
         anagrafica.DataDiNascita = DateOnly.FromDateTime(DateTime.Now);
         this.ComuneList = Enumerable.Range(1, 150).Select(i => new Comune()).ToList();
@@ -310,6 +325,7 @@
             {
                 ComuneList = await comuneService.GetComunesAsync();
                 GetProfile();
+                HideSppiner();
                 StateHasChanged();
             }
         }
@@ -470,4 +486,15 @@
         imageModel.ImageName = null;
         StateHasChanged(); // Notifica al componente che il suo stato è cambiato. Quando applicabile, questo lo farà fa sì che il componente venga nuovamente renderizzato.
     }
+    public void ShowSppiner()
+    {
+        this.visible=true;
+    }
+    public async void HideSppiner()
+    {
+       // await Task.Delay(5000);
+        this.visible = false;
+    }
+
 }
+

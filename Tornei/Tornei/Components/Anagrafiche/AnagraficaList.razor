@@ -1,0 +1,141 @@
+﻿@page "/tornei/AnagraficaList"
+@using Database.Models
+@using Database.Services
+@using Syncfusion.Blazor.DropDowns
+@inject IWebHostEnvironment Environment
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Notifications
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Spinner
+@inject NavigationManager navigationManager
+
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+
+<div class="container">
+    <h3>
+        Anagrafica
+    </h3>
+
+    <div class="card">
+        <div class="heading">Anagrafica List</div>
+        <div>
+
+
+            <SfGrid DataSource="@_AnagraficaList" AllowFiltering="true" AllowPaging="true">
+                <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
+                <GridEditSettings AllowAdding="true" AllowDeleting="true"></GridEditSettings>
+                <GridEvents TValue="Anagrafica"></GridEvents>
+                <GridColumns>
+                    <GridColumn Field=@nameof(Anagrafica.CodAnagrafica) HeaderText="CodSocieta" Width="auto"></GridColumn>
+                    <GridColumn Field=@nameof(Anagrafica.Cognome) HeaderText="CodSocieta" Width="auto"></GridColumn>
+                    <GridColumn Field=@nameof(Anagrafica.CodComuneDiNascita) HeaderText="DesSocieta" Width="auto"></GridColumn>
+                    <GridColumn Field=@nameof(Anagrafica.Telefono) HeaderText="PartitaIva" TextAlign="TextAlign.Right" Width="auto"></GridColumn>
+                    <GridColumn Field=@nameof(Anagrafica.Cellulare) HeaderText="Telefono" TextAlign="TextAlign.Right" Width="auto"></GridColumn>
+                    <GridColumn Field=@nameof(Anagrafica.Mail) HeaderText="Email" TextAlign="TextAlign.Right" Width="auto"></GridColumn>
+
+                    <GridColumn Width="auto" TextAlign="TextAlign.Center" HeaderText="Actions">
+                        <Template>
+                            @{
+                                var currentItem = context as Anagrafica;
+                            }
+                            <button class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                                    @onclick="(e) => EditNavigation(currentItem, e)">
+                                Edit
+                                <i class="fa-solid fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-danger" @onclick="(e) => DeleteItem(currentItem, e)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                Delete
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                        </Template>
+                    </GridColumn>
+
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </div>
+
+    <div class="form-group mt-3 d-flex justify-content-start w-8">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</div>
+@code {
+
+
+    @inject AnagraficaService AnagraficaService;
+    List<Anagrafica> _AnagraficaList = new();
+    private Boolean Disabled = true;
+    private Boolean Enabled = false;
+    private SfToast toast;
+
+    private async void DeleteItem(Anagrafica item, MouseEventArgs e)
+    {
+        bool res = false;
+
+        // SelectedData = new Anagrafica() { CodAnagrafica = item.CodAnagrafica };
+        // int CodAnagrafica = SelectedData.CodAnagrafica;
+        // bool res = await AnagraficaService.DeleteAnagraficaAsync(CodAnagrafica);
+        if (res == true)
+        {
+            await toast.ShowAsync(new ToastModel
+                {
+                    Title = "Success",
+                    Content = "Record Deleted Successfully.",
+                    CssClass = "e-toast-success"
+                });
+        }
+        else
+        {
+            await toast.ShowAsync(new ToastModel
+                {
+                    Title = "Error",
+                    Content = "Something Went Wrong. ",
+                    CssClass = "e-toast-danger"
+                });
+        }
+        OnAfterRender(true);
+        StateHasChanged();
+    }
+
+    protected override async void OnAfterRender(bool firstRender)
+    {
+        try
+        {
+            if (firstRender)
+            {
+                _AnagraficaList = await AnagraficaService.GetAllAnagraficheAsync();
+                StateHasChanged();
+            }
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+    }
+
+
+
+    // Command click handler for all command buttons in the grid
+    public Anagrafica SelectedData = new Anagrafica();
+    public void EditNavigation(Anagrafica args, MouseEventArgs e)
+    {
+        SelectedData = new Anagrafica() { CodAnagrafica = args.CodAnagrafica };
+        int CodAnagrafica = SelectedData.CodAnagrafica;
+        navigationManager.NavigateTo($"/tornei/GestioneAnagraficaComp?CodAnagrafica=" + CodAnagrafica);
+        this.Disabled = false;
+        this.Enabled = true;
+    }
+    public void RowDeSelectHandler(RowDeselectEventArgs<Anagrafica> args)
+    {
+        SelectedData = new Anagrafica();
+        this.Disabled = true;
+        this.Enabled = false;
+    }
+    public void NavigatetoNew()
+    {
+        navigationManager.NavigateTo($"/tornei/GestioneAnagraficaComp");
+
+    }
+
+}

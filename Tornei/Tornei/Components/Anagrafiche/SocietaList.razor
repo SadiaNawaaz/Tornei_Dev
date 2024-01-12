@@ -1,0 +1,129 @@
+﻿@page "/tornei/SocietaList"
+@using Database.Models
+@using Database.Services
+@using Syncfusion.Blazor.DropDowns
+@inject IWebHostEnvironment Environment
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Notifications
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Spinner
+@inject NavigationManager navigationManager
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+
+<div class="container">
+    <h3>
+        Societa
+    </h3>
+
+    <div class="card">
+        <div class="heading">Societa List</div>
+        <div>
+
+
+            <SfGrid DataSource="@_SocietaList" AllowFiltering="true" AllowPaging="true">
+                <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
+                <GridEditSettings AllowAdding="true" AllowDeleting="true"></GridEditSettings>
+                <GridEvents TValue="Societa"></GridEvents>
+                <GridColumns>
+                    <GridColumn Field=@nameof(Societa.CodiceDestinatario) HeaderText="Codice Destinatario" Width="auto"></GridColumn>
+                    <GridColumn Field=@nameof(Societa.DesSocieta) HeaderText="DesSocieta" Width="auto"></GridColumn>
+                    <GridColumn Field=@nameof(Societa.CodComune) HeaderText="Cod Comune" Width="auto"></GridColumn>
+                    <GridColumn Field=@nameof(Societa.Telefono) HeaderText="PartitaIva" TextAlign="TextAlign.Right" Width="auto"></GridColumn>
+                    <GridColumn Field=@nameof(Societa.Cellulare) HeaderText="Telefono" TextAlign="TextAlign.Right" Width="auto"></GridColumn>
+                    <GridColumn Field=@nameof(Societa.Mail) HeaderText="Telefono" TextAlign="TextAlign.Right" Width="auto"></GridColumn>
+
+                    <GridColumn Width="auto" TextAlign="TextAlign.Center" HeaderText="Actions">
+                        <Template>
+                            @{
+                                var currentItem = context as Societa;
+                            }
+                            <button class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                                    @onclick="(e) => EditNavigation(currentItem, e)">
+                                Edit
+                                <i class="fa-solid fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-danger" @onclick="(e) => DeleteItem(currentItem, e)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                Delete
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                        </Template>
+                    </GridColumn>
+
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </div>
+
+    <div class="form-group mt-3 d-flex justify-content-start w-8">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</div>
+@code {
+
+
+    @inject SocietaService SocietaService;
+    List<Societa> _SocietaList = new();
+    private Boolean Disabled = true;
+    private Boolean Enabled = false;
+    private SfToast toast;
+
+    private async void DeleteItem(Societa item, MouseEventArgs e)
+    {
+        bool res = false;
+        // SelectedData = new Societa() { CodSocieta = item.CodSocieta };
+        // int CodSocieta = SelectedData.CodSocieta;
+        // bool res = await SocietaService.DeleteSocietaAsync(CodSocieta);
+        if (res == true)
+        {
+            await toast.ShowAsync(new ToastModel
+                {
+                    Title = "Success",
+                    Content = "Record Deleted Successfully.",
+                    CssClass = "e-toast-success"
+                });
+        }
+        else
+        {
+            await toast.ShowAsync(new ToastModel
+                {
+                    Title = "Error",
+                    Content = "Something Went Wrong. ",
+                    CssClass = "e-toast-danger"
+                });
+        }
+        OnAfterRender(true);
+        StateHasChanged();
+    }
+
+    protected override async void OnAfterRender(bool firstRender)
+    {
+        try
+        {
+            if (firstRender)
+            {
+                _SocietaList = await SocietaService.GetAllSocietaAsync();
+                StateHasChanged();
+            }
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+    }
+
+
+
+    // Command click handler for all command buttons in the grid
+    public Societa SelectedData = new Societa();
+    public void EditNavigation(Societa args, MouseEventArgs e)
+    {
+        SelectedData = new Societa() { CodSocieta = args.CodSocieta };
+        int CodSocieta = SelectedData.CodSocieta;
+        navigationManager.NavigateTo($"/tornei/GestioneSocietaComp?CodSocieta=" + CodSocieta);
+        this.Disabled = false;
+        this.Enabled = true;
+    }
+    
+
+}

@@ -22,6 +22,7 @@ public partial class TorneiContext : DbContext
     public virtual DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
 
     public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+    public virtual DbSet<AspNetUserRoles> AspNetUserRoles {  get; set; }
 
     public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
 
@@ -51,7 +52,7 @@ public partial class TorneiContext : DbContext
         modelBuilder.Entity<MenuHierarchyDto>().HasKey(e => e.CodMenu);
         modelBuilder.Entity<MenuDto>().HasNoKey();
         modelBuilder.Entity<MenuVistaDto>().HasNoKey();
-
+     //  modelBuilder.Entity<AspNetUserRoles>().HasNoKey();
         modelBuilder.Entity<MenuHierarchyDto>()
             .HasMany(m => m.Figli)
             .WithOne(m => m.Padre)
@@ -88,21 +89,36 @@ public partial class TorneiContext : DbContext
                 .HasFilter("([NormalizedName] IS NOT NULL)");
         });
 
+
+        modelBuilder.Entity<AspNetUserRoles>()
+          .HasKey(e => new { e.UserId, e.RoleId });
+
         modelBuilder.Entity<AspNetUser>(entity =>
         {
             entity.HasOne(d => d.CodSocietaNavigation).WithMany(p => p.AspNetUsers).HasConstraintName("FK_AspNetUsers_Societa");
 
+            //entity.HasMany(d => d.Roles).WithMany(p => p.Users)
+            //    .UsingEntity<Dictionary<string, object>>(
+            //        "AspNetUserRole",
+            //        r => r.HasOne<AspNetRole>().WithMany().HasForeignKey("RoleId"),
+            //        l => l.HasOne<AspNetUser>().WithMany().HasForeignKey("UserId"),
+            //        j =>
+            //        {
+            //            j.HasKey("UserId", "RoleId");
+            //            j.ToTable("AspNetUserRoles");
+            //            j.HasIndex(new[] { "RoleId" }, "IX_AspNetUserRoles_RoleId");
+            //        });
+
             entity.HasMany(d => d.Roles).WithMany(p => p.Users)
-                .UsingEntity<Dictionary<string, object>>(
-                    "AspNetUserRole",
-                    r => r.HasOne<AspNetRole>().WithMany().HasForeignKey("RoleId"),
-                    l => l.HasOne<AspNetUser>().WithMany().HasForeignKey("UserId"),
-                    j =>
-                    {
-                        j.HasKey("UserId", "RoleId");
-                        j.ToTable("AspNetUserRoles");
-                        j.HasIndex(new[] { "RoleId" }, "IX_AspNetUserRoles_RoleId");
-                    });
+          .UsingEntity<AspNetUserRoles>(
+              j =>
+              {
+                  j.HasOne<AspNetRole>().WithMany().HasForeignKey("RoleId");
+                  j.HasOne<AspNetUser>().WithMany().HasForeignKey("UserId");
+                  j.HasKey("UserId", "RoleId");
+                  j.ToTable("AspNetUserRoles");
+                  j.HasIndex(new[] { "RoleId" }, "IX_AspNetUserRoles_RoleId");
+              });
         });
 
         modelBuilder.Entity<Campo>(entity =>

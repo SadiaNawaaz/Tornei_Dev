@@ -72,4 +72,12 @@ public partial class Anagrafica
    [ForeignKey("CodComuneResidenza")]
    [InverseProperty("AnagraficaCodComuneResidenzaNavigations")]
    public virtual Comune CodComuneResidenzaNavigation { get; set; } = null!;
+
+
+    [NotMapped]
+    public List<MenuRuolo>? RoleList { get; set; }
+    [NotMapped]
+    public List<AspNetUserRoles>? UserRoleList { get; set; }
+    [NotMapped]
+    public List<AspNetRole>? AspRoleList { get; set; }
 }

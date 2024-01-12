@@ -160,7 +160,7 @@
 
             </EditForm>
         </div>
-        <div class="col-md-3" >
+        <div class="col-md-3">
             <!-- Role list  goes here -->
             <div>
                 <SfMultiSelect TValue="string[]" TItem="AspNetRole" Placeholder="Select A Role" @bind-Value="@MultiVal" DataSource="@roles">
@@ -275,7 +275,14 @@
             else
             {
                 // Se invece ho già il codice sono in modifica quindi lo salvo
-                await MenuService.UpdateMenuAsync(menuNode);
+              var res= await MenuService.UpdateMenuAsync(menuNode);
+                await toast.ShowAsync(new ToastModel
+                    {
+                        Title = "Success",
+                        Content = res,
+                        CssClass = "e-toast-success"
+
+                    });
             }
         }
         catch (Exception)
