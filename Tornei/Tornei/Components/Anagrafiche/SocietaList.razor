@@ -1,25 +1,28 @@
 ﻿@page "/tornei/SocietaList"
+
+@* Database *@
 @using Database.Models
 @using Database.Services
+
+@* Oggetti Syncfusion *@
+@using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.DropDowns
-@inject IWebHostEnvironment Environment
 @using Syncfusion.Blazor.Grids
 @using Syncfusion.Blazor.Notifications
-@using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.Spinner
+
+@* Gestione dei percorsi *@
+@inject IWebHostEnvironment Environment
+@* Nagigazione *@
 @inject NavigationManager navigationManager
+@* Dichiaro che uso in questa pagina il local storage *@
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 
 <div class="container">
-    <h3>
-        Societa
-    </h3>
-
+    <h3>Societa</h3>
     <div class="card">
         <div class="heading">Societa List</div>
         <div>
-
-
             <SfGrid DataSource="@_SocietaList" AllowFiltering="true" AllowPaging="true">
                 <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
                 <GridEditSettings AllowAdding="true" AllowDeleting="true"></GridEditSettings>
@@ -31,7 +34,6 @@
                     <GridColumn Field=@nameof(Societa.Telefono) HeaderText="PartitaIva" TextAlign="TextAlign.Right" Width="auto"></GridColumn>
                     <GridColumn Field=@nameof(Societa.Cellulare) HeaderText="Telefono" TextAlign="TextAlign.Right" Width="auto"></GridColumn>
                     <GridColumn Field=@nameof(Societa.Mail) HeaderText="Telefono" TextAlign="TextAlign.Right" Width="auto"></GridColumn>
-
                     <GridColumn Width="auto" TextAlign="TextAlign.Center" HeaderText="Actions">
                         <Template>
                             @{
@@ -48,33 +50,40 @@
                             </button>
                         </Template>
                     </GridColumn>
-
                 </GridColumns>
             </SfGrid>
         </div>
     </div>
-
     <div class="form-group mt-3 d-flex justify-content-start w-8">
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </div>
+
 @code {
-
-
     @inject SocietaService SocietaService;
-    List<Societa> _SocietaList = new();
-    private Boolean Disabled = true;
-    private Boolean Enabled = false;
+
+   
     private SfToast toast;
 
+    List<Societa> _SocietaList = new();
+
+    // Command click handler for all command buttons in the grid
+    public Societa SelectedData = new Societa();
+
+    // Cancello La società
     private async void DeleteItem(Societa item, MouseEventArgs e)
     {
-        bool res = false;
-        // SelectedData = new Societa() { CodSocieta = item.CodSocieta };
-        // int CodSocieta = SelectedData.CodSocieta;
-        // bool res = await SocietaService.DeleteSocietaAsync(CodSocieta);
+        // Imposto la società selezionata
+        // [LUCA] can we simplify here like this ?
+        // bbool res = await SocietaService.DeleteSocietaAsync(item.CodAnagrafica);
+        // start
+        
+        bool res = await SocietaService.DeleteSocietaAsync(item.CodSocieta);
+        // end
+        // Se le cancellazione è andata a buon fine
         if (res == true)
         {
+            // Messaggio di successo
             await toast.ShowAsync(new ToastModel
                 {
                     Title = "Success",
@@ -84,6 +93,7 @@
         }
         else
         {
+            // Se invece ha avuto esito negativo mando l'errore
             await toast.ShowAsync(new ToastModel
                 {
                     Title = "Error",
@@ -91,39 +101,37 @@
                     CssClass = "e-toast-danger"
                 });
         }
-        OnAfterRender(true);
-        StateHasChanged();
+        OnAfterRender(true); // Richiamo la funzione (dopo il redenr dell'oggetto)
+        StateHasChanged(); // Aggiorno lo stato
     }
 
+    // Dopo il primo render
     protected override async void OnAfterRender(bool firstRender)
     {
         try
         {
-            if (firstRender)
+            if (firstRender) // Lo eseguo solo la prima volta
             {
-                _SocietaList = await SocietaService.GetAllSocietaAsync();
-                StateHasChanged();
+                _SocietaList = await SocietaService.GetAllSocietaAsync(); // Carico la lista delle società
+                StateHasChanged(); // Aggiorno lo stato
             }
         }
         catch (Exception)
         {
-
             throw;
         }
     }
 
-
-
-    // Command click handler for all command buttons in the grid
-    public Societa SelectedData = new Societa();
+    // Vado in modifica
     public void EditNavigation(Societa args, MouseEventArgs e)
     {
-        SelectedData = new Societa() { CodSocieta = args.CodSocieta };
-        int CodSocieta = SelectedData.CodSocieta;
-        navigationManager.NavigateTo($"/tornei/GestioneSocietaComp?CodSocieta=" + CodSocieta);
-        this.Disabled = false;
-        this.Enabled = true;
+        // Imposto la società selezionata
+        // [LUCA] can we simplify here like this ?
+        // navigationManager.NavigateTo($"/tornei/GestioneSocietaComp?CodSocieta=" +  item.CodAnagrafica);
+      
+        navigationManager.NavigateTo($"/tornei/GestioneSocietaComp?CodSocieta=" + args.CodSocieta);
+        // End
+        // what are these two commands for?
+     
     }
-    
-
 }

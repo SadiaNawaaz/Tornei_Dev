@@ -36,15 +36,14 @@ namespace Database.Services
             }
         }
 
+        // Cerco il comune per codice
         public async Task<Comune> GetComuneByIdAsync(string codComune)
         {
             return await _dbContext.Comunes.FirstOrDefaultAsync(c => c.CodComune == codComune);
         }
-        public async Task<List<Comune>> GetComuneById(string codComune)
-        {
-            return await _dbContext.Comunes.Where(x => x.CodComune == codComune).ToListAsync();
-        }
 
+
+        // Aggiunge o salva la tabella dei comuni
         public async Task AddUpdateComuneAsync(Comune comune)
         {
             try
@@ -67,8 +66,7 @@ namespace Database.Services
             }
         }
 
-
-
+        // Cancella un comune dalla lista
         public async Task DeleteComuneAsync(string codComune)
         {
             var comune = await _dbContext.Comunes.FirstOrDefaultAsync(c => c.CodComune == codComune);

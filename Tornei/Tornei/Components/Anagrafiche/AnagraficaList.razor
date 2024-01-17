@@ -1,26 +1,28 @@
 ﻿@page "/tornei/AnagraficaList"
+
+@* Database *@
 @using Database.Models
 @using Database.Services
+
+@* Oggetti Syncfusion *@
 @using Syncfusion.Blazor.DropDowns
-@inject IWebHostEnvironment Environment
 @using Syncfusion.Blazor.Grids
 @using Syncfusion.Blazor.Notifications
 @using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.Spinner
-@inject NavigationManager navigationManager
 
+@* Gestione dei percorsi *@
+@inject IWebHostEnvironment Environment
+@* Nagigazione *@
+@inject NavigationManager navigationManager
+@* Dichiaro che uso in questa pagina il local storage *@
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 
 <div class="container">
-    <h3>
-        Anagrafica
-    </h3>
-
+    <h3>Anagrafica</h3>
     <div class="card">
         <div class="heading">Anagrafica List</div>
         <div>
-
-
             <SfGrid DataSource="@_AnagraficaList" AllowFiltering="true" AllowPaging="true">
                 <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
                 <GridEditSettings AllowAdding="true" AllowDeleting="true"></GridEditSettings>
@@ -32,7 +34,6 @@
                     <GridColumn Field=@nameof(Anagrafica.Telefono) HeaderText="PartitaIva" TextAlign="TextAlign.Right" Width="auto"></GridColumn>
                     <GridColumn Field=@nameof(Anagrafica.Cellulare) HeaderText="Telefono" TextAlign="TextAlign.Right" Width="auto"></GridColumn>
                     <GridColumn Field=@nameof(Anagrafica.Mail) HeaderText="Email" TextAlign="TextAlign.Right" Width="auto"></GridColumn>
-
                     <GridColumn Width="auto" TextAlign="TextAlign.Center" HeaderText="Actions">
                         <Template>
                             @{
@@ -49,7 +50,6 @@
                             </button>
                         </Template>
                     </GridColumn>
-
                 </GridColumns>
             </SfGrid>
         </div>
@@ -59,24 +59,34 @@
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </div>
+
 @code {
-
-
     @inject AnagraficaService AnagraficaService;
-    List<Anagrafica> _AnagraficaList = new();
+
     private Boolean Disabled = true;
     private Boolean Enabled = false;
     private SfToast toast;
 
+    List<Anagrafica> _AnagraficaList = new();
+
+    // Command click handler for all command buttons in the grid
+    public Anagrafica SelectedData = new Anagrafica();
+
+    // Cancello l'anagrafica
     private async void DeleteItem(Anagrafica item, MouseEventArgs e)
     {
-        bool res = false;
+        // Imposto l'anagrafica selezionata
+        // [LUCA] can we simplify here like this ?
+        // bool res = await AnagraficaService.DeleteAnagraficaAsync(item.CodAnagrafica);
+        // start
+     
+        bool res = await AnagraficaService.DeleteAnagraficaAsync(item.CodAnagrafica);
+        // end
 
-        // SelectedData = new Anagrafica() { CodAnagrafica = item.CodAnagrafica };
-        // int CodAnagrafica = SelectedData.CodAnagrafica;
-        // bool res = await AnagraficaService.DeleteAnagraficaAsync(CodAnagrafica);
+        // Se le cancellazione è andata a buon fine
         if (res == true)
         {
+            // Messaggio di successo
             await toast.ShowAsync(new ToastModel
                 {
                     Title = "Success",
@@ -86,6 +96,7 @@
         }
         else
         {
+            // Se invece ha avuto esito negativo mando l'errore
             await toast.ShowAsync(new ToastModel
                 {
                     Title = "Error",
@@ -93,49 +104,51 @@
                     CssClass = "e-toast-danger"
                 });
         }
-        OnAfterRender(true);
-        StateHasChanged();
+        OnAfterRender(true); // Richiamo la funzione (dopo il redenr dell'oggetto)
+        StateHasChanged(); // Aggiorno lo stato
     }
 
+    // Dopo il primo render
     protected override async void OnAfterRender(bool firstRender)
     {
         try
         {
-            if (firstRender)
+            if (firstRender) // Lo eseguo solo la prima volta
             {
-                _AnagraficaList = await AnagraficaService.GetAllAnagraficheAsync();
-                StateHasChanged();
+                _AnagraficaList = await AnagraficaService.GetAllAnagraficheAsync(); // Carico la lista delle anagrafiche
+                StateHasChanged(); // Aggiorno lo stato
             }
         }
         catch (Exception)
         {
-
             throw;
         }
     }
 
-
-
-    // Command click handler for all command buttons in the grid
-    public Anagrafica SelectedData = new Anagrafica();
+    // Vado in modifica
     public void EditNavigation(Anagrafica args, MouseEventArgs e)
     {
-        SelectedData = new Anagrafica() { CodAnagrafica = args.CodAnagrafica };
-        int CodAnagrafica = SelectedData.CodAnagrafica;
-        navigationManager.NavigateTo($"/tornei/GestioneAnagraficaComp?CodAnagrafica=" + CodAnagrafica);
+        // Imposto l'anagrafica selezionata
+        // [LUCA] can we simplify here like this ?
+        // navigationManager.NavigateTo($"/tornei/GestioneAnagraficaComp?CodAnagrafica=" + item.CodAnagrafica);
+    
+        navigationManager.NavigateTo($"/tornei/GestioneAnagraficaComp?CodAnagrafica=" + args.CodAnagrafica);
+        // End
+        // what are these two commands for?
         this.Disabled = false;
         this.Enabled = true;
     }
+
+    // SEleziono la riga
     public void RowDeSelectHandler(RowDeselectEventArgs<Anagrafica> args)
     {
-        SelectedData = new Anagrafica();
+        SelectedData = new Anagrafica(); // Imposto questa come anagrafica selezionata
+                                         // what are these two commands for?
         this.Disabled = true;
         this.Enabled = false;
     }
-    public void NavigatetoNew()
-    {
-        navigationManager.NavigateTo($"/tornei/GestioneAnagraficaComp");
 
-    }
-
+    // Vado alla gestione della'anagrafica
+    // [LUCA]: This function is never called serve
+  
 }

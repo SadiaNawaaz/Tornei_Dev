@@ -31,4 +31,9 @@ public partial class Campo
     [ForeignKey("CodSocieta")]
     [InverseProperty("Campos")]
     public virtual Societa CodSocietaNavigation { get; set; } = null!;
+
+    //Development
+    [NotMapped]
+    public List<string> ListDeTipologia { get; set; } = new List<string>() { "Campo da gioco", "Campo di Allenamento"};
+
 }

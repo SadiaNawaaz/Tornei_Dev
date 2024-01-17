@@ -1,27 +1,28 @@
-﻿@*  *@
-@page "/tornei/GestioneSocietaComp"
+﻿@page "/tornei/GestioneSocietaComp"
 
 @* Database *@
 @using Database.Models
 @using Database.Services
 
 @* Oggetti Syncfusion *@
-@using Microsoft.AspNetCore.WebUtilities
 @using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.DropDowns
 @using Syncfusion.Blazor.Notifications
+
+@* Altri *@
+@using Microsoft.AspNetCore.WebUtilities
 
 @* Gestione dei percorsi *@
 @inject IWebHostEnvironment Environment
 @* Nagigazione *@
 @inject NavigationManager navigationManager
-
 @* Dichiaro che uso in questa pagina il local storage *@
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 
 <SfToast @ref="toast" Target="#target">
     <ToastPositionSettings X="calc(100% - 10px)" Y="10px"></ToastPositionSettings>
 </SfToast>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9">
@@ -231,11 +232,12 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <InputFile OnChange="HandleFileChange" class="form-control" />
-                                @*   <InputText id="Logo" @bind-Value="objSocieta.Logo" class="form-control" /> *@
+                                @* L'immagine c'è la visualizzo *@
                                 @if (@desiredPath != null)
                                 {
                                     <img src="@desiredPath" alt="Selected Image" style="max-width: 300px; max-height: 300px;" />
                                 }
+                                @* se ho l'immagine presente nel modello *@
                                 @if (imageModel.ImageData != null)
                                 {
                                     <img src="@($"data:image/png;base64,{Convert.ToBase64String(imageModel.ImageData)}")" alt="Selected Image" style="max-width: 300px; max-height: 300px;" />
@@ -270,17 +272,7 @@
         }
     </div>
 </div>
-<style>
-    .row {
-        display: flex;
-    }
 
-    #container2 {
-        height: 120px;
-        width: 120px;
-        position: relative;
-    }
-</style>
 @code {
 
     [Parameter]
@@ -289,24 +281,22 @@
     private List<string> QualificaClubValues = new List<string> { "NC", "1 LV", "2 LV", "3 LV", "4 LV", "A" }; // Lista valori per Qualifica club
     string desiredPath;
     public bool visible { get; set; } = false;
+
     @inject ComuneService comuneService; // Dichiaro di voler usare le procedure per la gestione dei comuni
     @inject SocietaService societaService; // Dichiaro di voler usare le procedure per la gestione della società
+    @inject RoleService RoleService; // Dichiaro di voler usare le procedure per la gestione dei ruoli
 
     Societa objSocieta = new Societa(); // Creo l'oggetto società
-
 
     public string[] MultiVal { get; set; } = new string[] { };
     public List<string> MultiVals { get; set; } = new List<string>();
     List<AspNetRole> roles = new List<AspNetRole>();
-    @inject RoleService RoleService;
+
 
     private ImageModel imageModel = new ImageModel(); // Dichiaro l'oggetto immagine
 
-    // [Luca]: For me this is of no use, it is never used
-    // Comune com = new Comune();
-
     List<Comune> ComuneList = new List<Comune>();
-    // public Query LocalDataQuery = new Query().Take(6);
+
     private SfToast toast;
 
     // In fase di inizializzazione
@@ -314,23 +304,23 @@
 
     protected override void OnInitialized()
     {
-        ShowSppiner();
-
+        ShowSppiner(); // Mostra la rotellina
+                       // Recupero l'url
         var uri = navigationManager.ToAbsoluteUri(navigationManager.Uri);
-
+        // Recuperlo l'id se gliel'ho passato
         if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("CodSocieta", out var id))
         {
+            // Se è nullo lo imposto a 0
             if (string.IsNullOrEmpty(id))
             {
                 CodSocieta = 0;
             }
             else
+            // lo memorizzo
             {
                 CodSocieta = Convert.ToInt32(id);
             }
         }
-        // [Luca]: but why do I only upload the first 150?
-        //this.ComuneList = Enumerable.Range(1, 150).Select(i => new Comune()).ToList(); // Carico la lista dei comuni
     }
 
     // dopo render della pagina
@@ -342,13 +332,13 @@
             if (firstRender)
             {
                 ComuneList = await comuneService.GetComunesAsync(); // Carico la lista dei comuni
-                roles = await RoleService.GetRoles();
-
+                roles = await RoleService.GetRoles(); // Carico la lista dei ruoli
+                                                      // Se sono in modifica
                 if (CodSocieta != 0)
                 {
                     GetProfile(); // Mi carico il profilo dal locale storage
                 }
-                HideSppiner();
+                HideSppiner(); // Nascondo la rotellina
                 StateHasChanged(); // Aggiorno lo stato
             }
         }
@@ -377,11 +367,22 @@
                     string fullPath = objSocieta.Logo;
                     string fileName = System.IO.Path.GetFileName(fullPath);
 
-
+                    // imposto il path dell'immagine
+                    // [LUCA]: don't use the path put in the code, read it from app settings with this command
+                    var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+                    var Mittente = Configurazione.GetValue<string>("Percorsi:Profilo");
                     imageModel.ImageName = fileName;
-                    desiredPath = @"Dati\Tornei\Profilo\" + fileName;
+                    desiredPath = Mittente + "\\" + imageModel.ImageName;// @"Dati\Tornei\Profilo\" + fileName;
+                    if (objSocieta.UserRoleList != null)
+                    {
+                        foreach (var i in objSocieta.UserRoleList)
+                        {
+                            MultiVals.Add(i.RoleId);
 
-                    StateHasChanged(); // [Luca]: StateHasChanged this function is also called after the GetProfile function, so I don't think it is necessary to call it inside too, or am I wrong see  procedure OnAfterRender
+                        }
+                        MultiVal = MultiVals.ToArray();
+                    }
+                    StateHasChanged(); // [LUCA]: StateHasChanged this function is also called after the GetProfile function, so I don't think it is necessary to call it inside too, or am I wrong see  procedure OnAfterRender
                 }
             }
         }
@@ -398,79 +399,79 @@
     {
         try
         {
-            // [Luca]: the logo is not a mandatory field, if I don't add it I save it and point the record to the default logo.
+            // [LUCA]: the logo is not a mandatory field, if I don't add it I save it and point the record to the default logo.
             // Controllo se nel modello immagine ho qualcosa, se non ho nulla mando un messaggio di errore
-            if (imageModel.ImageName == null)
+            // if (imageModel.ImageName == null)
+            // {
+            //    // Pop up errore
+            //    await toast.ShowAsync(new ToastModel
+            //       {
+            //          Title = "Error",
+            //          Content = "Select Logo",
+            //          CssClass = "e-toast-danger"
+            //       });
+            //    return;
+            // }
+            // else
+            // {
+            // Leggo il percorso dove uploadare l'immagine
+            var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            var Percorso = Configurazione.GetValue<string>("Percorsi:Profilo");
+            var uploadsFolder = Path.Combine(Environment.WebRootPath, Percorso);
+
+            var fileName = $"{Guid.NewGuid().ToString()}.png"; // creo il nome dell'immagine
+            var filePath = Path.Combine(uploadsFolder, fileName); // imposto il percorso di salvataggio dell'immagine
+
+            // Effettuo la ricerca del comune per descrizione
+            // [LUCA]: as far as I know the syncfusion controls work via code and return the description themselves and vice versa, for me there is no need to search by description also because it may not give correct results
+            var selectedcomune = ComuneList.FirstOrDefault(x => x.DesComuneEstesa == comuneTitle);
+            if (selectedcomune != null)
+                objSocieta.CodComune = selectedcomune.CodComune;
+
+            //var soc = await societaService.SaveSocietaAsync(objSocieta, email, imageModel); // Salvo la società e mi memorizzo il record salvato
+
+            //Inizio Aggiornamento
+            foreach (var i in MultiVal)
             {
-                // Pop up errore
-                await toast.ShowAsync(new ToastModel
-                    {
-                        Title = "Error",
-                        Content = "Select Logo",
-                        CssClass = "e-toast-danger"
-                    });
-                return;
+                tempobj.RoleId = i;
+                tempList.Add(tempobj);
+                tempobj = new();
+            }
+            objSocieta.RoleList = tempList;
+
+            if (objSocieta.CodSocieta == 0)
+            {
+                objSocieta.Logo = filePath; // imposto il nome e percorso immagine
+                var soc = await societaService.SaveSocietaAsync(objSocieta, email, imageModel);
             }
             else
             {
-                // Leggo il percorso dove uploadare l'immagine
-                var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-                var Percorso = Configurazione.GetValue<string>("Percorsi:Profilo");
-                var uploadsFolder = Path.Combine(Environment.WebRootPath, Percorso);
-
-                var fileName = $"{Guid.NewGuid().ToString()}.png"; // creo il nome dell'immagine
-                var filePath = Path.Combine(uploadsFolder, fileName); // imposto il percorso di salvataggio dell'immagine
-
-                var selectedcomune = ComuneList.FirstOrDefault(x => x.DesComuneEstesa == comuneTitle);
-                if (selectedcomune != null)
-                    objSocieta.CodComune = selectedcomune.CodComune;
-
-                //var soc = await societaService.SaveSocietaAsync(objSocieta, email, imageModel); // Salvo la società e mi memorizzo il record salvato
-
-                //updated start
-                foreach (var i in MultiVal)
-                {
-                    tempobj.RoleId = i;
-                    tempList.Add(tempobj);
-                    tempobj = new();
-                }
-                objSocieta.RoleList = tempList;
-
-                if (objSocieta.CodSocieta == 0)
+                if (imageModel.ImageData != null)
                 {
                     objSocieta.Logo = filePath; // imposto il nome e percorso immagine
-                    var soc = await societaService.SaveSocietaAsync(objSocieta, email, imageModel);
                 }
                 else
                 {
-                    if (imageModel.ImageData != null)
-                    {
-                        objSocieta.Logo = filePath; // imposto il nome e percorso immagine
-                    }
-                    else
-                    {
-                        objSocieta.Logo = imageModel.ImageName;
-                    }
-                    var soc = await societaService.UpdateSocietaRoleAsync(objSocieta);
-
-
-
+                    // Metto il logo di default
+                    objSocieta.Logo = imageModel.ImageName;
                 }
-
-                //updated end
-                if (imageModel.ImageData != null)
-                {
-                    await File.WriteAllBytesAsync(filePath, imageModel.ImageData); // Salvo l'immagine nel server
-                }
-
-                // Visualizzo un messaggio che indica che tutto è andato a buon fine
-                await toast.ShowAsync(new ToastModel
-                    {
-                        Title = "Success",
-                        Content = "Operation completed successfully",
-                        CssClass = "e-toast-success"
-                    });
+                var soc = await societaService.UpdateSocietaRoleAsync(objSocieta);
             }
+
+            //updated end
+            if (imageModel.ImageData != null)
+            {
+                await File.WriteAllBytesAsync(filePath, imageModel.ImageData); // Salvo l'immagine nel server
+            }
+
+            // Visualizzo un messaggio che indica che tutto è andato a buon fine
+            await toast.ShowAsync(new ToastModel
+                {
+                    Title = "Success",
+                    Content = "Operation completed successfully",
+                    CssClass = "e-toast-success"
+                });
+            // }
         }
         catch (Exception ex)
         {
@@ -481,14 +482,12 @@
                     Content = ex.Message,
                     CssClass = "e-toast-danger"
                 });
-
         }
     }
 
     // Procedura da gestire in caso di invio di dati non validi
     private void invalid()
     {
-
     }
 
     // Gestione immagine
@@ -497,13 +496,6 @@
         try
         {
             // Carico l'immagine dal file upload al modello
-            /*  var imageBytes = new byte[e.File.Size]; // Trovo i bite dell'immagine
-              await e.File.OpenReadStream().ReadAsync(imageBytes); // Leggo uno stream per i bite dell'immagine
-              imageModel.ImageData = imageBytes; // Nel campo immagine ci metto ciò che ho letto dallo stream
-              imageModel.ImageName = e.File.Name; // Nel campo nome ci metto il nome dell'immagine
-              StateHasChanged(); // Notifica al componente che il suo stato è cambiato. Quando applicabile, questo lo farà fa sì che il componente venga nuovamente renderizzato.
-          */
-
             int filesize = 10051200;
             using var memorystream = new MemoryStream();
             await e.File.OpenReadStream(filesize).CopyToAsync(memorystream);
@@ -511,7 +503,7 @@
             imageModel.ImageData = imageBytes;
             imageModel.ImageName = e.File.Name;
             desiredPath = null;
-            StateHasChanged();
+            StateHasChanged(); // Aggiorno lo stato
         }
         catch (Exception ex)
         {
@@ -525,13 +517,16 @@
         imageModel.ImageName = null;
         StateHasChanged(); // Notifica al componente che il suo stato è cambiato. Quando applicabile, questo lo farà fa sì che il componente venga nuovamente renderizzato.
     }
+
+    // Mostra Rotellina
     public void ShowSppiner()
     {
         this.visible = true;
     }
+
+    // Nascondi Rotellina
     public async void HideSppiner()
     {
-        // await Task.Delay(5000);
         this.visible = false;
     }
 

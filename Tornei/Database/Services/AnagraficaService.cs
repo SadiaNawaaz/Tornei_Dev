@@ -17,15 +17,23 @@ namespace Database.Services
 
         public async Task<List<Anagrafica>> GetAllAnagraficheAsync()
         {
-            return await _dbContext.Anagraficas.ToListAsync();
+            using (var context = new TorneiContext()) // Dichiaro che uso il Database (context)
+            {
+                return await context.Anagraficas.ToListAsync();
+            }
         }
 
         public async Task<Anagrafica> GetAnagraficaByIdAsync(int id)
         {
+            using (var context = new TorneiContext()) // Dichiaro che uso il Database (context)
+            {
 
-            return await _dbContext.Anagraficas.FindAsync(id);
+                return await context.Anagraficas.FindAsync(id);
+            }
 
         }
+
+        //Trova un'anagrafica tramite il suo UserName il c
         public async Task<Anagrafica> GetAnagraficaRoleByIdAsync(int id)
         {
 
@@ -39,11 +47,15 @@ namespace Database.Services
             {
                 using (var context = new TorneiContext()) // Dichiaro che uso il Database (context)
                 {
+                    //Trova il codice anagrafica tramite user name
                     var risultato = await context.AspNetUsers.FirstOrDefaultAsync(x => x.CodAnagrafica == id); // Ricerco per codice
-                    var UserRole = await context.AspNetUserRoles.Where(x => x.UserId == risultato.Id).ToListAsync();
-                    tempObj = res;
-                    tempObj.UserRoleList = UserRole;
-                    return tempObj; // Ritorno il codice trovato
+                    if (risultato != null)
+                    {
+                        var UserRole = await context.AspNetUserRoles.Where(x => x.UserId == risultato.Id).ToListAsync();
+                        tempObj = res;
+                        tempObj.UserRoleList = UserRole;
+                        return tempObj; // Ritorno il codice trovato
+                    }
                     /*   
                     */
                 }
@@ -104,6 +116,7 @@ namespace Database.Services
 
 
 
+        // Aggiungi Anagrafica da Gestione
         public async Task<Anagrafica> AddAnagraficaMemberAsync(Anagrafica anagrafica, string email)
         {
             try
@@ -115,11 +128,17 @@ namespace Database.Services
                 anagrafica.Telefono ??= "";
                 anagrafica.Mail ??= "";
                 anagrafica.Sesso ??= "";
+                // [LUCA]: why isn't it on it? Either it's wrong to put it here or it's missing above
+                //[XXXX] : this may be null , we have to give default value here or in model to convert null to empty string.
                 // Assegna il codice progressimo (trova il max e somma 1)
 
                 // Aggiunge all'archivio l'anagrafica corretta
                 _dbContext.Anagraficas.Update(anagrafica);
                 await _dbContext.SaveChangesAsync(); // Aggiorna i dati sul DB
+
+                //[LUCA]: what is the whole code below for? from start to end?
+                //[XXXX] : this is to save roles, actually migration is not run update date and i a m also not changing any thing in migration
+                // other wise this is save automatically if we pass a list to main object.
                 var User = await _dbContext.AspNetUsers.FirstOrDefaultAsync(x => x.CodAnagrafica == anagrafica.CodAnagrafica);
                 if (User != null)
                 {
@@ -199,6 +218,7 @@ namespace Database.Services
         }
 
         // Cancella l'anagrafica passandogli il suo codice
+
         public async Task<bool> DeleteAnagraficaAsync(int id)
         {
             try
@@ -208,18 +228,7 @@ namespace Database.Services
                 {
                     return false; // Anagrafica non trovata
                 }
-                /*  else
-                  {
-                      var roleToUpdate = await _dbContext.AspNetUsers.FirstOrDefaultAsync(x => x.CodAnagrafica == id);
 
-                      *//* if (roleToUpdate != null)
-                       {
-                           roleToUpdate.CodAnagrafica = 0;
-                           await _dbContext.SaveChangesAsync();
-                       }*//*
-                      _dbContext.AspNetUsers.Remove(roleToUpdate);
-                      await _dbContext.SaveChangesAsync();
-                  }*/
                 _dbContext.Anagraficas.Remove(anagrafica); // Se invece la trova la rimuove
                 await _dbContext.SaveChangesAsync(); // Aggiorna i dati sul DB
                 return true;

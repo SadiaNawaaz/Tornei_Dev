@@ -28,35 +28,38 @@ namespace Database.Services
             if (user != null) // Se lo trova
             {
                 var soc = user.CodSocieta; // Memorizzo il codice
-                return await _dbContext.Societa.FindAsync(soc); // Effettuo la ricerca sulla tabella delle societa
+                var societaObj = await _dbContext.Societa.FindAsync(soc); // Effettuo la ricerca sulla tabella delle societa              
+                if (societaObj != null) // Se la trovo
+                {
+                    // Cerco i ruoli della società
+                    var UserRole = await _dbContext.AspNetUserRoles.Where(x => x.UserId == user.Id).ToListAsync();
+                    societaObj.UserRoleList = UserRole; // 
+                    return societaObj; // Ritorno il codice trovato
+                }
             }
             return default;
         }
-     /*   public async Task<Societa> GetSocietaRoleByUserIdAsync(string id)
-        {
-            Societa tempObj = new();
-            // Ricerca il codice nella tabella degli utenti
-            var user = _dbContext.AspNetUsers.FirstOrDefault(x => x.Id == id);
-            if (user != null) // Se lo trova
-            {
-                var soc = user.CodSocieta; // Memorizzo il codice
-                return await _dbContext.Societa.FindAsync(soc); // Effettuo la ricerca sulla tabella delle societa
-            }
-            return default;
-        }*/
 
         // Cerca la società per descrizione
         public async Task<Societa?> GetSocietaByDescriptionAsync(string description)
         {
+            // [LUCA]: here too we don't use tournamentdbcontext but always applicationdbcontext
             // Ricerco nella tabella delle società, e restituosco la società o null se non la trovo
-            Societa societa = await _dbContext.Societa.FirstOrDefaultAsync(s => s.DesSocieta == description);
-            return societa; // societa can be null
+            using (var context = new TorneiContext())
+            {
+                Societa societa = await context.Societa.FirstOrDefaultAsync(s => s.DesSocieta == description);
+                return societa; // societa can be null
+            }
         }
 
+        // [LUCA]: here too we don't use tournamentdbcontext but always applicationdbcontext
         // Trova tutte le società presenti in archivio
         public async Task<List<Societa>> GetAllSocietaAsync()
         {
-            return await _dbContext.Societa.ToListAsync();
+            using (var context = new TorneiContext()) // Dichiaro che uso il Database (context)
+            {
+                return await context.Societa.ToListAsync();
+            }
         }
 
         // Salva la società
@@ -128,35 +131,39 @@ namespace Database.Services
             {
                 throw;
             }
-        } 
+        }
+
+        // Aggiorna i ruoli per la società
         public async Task<Societa> UpdateSocietaRoleAsync(Societa societa)
         {
             try
             {
                 AspNetUserRoles tempObj = new();
-                // Cerco la società per codice 
+                // Cerco l'untente nella della società
                 var User = await _dbContext.AspNetUsers.FirstOrDefaultAsync(x => x.CodSocieta == societa.CodSocieta);
-                if (User != null)
+                if (User != null) // Se l trovo
                 {
-                    var result = await _dbContext.AspNetUserRoles
-        .Where(x => x.UserId == User.Id)
-        .ToListAsync();
-                    if (result.Any() && result.Count > 0)
+                    // Cerco i ruoli dell'utente
+                    var result = await _dbContext.AspNetUserRoles.Where(x => x.UserId == User.Id).ToListAsync();
+                    if (result.Any() && result.Count > 0) // Se trovo almeno un ruolo
                     {
-                        _dbContext.AspNetUserRoles.RemoveRange(result);
-                        await _dbContext.SaveChangesAsync();
+                        _dbContext.AspNetUserRoles.RemoveRange(result); // Li cancello
+                        await _dbContext.SaveChangesAsync(); // Aggiorno il database
                     }
-
                 }
+
+                // Per ogni ruolo presente nella lista
                 foreach (var i in societa.RoleList)
                 {
-
+                    // imposto i valori dell'oggetto temporaneo
                     tempObj.UserId = User.Id;
                     tempObj.RoleId = i.RoleId;
-                    await _dbContext.AspNetUserRoles.AddAsync(tempObj);
-                    await _dbContext.SaveChangesAsync();
-                    tempObj = new();
+                    await _dbContext.AspNetUserRoles.AddAsync(tempObj); // Lo aggiungo all'archivio
+                    await _dbContext.SaveChangesAsync(); // Aggiorno il database
+                    tempObj = new(); // Creo un nuovo oggetto vuoto contenente i ruoli
                 }
+
+                // Cerco la società da aggiornare
                 var entityUpdate = await _dbContext.Societa.FindAsync(societa.CodSocieta);
                 if (entityUpdate != null) // Se la trovo
                 {
@@ -177,8 +184,8 @@ namespace Database.Services
                     entityUpdate.Logo = societa.Logo;
                 }
                 // // Aggiorna i dati sul DB
-                await _dbContext.SaveChangesAsync();
-                return entityUpdate;
+                await _dbContext.SaveChangesAsync(); // Aggiorno il database
+                return entityUpdate; // Ritorno l'entità aggiornata
             }
             catch (Exception ex)
             {
@@ -186,28 +193,12 @@ namespace Database.Services
             }
         }
 
-
+        // CAncella la società
         public async Task<bool> DeleteSocietaAsync(int id)
         {
             try
             {
                 var societa = await _dbContext.Societa.FindAsync(id); // La cerca
-                /*  if (societa == null) // Se non la trova
-                  {
-                      return false; // Anagrafica non trovata
-                  }
-                  else
-                  {
-                      var roleToUpdate = await _dbContext.AspNetUsers.FirstOrDefaultAsync(x => x.CodSocieta == id);
-
-                      *//* if (roleToUpdate != null)
-                       {
-                           roleToUpdate.CodAnagrafica = 0;
-                           await _dbContext.SaveChangesAsync();
-                       }*//*
-                      _dbContext.AspNetUsers.Remove(roleToUpdate);
-                      await _dbContext.SaveChangesAsync();
-                  }*/
                 _dbContext.Societa.Remove(societa); // Se invece la trova la rimuove
                 await _dbContext.SaveChangesAsync(); // Aggiorna i dati sul DB
                 return true;
@@ -218,5 +209,6 @@ namespace Database.Services
                 throw;
             }
         }
+
     }
 }

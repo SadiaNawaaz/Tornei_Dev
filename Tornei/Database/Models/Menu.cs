@@ -39,5 +39,5 @@ public partial class Menu
     [Precision(0)]
     public DateTime DataFinePubblicazione { get; set; }
     [NotMapped]
-    public List<MenuRuolo>? RoleList { get; set; }
+    public List<MenuRuolo>? MenuRuoloLista { get; set; }
 }
