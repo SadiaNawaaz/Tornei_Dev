@@ -234,7 +234,7 @@
                     @* [LUCA]: what the following code does
                     Start
                     *@
-                    @if (@desiredPath != null)
+                    @if (fileExists)
                     {
                         <img src="@desiredPath" alt="Selected Image" style="max-width: 300px; max-height: 300px;" />
                     }
@@ -292,6 +292,7 @@
     List<Comune> ComuneList = new List<Comune>();
     private SfToast toast;
     string desiredPath;
+    bool fileExists;
 
     // Inizializzazione
     #region Initialization
@@ -375,6 +376,8 @@
                     var Mittente = Configurazione.GetValue<string>("Percorsi:Profilo");
                     imageModel.ImageName = fileName;
                     desiredPath = Mittente + "\\" + imageModel.ImageName;
+                    fileExists = System.IO.File.Exists(fullPath);
+
                     StateHasChanged();
 
                 }
@@ -398,7 +401,15 @@
                         string fullPath = anagrafica.Immagine;
                         string fileName = System.IO.Path.GetFileName(fullPath);
                         // [LUCA]: We don't use paths in the program we read the path from the appsettings.json file
-                        desiredPath = @"Dati\Tornei\Profilo\" + fileName;
+
+                        var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+                        var Mittente = Configurazione.GetValue<string>("Percorsi:Profilo");
+                        imageModel.ImageName = fileName;
+                        desiredPath = Mittente + "\\" + imageModel.ImageName;
+                      
+                       fileExists = System.IO.File.Exists(fullPath);
+                      
+                      
                         StateHasChanged(); // Imposto lo stato in cambiato
 
                     }
@@ -468,7 +479,7 @@
                     Content = "Operatione conclusa con successo",
                     CssClass = "e-toast-success"
                 });
-            navigationManager.NavigateTo("/");
+
         }
     }
 
@@ -533,4 +544,6 @@
             }
         });
     }
+
+   
 }

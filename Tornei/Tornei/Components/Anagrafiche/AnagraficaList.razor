@@ -23,33 +23,32 @@
     <div class="card">
         <div class="heading">Anagrafica List</div>
         <div>
-            <SfGrid DataSource="@_AnagraficaList" AllowFiltering="true" AllowPaging="true">
+            <SfGrid DataSource="@_AnagraficaList" AllowPaging="true" EnableVirtualization="true" EnableColumnVirtualization="true">
                 <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
                 <GridEditSettings AllowAdding="true" AllowDeleting="true"></GridEditSettings>
                 <GridEvents TValue="Anagrafica"></GridEvents>
                 <GridColumns>
-                    <GridColumn Field=@nameof(Anagrafica.CodAnagrafica) HeaderText="CodSocieta" Width="auto"></GridColumn>
-                    <GridColumn Field=@nameof(Anagrafica.Cognome) HeaderText="CodSocieta" Width="auto"></GridColumn>
-                    <GridColumn Field=@nameof(Anagrafica.CodComuneDiNascita) HeaderText="DesSocieta" Width="auto"></GridColumn>
-                    <GridColumn Field=@nameof(Anagrafica.Telefono) HeaderText="PartitaIva" TextAlign="TextAlign.Right" Width="auto"></GridColumn>
-                    <GridColumn Field=@nameof(Anagrafica.Cellulare) HeaderText="Telefono" TextAlign="TextAlign.Right" Width="auto"></GridColumn>
-                    <GridColumn Field=@nameof(Anagrafica.Mail) HeaderText="Email" TextAlign="TextAlign.Right" Width="auto"></GridColumn>
-                    <GridColumn Width="auto" TextAlign="TextAlign.Center" HeaderText="Actions">
+                    <GridColumn Width="160" TextAlign="TextAlign.Center" HeaderText="Actions">
                         <Template>
                             @{
                                 var currentItem = context as Anagrafica;
                             }
                             <button class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
                                     @onclick="(e) => EditNavigation(currentItem, e)">
-                                Edit
                                 <i class="fa-solid fa-pencil"></i>
                             </button>
                             <button class="btn btn-danger" @onclick="(e) => DeleteItem(currentItem, e)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                Delete
                                 <i class="fa-regular fa-trash-can"></i>
                             </button>
                         </Template>
                     </GridColumn>
+                    <GridColumn Field=@nameof(Anagrafica.CodAnagrafica) HeaderText="CodSocieta" TextAlign="TextAlign.Center" Width="160"></GridColumn>
+                    <GridColumn Field=@nameof(Anagrafica.Cognome) HeaderText="CodSocieta" Width="160" TextAlign="TextAlign.Center"></GridColumn>
+                    <GridColumn Field=@nameof(Anagrafica.CodComuneDiNascita) HeaderText="DesSocieta" TextAlign="TextAlign.Center" Width="160"></GridColumn>
+                    <GridColumn Field=@nameof(Anagrafica.Telefono) HeaderText="PartitaIva" TextAlign="TextAlign.Center" Width="160"></GridColumn>
+                    <GridColumn Field=@nameof(Anagrafica.Cellulare) HeaderText="Telefono" TextAlign="TextAlign.Center" Width="160"></GridColumn>
+                    <GridColumn Field=@nameof(Anagrafica.Mail) HeaderText="Email" TextAlign="TextAlign.Center" Width="160"></GridColumn>
+                    <GridColumn Field=@nameof(Anagrafica.Mail) HeaderText="Email" TextAlign="TextAlign.Center" Width="160"></GridColumn>
                 </GridColumns>
             </SfGrid>
         </div>

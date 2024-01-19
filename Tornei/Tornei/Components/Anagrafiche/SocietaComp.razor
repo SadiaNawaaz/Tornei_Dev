@@ -145,8 +145,9 @@
             </div>
             <div class="col-md-8 ">
                 <div class="form-group">
-                    <InputText id="Telefono" @bind-Value="objSocieta.Telefono" class="form-control" />
-                    <ValidationMessage For="@(() => objSocieta.Telefono)" />
+                    <InputText id="Telefono" @onkeypress="@(e => ValidateNumber(objSocieta.Telefono))" @bind-Value="objSocieta.Telefono" class="form-control" />
+                    <span class="text-danger">@errorMessage</span>
+                        <ValidationMessage For="@(() => objSocieta.Telefono)" />
                 </div>
             </div>
         </div>
@@ -233,7 +234,7 @@
                 <div class="form-group">
                     <InputFile OnChange="HandleFileChange" class="form-control" />
                     @* L'immagine c'è la visualizzo *@
-                    @if (@desiredPath != null)
+                    @if (fileExists)
                     {
                         <img src="@desiredPath" alt="Selected Image" style="max-width: 300px; max-height: 300px;" />
                     }
@@ -267,7 +268,7 @@
     private List<string> QualificaClubValues = new List<string> { "NC", "1 LV", "2 LV", "3 LV", "4 LV", "A" }; // Lista valori per Qualifica club
     string desiredPath;
     public bool visible { get; set; } = false;
-
+    bool fileExists;
     @inject ComuneService comuneService; // Dichiaro di voler usare le procedure per la gestione dei comuni
     @inject SocietaService societaService; // Dichiaro di voler usare le procedure per la gestione della società
 
@@ -329,6 +330,11 @@
                     var Mittente = Configurazione.GetValue<string>("Percorsi:Profilo");
                     imageModel.ImageName = fileName;
                     desiredPath = Mittente + "\\" + imageModel.ImageName;// @"Dati\Tornei\Profilo\" + fileName;
+                  
+                    fileExists = System.IO.File.Exists(fullPath);
+
+
+
                     StateHasChanged(); // [LUCA]: StateHasChanged this function is also called after the GetProfile function, so I don't think it is necessary to call it inside too, or am I wrong see  procedure OnAfterRender
                 }
             }
@@ -472,6 +478,27 @@
     public async void HideSppiner()
     {
         this.visible = false;
+    }
+
+
+    private string errorMessage = "";
+
+    private void ValidateNumber(string inputValue)
+    {
+        // Use InvokeAsync to run the asynchronous logic
+        InvokeAsync(async () =>
+        {
+            if (int.TryParse(inputValue, out _))
+            {
+                // It's a valid number
+                errorMessage = "";
+            }
+            else
+            {
+                // It's not a valid number
+                errorMessage = "Please enter a valid number.";
+            }
+        });
     }
 
 }

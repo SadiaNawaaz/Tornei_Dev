@@ -236,7 +236,7 @@
 
                                 <InputFile OnChange="HandleFileChange" class="form-control" />
 
-                                @if (@desiredPath != null)
+                                @if (fileExists)
                                 {
                                     <img src="@desiredPath" alt="Selected Image" style="max-width: 300px; max-height: 300px;" />
                                 }
@@ -305,7 +305,7 @@
     public List<string> MultiVals { get; set; } = new List<string>();
     List<AspNetRole> roles = new List<AspNetRole>();
     @inject RoleService RoleService;
-
+    bool fileExists;
 
     private ImageModel imageModel = new ImageModel();
 
@@ -400,6 +400,8 @@
                     var Mittente = Configurazione.GetValue<string>("Percorsi:Profilo");
                     imageModel.ImageName = fileName;
                     desiredPath = Mittente + "\\" + imageModel.ImageName;
+                    fileExists = System.IO.File.Exists(fullPath);
+
                     StateHasChanged();
 
                 }
@@ -422,7 +424,13 @@
 
                         string fullPath = anagrafica.Immagine;
                         string fileName = System.IO.Path.GetFileName(fullPath);
-                        desiredPath = @"Dati\Tornei\Profilo\" + fileName;
+                        
+                        var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+                        var Mittente = Configurazione.GetValue<string>("Percorsi:Profilo");
+                        imageModel.ImageName = fileName;
+                        desiredPath = Mittente + "\\" + imageModel.ImageName;
+                        fileExists = System.IO.File.Exists(fullPath);
+
                         StateHasChanged();
 
                     }

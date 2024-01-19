@@ -233,7 +233,7 @@
                             <div class="form-group">
                                 <InputFile OnChange="HandleFileChange" class="form-control" />
                                 @* L'immagine c'è la visualizzo *@
-                                @if (@desiredPath != null)
+                                @if (fileExists)
                                 {
                                     <img src="@desiredPath" alt="Selected Image" style="max-width: 300px; max-height: 300px;" />
                                 }
@@ -281,7 +281,7 @@
     private List<string> QualificaClubValues = new List<string> { "NC", "1 LV", "2 LV", "3 LV", "4 LV", "A" }; // Lista valori per Qualifica club
     string desiredPath;
     public bool visible { get; set; } = false;
-
+    bool fileExists;
     @inject ComuneService comuneService; // Dichiaro di voler usare le procedure per la gestione dei comuni
     @inject SocietaService societaService; // Dichiaro di voler usare le procedure per la gestione della società
     @inject RoleService RoleService; // Dichiaro di voler usare le procedure per la gestione dei ruoli
@@ -373,6 +373,8 @@
                     var Mittente = Configurazione.GetValue<string>("Percorsi:Profilo");
                     imageModel.ImageName = fileName;
                     desiredPath = Mittente + "\\" + imageModel.ImageName;// @"Dati\Tornei\Profilo\" + fileName;
+                    fileExists = System.IO.File.Exists(fullPath);
+
                     if (objSocieta.UserRoleList != null)
                     {
                         foreach (var i in objSocieta.UserRoleList)
