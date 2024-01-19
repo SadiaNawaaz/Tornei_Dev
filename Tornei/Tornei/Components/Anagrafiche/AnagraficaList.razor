@@ -62,8 +62,7 @@
 @code {
     @inject AnagraficaService AnagraficaService;
 
-    private Boolean Disabled = true;
-    private Boolean Enabled = false;
+  
     private SfToast toast;
 
     List<Anagrafica> _AnagraficaList = new();
@@ -76,7 +75,9 @@
     {
         // Imposto l'anagrafica selezionata
         // [LUCA] can we simplify here like this ?
+        //[XXXX] Completed
         // bool res = await AnagraficaService.DeleteAnagraficaAsync(item.CodAnagrafica);
+
         // start
      
         bool res = await AnagraficaService.DeleteAnagraficaAsync(item.CodAnagrafica);
@@ -129,13 +130,13 @@
     {
         // Imposto l'anagrafica selezionata
         // [LUCA] can we simplify here like this ?
+        //[XXXX]: Completed
         // navigationManager.NavigateTo($"/tornei/GestioneAnagraficaComp?CodAnagrafica=" + item.CodAnagrafica);
     
         navigationManager.NavigateTo($"/tornei/GestioneAnagraficaComp?CodAnagrafica=" + args.CodAnagrafica);
         // End
         // what are these two commands for?
-        this.Disabled = false;
-        this.Enabled = true;
+        
     }
 
     // SEleziono la riga
@@ -143,11 +144,11 @@
     {
         SelectedData = new Anagrafica(); // Imposto questa come anagrafica selezionata
                                          // what are these two commands for?
-        this.Disabled = true;
-        this.Enabled = false;
+      
     }
 
     // Vado alla gestione della'anagrafica
     // [LUCA]: This function is never called serve
+    //[XXXX]: Completed
   
 }

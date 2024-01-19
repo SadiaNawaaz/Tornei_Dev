@@ -15,195 +15,205 @@
 @inject IJSRuntime JSRuntime
 
 <SfToast @ref="toast" Target="#target">
-   <ToastPositionSettings X="calc(100% - 10px)" Y="10px"></ToastPositionSettings>
+    <ToastPositionSettings X="calc(100% - 10px)" Y="10px"></ToastPositionSettings>
 </SfToast>
 
 <!--  Settings -->
 <div class="container-fluid">
-   <div class="row">
-      <div class="col-md-3" >
-         <!-- Your tree component goes here -->
+    <div class="row">
+        <div class="col-md-3">
+            <!-- Your tree component goes here -->
             <div style="overflow-y:auto;height:90%;">
-            <ul class=" flex-grow-1 pe-3 px-3" style="background-color:whitesmoke;">
-               @if (menues != null && menues.Count > 0)
-               {
-                  @foreach (var menuNode in menues)
-                  {
-                     <TreeComp MenuNode="@menuNode" OnNodeClick="HandleNodeClick" />
-                  }
-               }
-            </ul>
-         </div>
-      </div>
-      <div class="col-md-6">
-         <EditForm Model="@menuNode" OnValidSubmit="SaveOrUpdateMenu">
-            <DataAnnotationsValidator />
-            <h3>Menu</h3>
-
-            <!-- DesMenu -->
-            <div class="row mb-2">
-               <div class="col-md-2 mb-1">
-                  <div class="form-group">
-                     <label for="DesMenu">Nome Visualizzato:</label>
-                  </div>
-               </div>
-               <div class="col-md-8 ">
-                  <div class="form-group">
-                     <InputText id="DesMenu" @bind-Value="menuNode.DesMenu" class="form-control" />
-                     <ValidationMessage For="@(() => menuNode.DesMenu)" />
-                  </div>
-               </div>
+                <ul class=" flex-grow-1 pe-3 px-3" style="background-color:whitesmoke;">
+                    @if (menues != null && menues.Count > 0)
+                    {
+                        @foreach (var menuNode in menues)
+                        {
+                            <TreeComp MenuNode="@menuNode" OnNodeClick="HandleNodeClick" />
+                        }
+                    }
+                </ul>
             </div>
+        </div>
+        <div class="col-md-6">
+            <EditForm Model="@menuNode" OnValidSubmit="SaveOrUpdateMenu">
+                <DataAnnotationsValidator />
+                <h3>Menu</h3>
 
-            <!-- Mostra -->
-            <div class="row mb-2">
-               <div class="col-md-2 mb-1">
-                  <div class="form-group">
-                     <label for="Mostra">visibilità</label>
-                  </div>
-               </div>
-               <div class="col-md-8 ">
-                  <div class="form-group">
-                     <SfDropDownList TValue="string" TItem="MostraOption" @bind-Value="Mostra" DataSource="@MostraOptions" Placeholder="Select Show">
-                        <DropDownListFieldSettings Text="Text" Value="Value" />
-                     </SfDropDownList>
-                     <ValidationMessage For="@(() => menuNode.Mostra)" />
-                  </div>
-               </div>
-            </div>
+                <!-- DesMenu -->
+                <div class="row mb-2">
+                    <div class="col-md-2 mb-1">
+                        <div class="form-group">
+                            <label for="DesMenu">Nome Visualizzato:</label>
+                        </div>
+                    </div>
+                    <div class="col-md-8 ">
+                        <div class="form-group">
+                            <InputText id="DesMenu" @bind-Value="menuNode.DesMenu" class="form-control" />
+                            <ValidationMessage For="@(() => menuNode.DesMenu)" />
+                        </div>
+                    </div>
+                </div>
 
-            <!-- DataInizioPubblicazione -->
-            <div class="row mb-2">
-               <div class="col-md-2 mb-1">
-                  <div class="form-group">
-                     <label for="DataInizioPubblicazione">Data d'inizio:</label>
-                  </div>
-               </div>
-               <div class="col-md-8 ">
-                  <div class="form-group">
+                <!-- Mostra -->
+                <div class="row mb-2">
+                    <div class="col-md-2 mb-1">
+                        <div class="form-group">
+                            <label for="Mostra">visibilità</label>
+                        </div>
+                    </div>
+                    <div class="col-md-8 ">
+                        <div class="form-group">
+                            <SfDropDownList TValue="string" TItem="MostraOption" @bind-Value="Mostra" DataSource="@MostraOptions" Placeholder="Select Show">
+                                <DropDownListFieldSettings Text="Text" Value="Value" />
+                            </SfDropDownList>
+                            <ValidationMessage For="@(() => menuNode.Mostra)" />
+                        </div>
+                    </div>
+                </div>
 
-                     <InputDate id="DataDiNascita" @bind-Value="menuNode.DataInizioPubblicazione" class="form-control" />
-                     <ValidationMessage For="@(() => menuNode.DataInizioPubblicazione)" />
-                  </div>
-               </div>
-            </div>
+                <!-- DataInizioPubblicazione -->
+                <div class="row mb-2">
+                    <div class="col-md-2 mb-1">
+                        <div class="form-group">
+                            <label for="DataInizioPubblicazione">Data d'inizio:</label>
+                        </div>
+                    </div>
+                    <div class="col-md-8 ">
+                        <div class="form-group">
 
-            <!-- DataFinePubblicazione -->
-            <div class="row mb-2">
-               <div class="col-md-2 mb-1">
-                  <div class="form-group">
-                     <label for="DataFinePubblicazione">DataFinePubblicazione</label>
-                  </div>
-               </div>
-               <div class="col-md-8 ">
-                  <div class="form-group">
+                            <InputDate id="DataDiNascita" @bind-Value="menuNode.DataInizioPubblicazione" class="form-control" />
+                            <ValidationMessage For="@(() => menuNode.DataInizioPubblicazione)" />
+                        </div>
+                    </div>
+                </div>
 
-                     <InputDate id="DataDiNascita" @bind-Value="menuNode.DataFinePubblicazione" class="form-control" />
-                     <ValidationMessage For="@(() => menuNode.DataFinePubblicazione)" />
-                  </div>
-               </div>
-            </div>
+                <!-- DataFinePubblicazione -->
+                <div class="row mb-2">
+                    <div class="col-md-2 mb-1">
+                        <div class="form-group">
+                            <label for="DataFinePubblicazione">DataFinePubblicazione</label>
+                        </div>
+                    </div>
+                    <div class="col-md-8 ">
+                        <div class="form-group">
 
-            <!-- Route -->
-            <div class="row mb-2">
-               <div class="col-md-2 ">
-                  <div class="form-group">
-                     <label for="Route">Route:</label>
-                  </div>
-               </div>
-               <div class="col-md-8 ">
-                  <div class="form-group">
-                     <InputText id="Route" @bind-Value="menuNode.Route" class="form-control" />
-                     <ValidationMessage For="@(() => menuNode.Route)" />
-                  </div>
-               </div>
-            </div>
+                            <InputDate id="DataDiNascita" @bind-Value="menuNode.DataFinePubblicazione" class="form-control" />
+                            <ValidationMessage For="@(() => menuNode.DataFinePubblicazione)" />
+                        </div>
+                    </div>
+                </div>
 
-            <!-- CodPaginaHtml -->
-            <div class="row mb-2">
-               <div class="col-md-2 ">
-                  <div class="form-group">
-                     <label for="CodPaginaHtml">Page Code:</label>
-                  </div>
-               </div>
-               <div class="col-md-8 ">
-                  <div class="form-group">
-                     <SfDropDownList TValue="string" TItem="PaginaHTML" @bind-Value="Mostra" DataSource="@paginas" Placeholder="Select Page">
-                        <DropDownListFieldSettings Text="Titolo" Value="CodPaginaHtml" />
-                     </SfDropDownList>
-                     <ValidationMessage For="@(() => menuNode.CodPaginaHtml)" />
-                     <ValidationMessage For="@(() => menuNode.CodPaginaHtml)" />
-                  </div>
-               </div>
-            </div>
+                <!-- Route -->
+                <div class="row mb-2">
+                    <div class="col-md-2 ">
+                        <div class="form-group">
+                            <label for="Route">Route:</label>
+                        </div>
+                    </div>
+                    <div class="col-md-8 ">
+                        <div class="form-group">
+                            <InputText id="Route" @bind-Value="menuNode.Route" class="form-control" />
+                            <ValidationMessage For="@(() => menuNode.Route)" />
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Parametro -->
-            <div class="row mb-2">
-               <div class="col-md-2 ">
-                  <div class="form-group">
-                     <label for="Parametro">Parametro:</label>
-                  </div>
-               </div>
-               <div class="col-md-8 ">
-                  <div class="form-group">
-                     <InputText id="Parametro" @bind-Value="menuNode.Parametro" class="form-control" />
-                     <ValidationMessage For="@(() => menuNode.Parametro)" />
-                  </div>
-               </div>
-            </div>
+                <!-- CodPaginaHtml -->
+                <div class="row mb-2">
+                    <div class="col-md-2 ">
+                        <div class="form-group">
+                            <label for="CodPaginaHtml">Page Code:</label>
+                        </div>
+                    </div>
+                    <div class="col-md-8 ">
+                        <div class="form-group">
+                            <SfDropDownList TValue="string" TItem="PaginaHTML" @bind-Value="Mostra" DataSource="@paginas" Placeholder="Select Page">
+                                <DropDownListFieldSettings Text="Titolo" Value="CodPaginaHtml" />
+                            </SfDropDownList>
+                            <ValidationMessage For="@(() => menuNode.CodPaginaHtml)" />
+                            <ValidationMessage For="@(() => menuNode.CodPaginaHtml)" />
+                        </div>
+                    </div>
+                </div>
 
-            <div class="form-group mt-3 d-flex justify-content-start w-8">
-               <button type="submit" class="btn btn-primary">Salva</button>
-            </div>
+                <!-- Parametro -->
+                <div class="row mb-2">
+                    <div class="col-md-2 ">
+                        <div class="form-group">
+                            <label for="Parametro">Parametro:</label>
+                        </div>
+                    </div>
+                    <div class="col-md-8 ">
+                        <div class="form-group">
+                            <InputText id="Parametro" @bind-Value="menuNode.Parametro" class="form-control" />
+                            <ValidationMessage For="@(() => menuNode.Parametro)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-2 ">
+                        <div class="form-group">
+                            <label for="rulo"> Select roles:</label>
+                        </div>
+                    </div>
+                    <div class="col-md-8 ">
+                        <div class="form-group">
+                            <div>
+                                <SfMultiSelect TValue="string[]" TItem="AspNetRole" Placeholder="Select A Role" @bind-Value="@MultiVal" DataSource="@AspNetRoles">
+                                    <MultiSelectFieldSettings Text="Name" Value="Id"></MultiSelectFieldSettings>
+                                </SfMultiSelect>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-         </EditForm>
-      </div>
-      <div class="col-md-3">
-         <div>
-            <SfMultiSelect TValue="string[]" TItem="AspNetRole" Placeholder="Select A Role" @bind-Value="@MultiVal" DataSource="@AspNetRoles">
-               <MultiSelectFieldSettings Text="Name" Value="Id"></MultiSelectFieldSettings>
-            </SfMultiSelect>
-         </div>
-      </div>
-   </div>
+
+                <div class="form-group mt-3 d-flex justify-content-start w-8">
+                    <button type="submit" class="btn btn-primary">Salva</button>
+                </div>
+            </EditForm>
+        </div>
+
+    </div>
 </div>
 
 @* Menù a comparsa premendo il tasto destro del mouse sul menù da creare *@
 <div id="context-menu" style="display: none; position: absolute; background-color: white; border: 1px solid #ccc; padding: 10px;">
-   <div @onclick="() => HandleMenuChoice(1)">Delete</div>
-   <div @onclick="() => HandleMenuChoice(2)">Add Brother</div>
-   <div @onclick="() => HandleMenuChoice(3)">Add Child</div>
+    <div @onclick="() => HandleMenuChoice(1)">Delete</div>
+    <div @onclick="() => HandleMenuChoice(2)">Add Brother</div>
+    <div @onclick="() => HandleMenuChoice(3)">Add Child</div>
 </div>
 
 @code {
-   public Menu menuNode = new Menu();
-   @inject MenuService MenuService;
-   @inject RoleService RoleService;
+    public Menu menuNode = new Menu();
+    @inject MenuService MenuService;
+    @inject RoleService RoleService;
 
-   MenuRuolo tempobj = new();
+    MenuRuolo tempobj = new();
 
-   string Mostra = "0";
-   int CodMenuPadre = 0;
-   int CodMenu = 0;
-   private SfToast toast;
+    string Mostra = "0";
+    int CodMenuPadre = 0;
+    int CodMenu = 0;
+    private SfToast toast;
 
-   // Dichiarazione delle liste per il caricamento delle drop down
-   List<MenuRuolo> tempList = new();
-   List<PaginaHTML> paginas = new List<PaginaHTML>();
-   List<MenuHierarchyDto> menues = new List<MenuHierarchyDto>();
+    // Dichiarazione delle liste per il caricamento delle drop down
+    List<MenuRuolo> tempList = new();
+    List<PaginaHTML> paginas = new List<PaginaHTML>();
+    List<MenuHierarchyDto> menues = new List<MenuHierarchyDto>();
 
-   List<AspNetRole> AspNetRoles = new List<AspNetRole>(); // Lista dei ruoli
-   public string[] MultiVal { get; set; } = new string[] { };
-   public List<string> MultiVals { get; set; } = new List<string>();
+    List<AspNetRole> AspNetRoles = new List<AspNetRole>(); // Lista dei ruoli
+    public string[] MultiVal { get; set; } = new string[] { };
+    public List<string> MultiVals { get; set; } = new List<string>();
 
-   // Implementazione della dropdown con dati in locale
-   private class MostraOption
-   {
-      public string Text { get; set; }
-      public int Value { get; set; }
-   }
+    // Implementazione della dropdown con dati in locale
+    private class MostraOption
+    {
+        public string Text { get; set; }
+        public int Value { get; set; }
+    }
 
-   private List<MostraOption> MostraOptions = new List<MostraOption>
+    private List<MostraOption> MostraOptions = new List<MostraOption>
    {
       new MostraOption { Text = "Tutti", Value = 0 },
       new MostraOption { Text = "Solo Loggati", Value = 1 },
@@ -211,177 +221,178 @@
       new MostraOption { Text = "Nessuno", Value = 3 }
    };
 
-   protected async override Task OnAfterRenderAsync(bool firstRender)
-   {
-      if (firstRender) // Al primo caricamento della pagina
-      {
-         GetMenues(); // Carica l'albero dei menù
-         AspNetRoles = await RoleService.GetRoles(); // Leggo la losta dei ruoli
-         StateHasChanged();
-      }
-   }
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender) // Al primo caricamento della pagina
+        {
+            GetMenues(); // Carica l'albero dei menù
+            AspNetRoles = await RoleService.GetRoles(); // Leggo la losta dei ruoli
+            StateHasChanged();
+        }
+    }
 
-   // Carica lista dei menù
-   private void GetMenues()
-   {
-      menues = MenuService.GetMenuItems();  // Comando per caricare la lista dei menù
-      StateHasChanged(); // Aggiorno la pagina
-   }
+    // Carica lista dei menù
+    private void GetMenues()
+    {
+        menues = MenuService.GetMenuItems();  // Comando per caricare la lista dei menù
+        StateHasChanged(); // Aggiorno la pagina
+    }
 
-   protected override async void OnInitialized()
-   {
-      try
-      {
-         // Carico la drop down delle pagineHTML
-         paginas = await MenuService.GetPaginaHTMLListAsync();
-      }
-      catch (Exception)
-      {
-         throw;
-      }
-   }
+    protected override async void OnInitialized()
+    {
+        try
+        {
+            // Carico la drop down delle pagineHTML
+            paginas = await MenuService.GetPaginaHTMLListAsync();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
 
-   // Salvo o aggiorno i menù
-   private async void SaveOrUpdateMenu()
-   {
-      try
-      {
-         // Imposto i dati per il salvataggio
-         menuNode.Mostra = Convert.ToInt16(Mostra); // dalla dropdown mostra
-         menuNode.CodMenuPadre = CodMenuPadre; // il menù padre
+    // Salvo o aggiorno i menù
+    private async void SaveOrUpdateMenu()
+    {
+        try
+        {
+            // Imposto i dati per il salvataggio
+            menuNode.Mostra = Convert.ToInt16(Mostra); // dalla dropdown mostra
+            menuNode.CodMenuPadre = CodMenuPadre; // il menù padre
 
-         // Per ogni valore selezionato nella drop down
-         foreach (var i in MultiVal)
-         {
-            tempobj.RoleId = i;  // aggiungo il valore alla lista dei ruoli da aggiungere
-            tempList.Add(tempobj);  // Aggiungo il ruolo alla lista
-            tempobj = new(); // Creo un nuovo valore
-         }
+            // Per ogni valore selezionato nella drop down
+            foreach (var i in MultiVal)
+            {
+                tempobj.RoleId = i;  // aggiungo il valore alla lista dei ruoli da aggiungere
+                tempList.Add(tempobj);  // Aggiungo il ruolo alla lista
+                tempobj = new(); // Creo un nuovo valore
+            }
             menuNode.MenuRuoloLista = tempList; // imposto i ruoli del menù dalla lista ruoli della drop down
 
-         // Procedo con la creazione o aggiornamento del menù
-         if (menuNode.CodMenu == 0)
-         {
-            // Se il codice è = 0 sono in fase di inserimento
-            var result = await MenuService.AddMenuAsync(menuNode); // Aggiungo il menù che ho in memoria
-                                                                   // Restituisco un messaggio con il risultato
-            await toast.ShowAsync(new ToastModel
-               {
-                  Title = "Success",
-                  Content = result,
-                  CssClass = "e-toast-success"
-               });
-            GetMenues();  // Ricarico la lista dei menù
-         }
-         else
-         {
-            // Se invece ho già il codice sono in modifica quindi lo salvo
-            var res = await MenuService.UpdateMenuAsync(menuNode);
-            // Mostro il messaggio di avvenuto salvataggio
-            await toast.ShowAsync(new ToastModel
-               {
-                  Title = "Success",
-                  Content = res,
-                  CssClass = "e-toast-success"
-
-               });
-         }
-      }
-      catch (Exception)
-      {
-         throw;
-      }
-   }
-
-   private async Task HandleNodeClick(NodeClickEventArgs args)
-   {
-      try
-      {
-         int x = 0;
-         CodMenu = args.CodMenu; // Memorizzo il codice del menù
-
-         if (args.MouseEventArgs.Button == 2)  // Controllo se ho premuto il secondo tasto del mouse
-         {
-            // Se si allora uso il comando per lanciare un javascript che apre il menù a popup
-            await JSRuntime.InvokeAsync<string>("showContextMenu", args.MouseEventArgs.ClientX, args.MouseEventArgs.ClientY);
-         }
-         else
-         {
-            // Se invece ho premuto il tasto sinistro seleziono il menù premuto
-            var node = await MenuService.GetMenuByID(CodMenu);
-            if (node != null) // Se è diverso da null
+            // Procedo con la creazione o aggiornamento del menù
+            if (menuNode.CodMenu == 0)
             {
-               menuNode = node; // mi memorizzo il menù selezionato
-               CodMenuPadre = node.CodMenuPadre; // Memorizzo il codice del menù padre
-                    if (menuNode.MenuRuoloLista != null && menuNode.MenuRuoloLista.Count > 0) // Se trovo dei ruoli
-               {
-                  // Per ogni ruolo del menù selezionato
-                        foreach (var i in menuNode.MenuRuoloLista)
-                  {
-                     MultiVals.Add(i.RoleId); // Aggiungo il ruolo alla lista
-                  }
-                  MultiVal = MultiVals.ToArray(); // [LUCA] i don't undestand this
-               }
-               else
-               {
-                  MultiVal = new string[] { }; // [LUCA] i don't undestand this
-                  MultiVals = new(); // [LUCA] i don't undestand this
-               }
+                // Se il codice è = 0 sono in fase di inserimento
+                var result = await MenuService.AddMenuAsync(menuNode); // Aggiungo il menù che ho in memoria
+                                                                       // Restituisco un messaggio con il risultato
+                await toast.ShowAsync(new ToastModel
+                    {
+                        Title = "Success",
+                        Content = result,
+                        CssClass = "e-toast-success"
+                    });
+                GetMenues();  // Ricarico la lista dei menù
             }
-         }
-         StateHasChanged(); // Aggiorno la pagina
-      }
-      catch (Exception ex)
-      {
-         // Handle the exception
-         throw;
-      }
-   }
+            else
+            {
+                // Se invece ho già il codice sono in modifica quindi lo salvo
+                var res = await MenuService.UpdateMenuAsync(menuNode);
+                // Mostro il messaggio di avvenuto salvataggio
+                await toast.ShowAsync(new ToastModel
+                    {
+                        Title = "Success",
+                        Content = res,
+                        CssClass = "e-toast-success"
 
-   // Se voglio cancellare un menù
-   private async void Delete(int MenuID)
-   {
-      await MenuService.DeleteMenuAsync(MenuID); // Chiamo il comando di cancellazione passandogli il menù
-      GetMenues(); // Aggiorno poi la lista dei menù
+                    });
+            }
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
 
-      // [LUCA]:they are two variables with similar names, but I don't understand how they work
-      MultiVal = new string[] { };
-      MultiVals = new();
-      StateHasChanged();  // Aggiorno lo stato
-   }
+    private async Task HandleNodeClick(NodeClickEventArgs args)
+    {
+        try
+        {
+            int x = 0;
+            CodMenu = args.CodMenu; // Memorizzo il codice del menù
 
-   // Selezione di una delle voci del menù a tendina
-   private async Task HandleMenuChoice(int choice)
-   {
-      try
-      {
-         menuNode = new Menu(); // Creo una variabile che contiene il menù (che è vuota qui)
-         switch (choice)
-         {
-            case 1:
-               // Cancellazione del menù
-               Delete(CodMenu);
-               break;
-            case 2:
-               // Aggiunta di un fratello (passo il menù del quale voglio inserire un fratello)
-               var m = await MenuService.GetMenuByID(CodMenu);
-               if (m != null) // Se lo trovo
-               {
-                  CodMenuPadre = m.CodMenuPadre; // Recupero il padre
-               }
-               break;
-            case 3:
-               // Se voglio aggiungere un figlio mi memorizzo il padre del menù che ho selezionato
-               CodMenuPadre = CodMenu;
-               break;
-         }
-      }
-      catch (Exception ex)
-      {
-         throw;
-      }
-   }
+            if (args.MouseEventArgs.Button == 2)  // Controllo se ho premuto il secondo tasto del mouse
+            {
+                // Se si allora uso il comando per lanciare un javascript che apre il menù a popup
+                await JSRuntime.InvokeAsync<string>("showContextMenu", args.MouseEventArgs.ClientX, args.MouseEventArgs.ClientY);
+            }
+            else
+            {
+                // Se invece ho premuto il tasto sinistro seleziono il menù premuto
+                var node = await MenuService.GetMenuByID(CodMenu);
+                if (node != null) // Se è diverso da null
+                {
+                    menuNode = node; // mi memorizzo il menù selezionato
+                    CodMenuPadre = node.CodMenuPadre; // Memorizzo il codice del menù padre
+                    if (menuNode.MenuRuoloLista != null && menuNode.MenuRuoloLista.Count > 0) // Se trovo dei ruoli
+                    {
+                        // Per ogni ruolo del menù selezionato
+                        foreach (var i in menuNode.MenuRuoloLista)
+                        {
+                            MultiVals.Add(i.RoleId); // Aggiungo il ruolo alla lista
+                        }
+                        MultiVal = MultiVals.ToArray(); // [LUCA] i don't undestand this
+                    }
+                    else
+                    {
+                        MultiVal = new string[] { }; // [LUCA] i don't undestand this
+                        MultiVals = new(); // [LUCA] i don't undestand this
+                    }
+                }
+            }
+            StateHasChanged(); // Aggiorno la pagina
+        }
+        catch (Exception ex)
+        {
+            // Handle the exception
+            throw;
+        }
+    }
 
-   // [LUCA]:  what is this lesson for?
-  
+    // Se voglio cancellare un menù
+    private async void Delete(int MenuID)
+    {
+        await MenuService.DeleteMenuAsync(MenuID); // Chiamo il comando di cancellazione passandogli il menù
+        GetMenues(); // Aggiorno poi la lista dei menù
+
+        // [LUCA]:they are two variables with similar names, but I don't understand how they work
+        MultiVal = new string[] { };
+        MultiVals = new();
+        StateHasChanged();  // Aggiorno lo stato
+    }
+
+    // Selezione di una delle voci del menù a tendina
+    private async Task HandleMenuChoice(int choice)
+    {
+        try
+        {
+            menuNode = new Menu(); // Creo una variabile che contiene il menù (che è vuota qui)
+            switch (choice)
+            {
+                case 1:
+                    // Cancellazione del menù
+                    Delete(CodMenu);
+                    break;
+                case 2:
+                    // Aggiunta di un fratello (passo il menù del quale voglio inserire un fratello)
+                    var m = await MenuService.GetMenuByID(CodMenu);
+                    if (m != null) // Se lo trovo
+                    {
+                        CodMenuPadre = m.CodMenuPadre; // Recupero il padre
+                    }
+                    break;
+                case 3:
+                    // Se voglio aggiungere un figlio mi memorizzo il padre del menù che ho selezionato
+                    CodMenuPadre = CodMenu;
+                    break;
+            }
+        }
+        catch (Exception ex)
+        {
+            throw;
+        }
+    }
+
+    // [LUCA]:  what is this lesson for?
+    //[XXXX]: Completed
+
 }

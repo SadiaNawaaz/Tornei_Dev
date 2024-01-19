@@ -401,7 +401,7 @@
                         string fullPath = anagrafica.Immagine;
                         string fileName = System.IO.Path.GetFileName(fullPath);
                         // [LUCA]: We don't use paths in the program we read the path from the appsettings.json file
-
+                        //[XXXX]:Completed
                         var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
                         var Mittente = Configurazione.GetValue<string>("Percorsi:Profilo");
                         imageModel.ImageName = fileName;

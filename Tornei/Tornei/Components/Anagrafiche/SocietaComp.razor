@@ -326,6 +326,7 @@
 
                     // imposto il path dell'immagine
                     // [LUCA]: don't use the path put in the code, read it from app settings with this command
+                    // [XXXX]:Completed
                     var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
                     var Mittente = Configurazione.GetValue<string>("Percorsi:Profilo");
                     imageModel.ImageName = fileName;
@@ -336,6 +337,7 @@
 
 
                     StateHasChanged(); // [LUCA]: StateHasChanged this function is also called after the GetProfile function, so I don't think it is necessary to call it inside too, or am I wrong see  procedure OnAfterRender
+                    //[XXXX]: If we don't change state here then it will not update the object
                 }
             }
         }
@@ -351,6 +353,7 @@
         try
         {
             // [LUCA]: the logo is not a mandatory field, if I don't add it I save it and point the record to the default logo.
+            //[XXXX]: Complete
             // Controllo se nel modello immagine ho qualcosa, se non ho nulla mando un messaggio di errore
             // if (imageModel.ImageName == null)
             // {
