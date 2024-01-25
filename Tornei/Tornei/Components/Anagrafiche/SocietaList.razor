@@ -19,119 +19,108 @@
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 
 <div class="container">
-    <h3>Societa</h3>
-    <div class="card">
-        <div class="heading">Societa List</div>
-        <div>
-            <SfGrid DataSource="@_SocietaList"  EnableVirtualization="true" AllowPaging="true" EnableColumnVirtualization="true">
-                <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
-                <GridEditSettings AllowAdding="true" AllowDeleting="true"></GridEditSettings>
-                <GridEvents TValue="Societa"></GridEvents>
-                <GridColumns>
-                    <GridColumn Width="160" TextAlign="TextAlign.Center" HeaderText="Actions">
-                        <Template>
-                            @{
-                                var currentItem = context as Societa;
-                            }
-                            <button class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
-                                    @onclick="(e) => EditNavigation(currentItem, e)">
-                                <i class="fa-solid fa-pencil"></i>
-                            </button>
-                            <button class="btn btn-danger" @onclick="(e) => DeleteItem(currentItem, e)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                <i class="fa-regular fa-trash-can"></i>
-                            </button>
-                        </Template>
-                    </GridColumn>
-                    <GridColumn Field=@nameof(Societa.CodiceDestinatario) HeaderText="Codice Destinatario" Width="160"></GridColumn>
-                    <GridColumn Field=@nameof(Societa.DesSocieta) HeaderText="DesSocieta" Width="160"></GridColumn>
-                    <GridColumn Field=@nameof(Societa.CodComune) HeaderText="Cod Comune" Width="160"></GridColumn>
-                    <GridColumn Field=@nameof(Societa.Telefono) HeaderText="PartitaIva" TextAlign="TextAlign.Right" Width="160"></GridColumn>
-                    <GridColumn Field=@nameof(Societa.Cellulare) HeaderText="Telefono" TextAlign="TextAlign.Right" Width="160"></GridColumn>
-                    <GridColumn Field=@nameof(Societa.Mail) HeaderText="Telefono" TextAlign="TextAlign.Right" Width="160"></GridColumn>
-                </GridColumns>
-            </SfGrid>
-        </div>
-    </div>
-    <div class="form-group mt-3 d-flex justify-content-start w-8">
-        <button type="submit" class="btn btn-primary">Save</button>
-    </div>
+   <h3>Societa</h3>
+   <div class="card">
+      <div class="heading">Societa List</div>
+      <div>
+         <SfGrid DataSource="@_SocietaList" EnableVirtualization="true" AllowPaging="true" EnableColumnVirtualization="true">
+            <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
+            <GridEditSettings AllowAdding="true" AllowDeleting="true"></GridEditSettings>
+            <GridEvents TValue="Societa"></GridEvents>
+            <GridColumns>
+               <GridColumn Width="160" TextAlign="TextAlign.Center" HeaderText="Actions">
+                  <Template>
+                     @{
+                        var currentItem = context as Societa;
+                     }
+                     <button class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                             @onclick="(e) => EditNavigation(currentItem, e)">
+                        <i class="fa-solid fa-pencil"></i>
+                     </button>
+                     <button class="btn btn-danger" @onclick="(e) => DeleteItem(currentItem, e)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                        <i class="fa-regular fa-trash-can"></i>
+                     </button>
+                  </Template>
+               </GridColumn>
+               <GridColumn Field=@nameof(Societa.CodiceDestinatario) HeaderText="Codice Destinatario" Width="160"></GridColumn>
+               <GridColumn Field=@nameof(Societa.DesSocieta) HeaderText="DesSocieta" Width="160"></GridColumn>
+               <GridColumn Field=@nameof(Societa.CodComune) HeaderText="Cod Comune" Width="160"></GridColumn>
+               <GridColumn Field=@nameof(Societa.Telefono) HeaderText="PartitaIva" TextAlign="TextAlign.Right" Width="160"></GridColumn>
+               <GridColumn Field=@nameof(Societa.Cellulare) HeaderText="Telefono" TextAlign="TextAlign.Right" Width="160"></GridColumn>
+               <GridColumn Field=@nameof(Societa.Mail) HeaderText="Telefono" TextAlign="TextAlign.Right" Width="160"></GridColumn>
+            </GridColumns>
+         </SfGrid>
+      </div>
+   </div>
+   <div class="form-group mt-3 d-flex justify-content-start w-8">
+      <button type="submit" class="btn btn-primary">Save</button>
+   </div>
 </div>
 
 @code {
-    @inject SocietaService SocietaService;
+   // Lista dei servizi
+   @inject SocietaService SocietaService;
 
-   
-    private SfToast toast;
 
-    List<Societa> _SocietaList = new();
+   private SfToast toast; // Popup
 
-    // Command click handler for all command buttons in the grid
-    public Societa SelectedData = new Societa();
+   List<Societa> _SocietaList = new();
 
-    // Cancello La società
-    private async void DeleteItem(Societa item, MouseEventArgs e)
-    {
-        // Imposto la società selezionata
-        // [LUCA] can we simplify here like this ?
-        //[XXXX] Completed
-        // bbool res = await SocietaService.DeleteSocietaAsync(item.CodAnagrafica);
-        // start
-        
-        bool res = await SocietaService.DeleteSocietaAsync(item.CodSocieta);
-        // end
-        // Se le cancellazione è andata a buon fine
-        if (res == true)
-        {
-            // Messaggio di successo
-            await toast.ShowAsync(new ToastModel
-                {
-                    Title = "Success",
-                    Content = "Record Deleted Successfully.",
-                    CssClass = "e-toast-success"
-                });
-        }
-        else
-        {
-            // Se invece ha avuto esito negativo mando l'errore
-            await toast.ShowAsync(new ToastModel
-                {
-                    Title = "Error",
-                    Content = "Something Went Wrong. ",
-                    CssClass = "e-toast-danger"
-                });
-        }
-        OnAfterRender(true); // Richiamo la funzione (dopo il redenr dell'oggetto)
-        StateHasChanged(); // Aggiorno lo stato
-    }
+   // Command click handler for all command buttons in the grid
+   public Societa SelectedData = new Societa();
 
-    // Dopo il primo render
-    protected override async void OnAfterRender(bool firstRender)
-    {
-        try
-        {
-            if (firstRender) // Lo eseguo solo la prima volta
+   // Cancello La società
+   private async void DeleteItem(Societa item, MouseEventArgs e)
+   {
+
+      // Cancello la società
+      bool res = await SocietaService.DeleteSocietaAsync(item.CodSocieta);
+      // Se le cancellazione è andata a buon fine
+      if (res == true)
+      {
+         // Messaggio di successo
+         await toast.ShowAsync(new ToastModel
             {
-                _SocietaList = await SocietaService.GetAllSocietaAsync(); // Carico la lista delle società
-                StateHasChanged(); // Aggiorno lo stato
-            }
-        }
-        catch (Exception)
-        {
-            throw;
-        }
-    }
+               Title = "Success",
+               Content = "Record Deleted Successfully.",
+               CssClass = "e-toast-success"
+            });
+      }
+      else
+      {
+         // Se invece ha avuto esito negativo mando l'errore
+         await toast.ShowAsync(new ToastModel
+            {
+               Title = "Error",
+               Content = "Something Went Wrong. ",
+               CssClass = "e-toast-danger"
+            });
+      }
+      OnAfterRender(true); // Richiamo la funzione (dopo il redenr dell'oggetto)
+      StateHasChanged(); // Aggiorno lo stato
+   }
 
-    // Vado in modifica
-    public void EditNavigation(Societa args, MouseEventArgs e)
-    {
-        // Imposto la società selezionata
-        // [LUCA] can we simplify here like this ?
-        //[XXXX] Completed
-        // navigationManager.NavigateTo($"/tornei/GestioneSocietaComp?CodSocieta=" +  item.CodAnagrafica);
-      
-        navigationManager.NavigateTo($"/tornei/GestioneSocietaComp?CodSocieta=" + args.CodSocieta);
-        // End
-        // what are these two commands for?
-     
-    }
+   // Dopo il primo render
+   protected override async void OnAfterRender(bool firstRender)
+   {
+      try
+      {
+         if (firstRender) // Lo eseguo solo la prima volta
+         {
+            _SocietaList = await SocietaService.GetAllSocietaAsync(); // Carico la lista delle società
+            StateHasChanged(); // Aggiorno lo stato
+         }
+      }
+      catch (Exception)
+      {
+         throw;
+      }
+   }
+
+   // Vado in modifica
+   public void EditNavigation(Societa args, MouseEventArgs e)
+   {
+      // Imposto la società selezionata
+      navigationManager.NavigateTo($"/tornei/GestioneSocietaComp?CodSocieta=" + args.CodSocieta);
+   }
 }

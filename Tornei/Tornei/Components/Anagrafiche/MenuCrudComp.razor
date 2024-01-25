@@ -22,7 +22,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3">
-            <!-- Your tree component goes here -->
+            <!-- Imposto lo spazio dove inserire il componente menù -->
             <div style="overflow-y:auto;height:90%;">
                 <ul class=" flex-grow-1 pe-3 px-3" style="background-color:whitesmoke;">
                     @if (menues != null && menues.Count > 0)
@@ -330,12 +330,13 @@
                         {
                             MultiVals.Add(i.RoleId); // Aggiungo il ruolo alla lista
                         }
-                        MultiVal = MultiVals.ToArray(); // [LUCA] i don't undestand this
+                        // array di richieste di componenti multivalore da associare e non da elencare, quindi ho convertito l'elenco in array.
+                        MultiVal = MultiVals.ToArray();
                     }
                     else
                     {
-                        MultiVal = new string[] { }; // [LUCA] i don't undestand this
-                        MultiVals = new(); // [LUCA] i don't undestand this
+                        MultiVal = new string[] { };
+                        MultiVals = new();
                     }
                 }
             }
@@ -354,7 +355,7 @@
         await MenuService.DeleteMenuAsync(MenuID); // Chiamo il comando di cancellazione passandogli il menù
         GetMenues(); // Aggiorno poi la lista dei menù
 
-        // [LUCA]:they are two variables with similar names, but I don't understand how they work
+        // Uno è un vettore, e l'altro e un elenco di valori da associare al componente syncfusion multi select
         MultiVal = new string[] { };
         MultiVals = new();
         StateHasChanged();  // Aggiorno lo stato
@@ -391,8 +392,4 @@
             throw;
         }
     }
-
-    // [LUCA]:  what is this lesson for?
-    //[XXXX]: Completed
-
 }

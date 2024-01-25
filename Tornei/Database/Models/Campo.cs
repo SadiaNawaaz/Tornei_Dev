@@ -31,7 +31,14 @@ public partial class Campo
     [ForeignKey("CodSocieta")]
     [InverseProperty("Campos")]
     public virtual Societa CodSocietaNavigation { get; set; } = null!;
-
+    //Lista delle possibili tipologie
+    // [LUCA] What purpose does this statement serve here? or rather if it is done here because it is redone again in "ListaDeCampo.razor", couldn't we refer to this? I want to avoid inserting string values ​​in multiple places because we could make mistakes in writing them or if we had to change we would have to do it in multiple places.
+    // campo.cs
+    // [NotMapped]
+    // public List<string> ListDeTipologia { get; set; } = new List<string>() { "Playing field", "Training field" };
+    // in ListaDeCampo.Razor
+    // public List<string> ListDeTipologia { get; set; } = new List<string>() { "Playing field", "Training field" };
+    // in my opinion in Listadecampo.razor we should refer to the statement made here
     //Development
     [NotMapped]
     public List<string> ListDeTipologia { get; set; } = new List<string>() { "Campo da gioco", "Campo di Allenamento"};

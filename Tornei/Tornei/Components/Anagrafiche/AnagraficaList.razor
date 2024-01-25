@@ -19,136 +19,116 @@
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 
 <div class="container">
-    <h3>Anagrafica</h3>
-    <div class="card">
-        <div class="heading">Anagrafica List</div>
-        <div>
-            <SfGrid DataSource="@_AnagraficaList" AllowPaging="true" EnableVirtualization="true" EnableColumnVirtualization="true">
-                <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
-                <GridEditSettings AllowAdding="true" AllowDeleting="true"></GridEditSettings>
-                <GridEvents TValue="Anagrafica"></GridEvents>
-                <GridColumns>
-                    <GridColumn Width="160" TextAlign="TextAlign.Center" HeaderText="Actions">
-                        <Template>
-                            @{
-                                var currentItem = context as Anagrafica;
-                            }
-                            <button class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
-                                    @onclick="(e) => EditNavigation(currentItem, e)">
-                                <i class="fa-solid fa-pencil"></i>
-                            </button>
-                            <button class="btn btn-danger" @onclick="(e) => DeleteItem(currentItem, e)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                <i class="fa-regular fa-trash-can"></i>
-                            </button>
-                        </Template>
-                    </GridColumn>
-                    <GridColumn Field=@nameof(Anagrafica.CodAnagrafica) HeaderText="CodSocieta" TextAlign="TextAlign.Center" Width="160"></GridColumn>
-                    <GridColumn Field=@nameof(Anagrafica.Cognome) HeaderText="CodSocieta" Width="160" TextAlign="TextAlign.Center"></GridColumn>
-                    <GridColumn Field=@nameof(Anagrafica.CodComuneDiNascita) HeaderText="DesSocieta" TextAlign="TextAlign.Center" Width="160"></GridColumn>
-                    <GridColumn Field=@nameof(Anagrafica.Telefono) HeaderText="PartitaIva" TextAlign="TextAlign.Center" Width="160"></GridColumn>
-                    <GridColumn Field=@nameof(Anagrafica.Cellulare) HeaderText="Telefono" TextAlign="TextAlign.Center" Width="160"></GridColumn>
-                    <GridColumn Field=@nameof(Anagrafica.Mail) HeaderText="Email" TextAlign="TextAlign.Center" Width="160"></GridColumn>
-                    <GridColumn Field=@nameof(Anagrafica.Mail) HeaderText="Email" TextAlign="TextAlign.Center" Width="160"></GridColumn>
-                </GridColumns>
-            </SfGrid>
-        </div>
-    </div>
+   <h3>Anagrafica</h3>
+   <div class="card">
+      <div class="heading">Anagrafica List</div>
+      <div>
+         <SfGrid DataSource="@_AnagraficaList" AllowPaging="true" EnableVirtualization="true" EnableColumnVirtualization="true">
+            <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
+            <GridEditSettings AllowAdding="true" AllowDeleting="true"></GridEditSettings>
+            <GridEvents TValue="Anagrafica"></GridEvents>
+            <GridColumns>
+               <GridColumn Width="160" TextAlign="TextAlign.Center" HeaderText="Actions">
+                  <Template>
+                     @{
+                        var currentItem = context as Anagrafica;
+                     }
+                     <button class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                             @onclick="(e) => EditNavigation(currentItem, e)">
+                        <i class="fa-solid fa-pencil"></i>
+                     </button>
+                     <button class="btn btn-danger" @onclick="(e) => DeleteItem(currentItem, e)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                        <i class="fa-regular fa-trash-can"></i>
+                     </button>
+                  </Template>
+               </GridColumn>
+               <GridColumn Field=@nameof(Anagrafica.CodAnagrafica) HeaderText="CodSocieta" TextAlign="TextAlign.Center" Width="160"></GridColumn>
+               <GridColumn Field=@nameof(Anagrafica.Cognome) HeaderText="CodSocieta" Width="160" TextAlign="TextAlign.Center"></GridColumn>
+               <GridColumn Field=@nameof(Anagrafica.CodComuneDiNascita) HeaderText="DesSocieta" TextAlign="TextAlign.Center" Width="160"></GridColumn>
+               <GridColumn Field=@nameof(Anagrafica.Telefono) HeaderText="PartitaIva" TextAlign="TextAlign.Center" Width="160"></GridColumn>
+               <GridColumn Field=@nameof(Anagrafica.Cellulare) HeaderText="Telefono" TextAlign="TextAlign.Center" Width="160"></GridColumn>
+               <GridColumn Field=@nameof(Anagrafica.Mail) HeaderText="Email" TextAlign="TextAlign.Center" Width="160"></GridColumn>
+               <GridColumn Field=@nameof(Anagrafica.Mail) HeaderText="Email" TextAlign="TextAlign.Center" Width="160"></GridColumn>
+            </GridColumns>
+         </SfGrid>
+      </div>
+   </div>
 
-    <div class="form-group mt-3 d-flex justify-content-start w-8">
-        <button type="submit" class="btn btn-primary">Save</button>
-    </div>
+   <div class="form-group mt-3 d-flex justify-content-start w-8">
+      <button type="submit" class="btn btn-primary">Save</button>
+   </div>
 </div>
 
 @code {
-    @inject AnagraficaService AnagraficaService;
+   // Imposto i servizi che utilizzo
+   @inject AnagraficaService AnagraficaService;
 
-  
-    private SfToast toast;
+      private SfToast toast; 
 
-    List<Anagrafica> _AnagraficaList = new();
+   List<Anagrafica> _AnagraficaList = new();
 
-    // Command click handler for all command buttons in the grid
-    public Anagrafica SelectedData = new Anagrafica();
+   // Command click handler for all command buttons in the grid
+   public Anagrafica SelectedData = new Anagrafica();
 
-    // Cancello l'anagrafica
-    private async void DeleteItem(Anagrafica item, MouseEventArgs e)
-    {
-        // Imposto l'anagrafica selezionata
-        // [LUCA] can we simplify here like this ?
-        //[XXXX] Completed
-        // bool res = await AnagraficaService.DeleteAnagraficaAsync(item.CodAnagrafica);
+   // Cancello l'anagrafica
+   private async void DeleteItem(Anagrafica item, MouseEventArgs e)
+   {
+      // Cancello l'anagrafica
+      bool res = await AnagraficaService.DeleteAnagraficaAsync(item.CodAnagrafica);
 
-        // start
-     
-        bool res = await AnagraficaService.DeleteAnagraficaAsync(item.CodAnagrafica);
-        // end
-
-        // Se le cancellazione è andata a buon fine
-        if (res == true)
-        {
-            // Messaggio di successo
-            await toast.ShowAsync(new ToastModel
-                {
-                    Title = "Success",
-                    Content = "Record Deleted Successfully.",
-                    CssClass = "e-toast-success"
-                });
-        }
-        else
-        {
-            // Se invece ha avuto esito negativo mando l'errore
-            await toast.ShowAsync(new ToastModel
-                {
-                    Title = "Error",
-                    Content = "Something Went Wrong. ",
-                    CssClass = "e-toast-danger"
-                });
-        }
-        OnAfterRender(true); // Richiamo la funzione (dopo il redenr dell'oggetto)
-        StateHasChanged(); // Aggiorno lo stato
-    }
-
-    // Dopo il primo render
-    protected override async void OnAfterRender(bool firstRender)
-    {
-        try
-        {
-            if (firstRender) // Lo eseguo solo la prima volta
+      // Se le cancellazione è andata a buon fine
+      if (res == true)
+      {
+         // Messaggio di successo
+         await toast.ShowAsync(new ToastModel
             {
-                _AnagraficaList = await AnagraficaService.GetAllAnagraficheAsync(); // Carico la lista delle anagrafiche
-                StateHasChanged(); // Aggiorno lo stato
-            }
-        }
-        catch (Exception)
-        {
-            throw;
-        }
-    }
+               Title = "Success",
+               Content = "Record Deleted Successfully.",
+               CssClass = "e-toast-success"
+            });
+      }
+      else
+      {
+         // Se invece ha avuto esito negativo mando l'errore
+         await toast.ShowAsync(new ToastModel
+            {
+               Title = "Error",
+               Content = "Something Went Wrong. ",
+               CssClass = "e-toast-danger"
+            });
+      }
+      OnAfterRender(true); // Richiamo la funzione (dopo il redenr dell'oggetto)
+      StateHasChanged(); // Aggiorno lo stato
+   }
 
-    // Vado in modifica
-    public void EditNavigation(Anagrafica args, MouseEventArgs e)
-    {
-        // Imposto l'anagrafica selezionata
-        // [LUCA] can we simplify here like this ?
-        //[XXXX]: Completed
-        // navigationManager.NavigateTo($"/tornei/GestioneAnagraficaComp?CodAnagrafica=" + item.CodAnagrafica);
-    
-        navigationManager.NavigateTo($"/tornei/GestioneAnagraficaComp?CodAnagrafica=" + args.CodAnagrafica);
-        // End
-        // what are these two commands for?
-        
-    }
+   // Dopo il primo render
+   protected override async void OnAfterRender(bool firstRender)
+   {
+      try
+      {
+         if (firstRender) // Lo eseguo solo la prima volta
+         {
+            _AnagraficaList = await AnagraficaService.GetAllAnagraficheAsync(); // Carico la lista delle anagrafiche
+            StateHasChanged(); // Aggiorno lo stato
+         }
+      }
+      catch (Exception)
+      {
+         throw;
+      }
+   }
 
-    // SEleziono la riga
-    public void RowDeSelectHandler(RowDeselectEventArgs<Anagrafica> args)
-    {
-        SelectedData = new Anagrafica(); // Imposto questa come anagrafica selezionata
-                                         // what are these two commands for?
-      
-    }
+   // Vado in modifica
+   public void EditNavigation(Anagrafica args, MouseEventArgs e)
+   {
+      // Imposto l'anagrafica selezionata
+      navigationManager.NavigateTo($"/tornei/GestioneAnagraficaComp?CodAnagrafica=" + args.CodAnagrafica);
 
-    // Vado alla gestione della'anagrafica
-    // [LUCA]: This function is never called serve
-    //[XXXX]: Completed
-  
+   }
+
+   // Seleziono la riga
+   public void RowDeSelectHandler(RowDeselectEventArgs<Anagrafica> args)
+   {
+      SelectedData = new Anagrafica(); // Imposto questa come anagrafica selezionata
+   }
 }

@@ -15,7 +15,6 @@ namespace Tornei.Helper
          {
             using (MailMessage Messaggio = new MailMessage())
             {
-               //var AppName = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("AppSettings")["APP_Name"];
                var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
                var Mittente = Configurazione.GetValue<string>("Mail:Mittente");
                var SMTP = Configurazione.GetValue<string>("Mail:SMTP");

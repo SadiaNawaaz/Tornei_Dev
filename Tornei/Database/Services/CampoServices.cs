@@ -23,18 +23,12 @@ namespace Database.Services
                 // Quando un codice viene restituito semplicemente senza modifiche o aggiunte, possiamo evitare i costi di tracciamento.
                 using (var context = new TorneiContext())
                 {
-                    var Campos = await context.Campos.AsNoTracking().ToListAsync();
+                    var Campos = await context.Campos.AsNoTracking().ToListAsync(); // Elenca tutti i campi
                     return Campos;
                 }
-                // Normalmente sarebbe così
-                // var comunes = await _dbContext.Comunes.ToListAsync();
-                // using (var context = new TorneiContext())
-
-
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

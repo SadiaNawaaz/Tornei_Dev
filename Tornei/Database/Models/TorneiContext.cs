@@ -22,7 +22,7 @@ public partial class TorneiContext : DbContext
     public virtual DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
 
     public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
-    public virtual DbSet<AspNetUserRoles> AspNetUserRoles {  get; set; }
+    public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
 
     public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
 
@@ -40,19 +40,19 @@ public partial class TorneiContext : DbContext
 
     public virtual DbSet<Societa> Societa { get; set; }
     public virtual DbSet<MenuDto> MenuDtos { get; set; }
-    public virtual DbSet<MenuHierarchyDto> MenuHierarchyDtos { get;set;}
+    public virtual DbSet<MenuHierarchyDto> MenuHierarchyDtos { get; set; }
     public virtual DbSet<MenuVistaDto> MenuVistaDtos { get; set; } //Menu Vista
     public virtual DbSet<PaginaHTML> PaginasHTML { get; set; }
-    
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Data Source=sql6030.site4now.net;Initial Catalog=db_a8b7d6_tornei;Persist Security Info=True;User ID=db_a8b7d6_tornei_admin;Password=Tornei2023.#;Connection Lifetime=0;MultipleActiveResultSets=True;TrustServerCertificate=True;");
 
-   protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<MenuHierarchyDto>().HasKey(e => e.CodMenu);
         modelBuilder.Entity<MenuDto>().HasNoKey();
         modelBuilder.Entity<MenuVistaDto>().HasNoKey();
-     //  modelBuilder.Entity<AspNetUserRoles>().HasNoKey();
+        //  modelBuilder.Entity<AspNetUserRoles>().HasNoKey();
         modelBuilder.Entity<MenuHierarchyDto>()
             .HasMany(m => m.Figli)
             .WithOne(m => m.Padre)

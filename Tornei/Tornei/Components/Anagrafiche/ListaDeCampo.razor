@@ -1,99 +1,119 @@
 ﻿@page "/tornei/ListaDecampo"
+
+@* Database *@
 @using Database.Models
 @using Database.Services
+
+@* Oggetti Syncfusion *@
+@using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.DropDowns
-@inject IWebHostEnvironment Environment
 @using Syncfusion.Blazor.Grids
 @using Syncfusion.Blazor.Notifications
-@using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.Spinner
+
+@* Gestione dei percorsi *@
+@inject IWebHostEnvironment Environment
+
+@* Navigazione *@
 @inject NavigationManager navigationManager
-<h3>ListaDeCampo</h3>
+
+<h3>Lista Campi</h3>
 
 <div class="col-lg-12 control-section">
-    <div class="content-wrapper">
-   <div class="row">
-            <SfGrid DataSource="@ListCampo" Toolbar="@(new List<string>() { "Add", "Delete", "Update", "Cancel" })" EnableVirtualization="true" EnableColumnVirtualization="true" AllowPaging="true">
-                <GridEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="EditMode.Batch"></GridEditSettings>
-                <GridColumns>
-                    <GridColumn Width="150" TextAlign="TextAlign.Center" HeaderText="Action">
-                        <Template>
-                            @{
-                                var currentItem = context as Campo;
-                            }
-                           
-                            <button class="btn btn-danger" @onclick="(e) => DeleteItem(currentItem, e)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                <i class="fa-regular fa-trash-can"></i>
-                            </button>
-                        </Template>
-                    </GridColumn>
-                    <GridColumn Field=@nameof(Campo.CodCampo) HeaderText="Add" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="140"></GridColumn>
-                    <GridColumn Field=@nameof(Campo.ListDeTipologia) HeaderText="Tipologia" EditType="EditType.DropDownEdit" TextAlign="TextAlign.Center" Width="150">
-                        <Template>
-                            @{
-                                var campo = context as Campo;
-                                var listDeTipologia = new List<string> { "Campo da gioco", "Campo di Allenamento" };
-                                <EjsDropDownList TValue="string" DataSource="listDeTipologia" Value="@campo?.ListDeTipologia"></EjsDropDownList>
-                            }
-                        </Template>
-                    </GridColumn>
-                    <GridColumn Field=@nameof(Campo.Nome) HeaderText="Nome" TextAlign="TextAlign.Center" Width="140"></GridColumn>
-                    <GridColumn Field=@nameof(Campo.NomeCustode) HeaderText="Custode" Type="ColumnType.String" TextAlign="TextAlign.Center" Width="160"></GridColumn>
-                    <GridColumn Field=@nameof(Campo.TelefonoCustode) HeaderText="TelefonoCustode" Type="ColumnType.String" TextAlign="TextAlign.Center" Width="150"></GridColumn>
-                    <GridColumn Field=@nameof(Campo.GeoLocalizzazione) HeaderText="GeoLocalizzazione" Type="ColumnType.String" TextAlign="TextAlign.Center" Width="150"></GridColumn>
-                </GridColumns>
-            </SfGrid>
-        </div>
-    </div>
+   <div class="content-wrapper">
+      <div class="row">
+         @* [LUCA] I need all grids to be responsive NO->Width="150" *@
+         <SfGrid DataSource="@ListCampo" Toolbar="@(new List<string>() { "Add", "Delete", "Update", "Cancel" })" EnableVirtualization="true" EnableColumnVirtualization="true" AllowPaging="true">
+            <GridEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="EditMode.Batch"></GridEditSettings>
+            <GridColumns>
+               <GridColumn Width="150" TextAlign="TextAlign.Center" HeaderText="Action">
+                  <Template>
+                     @{
+                        var currentItem = context as Campo;
+                     }
+                     <button class="btn btn-danger" @onclick="(e) => DeleteItem(currentItem, e)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                        <i class="fa-regular fa-trash-can"></i>
+                     </button>
+                  </Template>
+               </GridColumn>
+               <GridColumn Field=@nameof(Campo.CodCampo) HeaderText="Add" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="140"></GridColumn>
+               <GridColumn Field=@nameof(Campo.ListDeTipologia) HeaderText="Tipologia" EditType="EditType.DropDownEdit" TextAlign="TextAlign.Center" Width="150">
+                  <Template>
+                     @{
+                        var campo = context as Campo;
+                        // [LUCA] I don't want to use text strings scattered throughout the code, this variable must be declared in only one place in the program and always referenced to avoid that on one side
+                        // I write in one way and on the other in a different way, and if tomorrow you want to add a new typology I only have to do it in one place. great is to do it in the object declaration in "Campo.cs"
+                        var listDeTipologia = new List<string> { "Campo da gioco", "Campo di Allenamento" };
+                        <EjsDropDownList TValue="string" DataSource="listDeTipologia" Value="@campo?.ListDeTipologia"></EjsDropDownList>
+                     }
+                  </Template>
+               </GridColumn>
+               <GridColumn Field=@nameof(Campo.Nome) HeaderText="Nome Campo" TextAlign="TextAlign.Center" Width="140"></GridColumn>
+               <GridColumn Field=@nameof(Campo.NomeCustode) HeaderText="Custode" Type="ColumnType.String" TextAlign="TextAlign.Center" Width="160"></GridColumn>
+               <GridColumn Field=@nameof(Campo.TelefonoCustode) HeaderText="Tel. Custode" Type="ColumnType.String" TextAlign="TextAlign.Center" Width="150"></GridColumn>
+               <GridColumn Field=@nameof(Campo.GeoLocalizzazione) HeaderText="GeoLocalizzazione" Type="ColumnType.String" TextAlign="TextAlign.Center" Width="150"></GridColumn>
+            </GridColumns>
+         </SfGrid>
+      </div>
+   </div>
 </div>
 
 @code {
-    @inject CampoServices _CampoServices;
-    private List<string> ToolbarItems = new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" };
-    List<Campo> ListCampo = new();
-    private SfToast toast;
-    public List<string> ListDeTipologia { get; set; } = new List<string>() { "Campo da gioco", "Campo di Allenamento" };
-    protected override async void OnAfterRender(bool firstRender)
-    {
-        try
-        {
-            if (firstRender)
+   // Lista dei servizi che utilizzo nella pagina
+   @inject CampoServices _CampoServices;
+
+   // Toolbar della griglia
+   private List<string> ToolbarItems = new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" };
+
+   // Oggetto in memoria per la lista dei campi
+   List<Campo> ListCampo = new();
+
+   private SfToast toast; // Messaggi
+
+   // [LUCA] I don't want to use text strings scattered throughout the code, this variable must be declared in only one place in the program and always referenced to avoid that on one side
+   // I write in one way and on the other in a different way, and if tomorrow you want to add a new typology I only have to do it in one place. great is to do it in the object declaration in "Campo.cs"
+   public List<string> ListDeTipologia { get; set; } = new List<string>() { "Campo da gioco", "Campo di Allenamento" };
+
+   protected override async void OnAfterRender(bool firstRender)
+   {
+      try
+      {
+         if (firstRender) // Al primo caricamento
+         {
+            ListCampo = await _CampoServices.GetCampoAsync(); // Carico la lista dei campi
+            StateHasChanged(); // Aggiorno los tato
+         }
+      }
+      catch (Exception)
+      {
+         throw;
+      }
+   }
+
+   private async void DeleteItem(Campo item, MouseEventArgs e)
+   {
+      bool res = true;
+      if (res == true)
+      {
+         // Messaggio di successo
+         await toast.ShowAsync(new ToastModel
             {
-                ListCampo = await _CampoServices.GetCampoAsync();
-                StateHasChanged();
-            }
-        }
-        catch (Exception)
-        {
-
-            throw;
-        }
-    }
-
-    private async void DeleteItem(Campo item, MouseEventArgs e)
-    {
-        bool res = true;
-        if (res == true)
-        {
-            // Messaggio di successo
-            await toast.ShowAsync(new ToastModel
-                {
-                    Title = "Success",
-                    Content = "Record Deleted Successfully.",
-                    CssClass = "e-toast-success"
-                });
-        }
-        else
-        {
-            // Se invece ha avuto esito negativo mando l'errore
-            await toast.ShowAsync(new ToastModel
-                {
-                    Title = "Error",
-                    Content = "Something Went Wrong. ",
-                    CssClass = "e-toast-danger"
-                });
-        }
-        OnAfterRender(true); // Richiamo la funzione (dopo il redenr dell'oggetto)
-        StateHasChanged(); // Aggiorno lo stato
-    }
+               Title = "Success",
+               Content = "Record Deleted Successfully.",
+               CssClass = "e-toast-success"
+            });
+      }
+      else
+      {
+         // Se invece ha avuto esito negativo mando l'errore
+         await toast.ShowAsync(new ToastModel
+            {
+               Title = "Error",
+               Content = "Something Went Wrong. ",
+               CssClass = "e-toast-danger"
+            });
+      }
+      OnAfterRender(true); // Richiamo la funzione (dopo il render dell'oggetto)
+      StateHasChanged(); // Aggiorno lo stato
+   }
 }

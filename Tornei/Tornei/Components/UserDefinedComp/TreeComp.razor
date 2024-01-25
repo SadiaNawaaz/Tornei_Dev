@@ -10,8 +10,6 @@
    </NavLink>
 
    @* Se ha figli *@
-   @* [Luca]: Mostrafigli not exist *@
-   @* @if (MenuNode.Figli?.Any() == true && MenuNode.MostraFigi) *@
    @if (MenuNode.Figli?.Any() == true)
    {
       @* Creo il sottomenù e mostri ogni figlio richiamando la procedura *@
@@ -37,7 +35,6 @@
          var nodeClickArgs = new NodeClickEventArgs { MouseEventArgs = args, CodMenu = MenuNode.CodMenu };
          await OnNodeClick.InvokeAsync(nodeClickArgs);
          await Task.Delay(10); // Ritarda per una breve durata per consentire al componente principale di elaborare l'evento
-                               //StateHasChanged();  // Manually trigger a re-render
       }
       catch (Exception)
       {

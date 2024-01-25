@@ -5,7 +5,7 @@
 @* Oggetti Syncfusion *@
 @using Syncfusion.Blazor.DropDowns
 
-@* [LUCA]: What is it for? I can't find it mentioned anywhere *@
+@* Creo uno spazio dove inserire il mio componente *@
 @using Tornei.Components.UserDefinedComp
 
 @* Navigazione *@
@@ -145,9 +145,9 @@
    {
         // trova il menù di livello inferiore ma serve il valore del submenues?
         var node = menues.FirstOrDefault(x => x.CodMenu == menucode);
-        if (node != null)
+      if (node != null) // Se lo trovo
         {
-            SelectedMainMenu = node.DesMenu;
+         SelectedMainMenu = node.DesMenu; // Memorizzo la sua descrizione
         }
         submenues = await MenuService.GetNextLevelMenuItems(LoginUserId, menucode);
       StateHasChanged();  // Aggiorno lo stato

@@ -18,6 +18,16 @@ public partial class MenuRuolo
 
     public int CodMenu { get; set; }
 
+    // [LUCA]
+    // between STARD and END you find that two links to different tables have been called "CodMenuNavigation"
+    // and the other "Role"
+    // We should use a common and always the same rule to assign these names.
+    // When the system creates them as standard by calling them with the name of the field and adding "Navigation" we should always use this rule in my opinion.
+    // Look at the example I gave you
+    // [ForeignKey("CodMenu")]
+    // [InverseProperty("MenuRuolo")]
+    // public virtual AspNetRole AspNetRoleNavigation { get; set; } = null!;
+    // START
     [ForeignKey("CodMenu")]
     public virtual Menu CodMenuNavigation { get; set; } = null!;
 

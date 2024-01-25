@@ -98,8 +98,12 @@
                 <div class="form-group">
                     @* [LUCA]: Manage with the onkeypress="" event the fact that you can only enter numbers *@
                     @* [XXXX] this is blazor form validation and recomended as this is more secure , this is recomended but if you say we can use java script validation *@
-                    <InputText id="Telefono" @bind-Value="anagrafica.Telefono" class="form-control" />
-                    <ValidationMessage For="@(() => anagrafica.Telefono)" />
+                   
+                    <input type="text" maxlength="15" id="Telefono" @oninput="validateTelefun" @bind="anagrafica.Telefono" class="form-control" />
+                    @if (ValidateTelefun != null)
+                    {
+                        <label style="color:red">@ValidateTelefun</label>
+                    }
                 </div>
             </div>
         </div>
@@ -113,9 +117,11 @@
             <div class="col-md-8 mb-1">
                 <div class="form-group">
                     @* [LUCA]: Manage with the onkeypress="" event the fact that you can only enter numbers *@
-                    <InputText id="Cellulare" @onkeypress="@(e => ValidateNumber(anagrafica.Cellulare))" @bind-Value="anagrafica.Cellulare" class="form-control" />
-                    <span class="text-danger">@errorMessage</span>
-                    <ValidationMessage For="@(() => anagrafica.Cellulare)" />
+                    <input type="text" maxlength="15" id="Cellulare" @oninput="validateCellular" @bind="anagrafica.Cellulare" class="form-control" />
+                    @if (errorMessage != null)
+                    {
+                        <label style="color:red">@errorMessage</label>
+                    }
                 </div>
             </div>
         </div>
@@ -231,9 +237,8 @@
             <div class="col-md-8">
                 <div class="form-group">
                     <InputFile OnChange="HandleFileChange" class="form-control" />
-                    @* [LUCA]: what the following code does
-                    Start
-                    *@
+                    @* [LUCA]: what the following code does *@
+                    @* Se il file esiste *@
                     @if (fileExists)
                     {
                         <img src="@desiredPath" alt="Selected Image" style="max-width: 300px; max-height: 300px;" />
@@ -243,7 +248,6 @@
                         <img src="@($"data:image/png;base64,{Convert.ToBase64String(imageModel.ImageData)}")" alt="Scegli immagine" style="max-width: 300px; max-height: 300px; margin-right:12px" />
                         <button style="margin:5px" class="btn btn-danger" @onclick="DeleteImage" type="button">Delete Image</button>
                     }
-                    @* end *@
                 </div>
             </div>
         </div>
@@ -284,6 +288,8 @@
 
     @inject ComuneService comuneService;
     @inject AnagraficaService anagraficaService ;
+    @inject ValidationServices Validation;
+
 
     private ImageModel imageModel = new ImageModel();
 
@@ -292,6 +298,7 @@
     List<Comune> ComuneList = new List<Comune>();
     private SfToast toast;
     string desiredPath;
+
     bool fileExists;
 
     // Inizializzazione
@@ -301,16 +308,11 @@
     // Inizializzazione pagina
     protected override void OnInitialized()
     {
-        // [LUCA]:
-        // Are you sure you need a procedure to indicate showing the spinner?
-        // Shouldn't it be better to set the message (object name) here.visible=true?
         ShowSppiner(); //Mostra rotellina
 
         // Uso la virtualizzazione blazor per evitare di caricare la query competa, in pratica carica solo un po di record alla volta
         anagrafica.DataDiNascita = DateOnly.FromDateTime(DateTime.Now);
         this.ComuneList = Enumerable.Range(1, 150).Select(i => new Comune()).ToList();
-
-
 
         // Conferto l'url di navigazione
         var uri = navigationManager.ToAbsoluteUri(navigationManager.Uri);
@@ -320,7 +322,6 @@
             // Se non ho alcun codice passato importo a 0 l'anagrafica
             if (string.IsNullOrEmpty(id))
             {
-
                 CodAnagrafica = 0;
             }
             else
@@ -330,8 +331,6 @@
             }
         }
     }
-
-
 
     protected override async void OnAfterRender(bool firstRender)
     {
@@ -371,15 +370,13 @@
                     string fullPath = anagrafica.Immagine; // Recupero il percorso dell'immagine
                     string fileName = System.IO.Path.GetFileName(fullPath); // Dal percorso memorizzato recupero il percorso completo
 
-
+                    // Trovo il percorso dove salvare
                     var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-                    var Mittente = Configurazione.GetValue<string>("Percorsi:Profilo");
-                    imageModel.ImageName = fileName;
-                    desiredPath = Mittente + "\\" + imageModel.ImageName;
-                    fileExists = System.IO.File.Exists(fullPath);
-
-                    StateHasChanged();
-
+                    var Percorso = Configurazione.GetValue<string>("Percorsi:Profilo");
+                    imageModel.ImageName = fileName; // Recupero il nome del file
+                    desiredPath = Percorso + "\\" + imageModel.ImageName; // Aggiungo il nome del file
+                    fileExists = System.IO.File.Exists(fullPath); // Salvo su disco
+                    StateHasChanged(); // Aggiorno lo stato
                 }
             }
             else
@@ -390,7 +387,6 @@
                 var userid = encodedUserId?.Replace("\"", "");
                 if (userid != null)
                 {
-                    // userid = "fca9bf6f-b554-48e2-a8cc-9462b9f32145";
                     var anarg = await anagraficaService.GetAnagraficaByUserIdAsync(userid.ToString());
                     if (anarg != null)
                     {
@@ -400,25 +396,19 @@
 
                         string fullPath = anagrafica.Immagine;
                         string fileName = System.IO.Path.GetFileName(fullPath);
-                        // [LUCA]: We don't use paths in the program we read the path from the appsettings.json file
-                        //[XXXX]:Completed
+                        // Trovo il percorso dove salvare
                         var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-                        var Mittente = Configurazione.GetValue<string>("Percorsi:Profilo");
-                        imageModel.ImageName = fileName;
-                        desiredPath = Mittente + "\\" + imageModel.ImageName;
-                      
-                       fileExists = System.IO.File.Exists(fullPath);
-                      
-                      
+                        var Percorso = Configurazione.GetValue<string>("Percorsi:Profilo");
+                        imageModel.ImageName = fileName; // Recupero il nome del file
+                        desiredPath = Percorso + "\\" + imageModel.ImageName; // Aggiungo il nome del file
+                        fileExists = System.IO.File.Exists(fullPath); // Salvo su disco
                         StateHasChanged(); // Imposto lo stato in cambiato
-
                     }
                 }
             }
         }
         catch (Exception)
         {
-
             throw;
         }
     }
@@ -497,9 +487,6 @@
             imageModel.ImageName = e.File.Name; // Nel campo nome ci metto il nome dell'immagine
             desiredPath = null;
             StateHasChanged(); // Notifica al componente che il suo stato è cambiato. Quando applicabile, questo lo farà fa sì che il componente venga nuovamente renderizzato.
-
-            // Notifica al componente che il suo stato è cambiato. Quando applicabile, questo lo farà fa sì che il componente venga nuovamente renderizzato.
-            StateHasChanged();
         }
         catch (Exception ex)
         {
@@ -525,25 +512,38 @@
     {
         this.visible = false;
     }
-    private string errorMessage = "";
 
-    private void ValidateNumber(string inputValue)
+
+    // [LUCA]
+    // this is the code of the function that checks whether the pressed key is a number, if it is it leaves it, if it is not it cancels it.
+    // function SoloNumeriInteri(Evento)
+    // {
+    //    var Carattere = (Evento.which) ? Evento.which : Evento.keyCode;
+    //    if (Carattere > 31 && (Carattere < 48 || Carattere > 57))
+    //    {
+    //       return false;
+    //    }
+    //    return true;
+    // }
+    // In my opinion, the procedure below should be modified and MOVED to the "Common Procedures" section as
+    // it will be recalled from every page of the project that needs it.
+    private string errorMessage = "";
+    private string ValidateTelefun = "";
+
+
+
+    public void validateTelefun(ChangeEventArgs e)
     {
-        // Use InvokeAsync to run the asynchronous logic
-        InvokeAsync(async () =>
-        {
-            if (int.TryParse(inputValue, out _))
-            {
-                // It's a valid number
-                errorMessage = "";
-            }
-            else
-            {
-                // It's not a valid number
-                errorMessage = "Please enter a valid number.";
-            }
-        });
+        string inputValue = e.Value.ToString();
+        ValidateTelefun = Validation.ValidateNumber(inputValue);
+        StateHasChanged();
+    }
+    public void validateCellular(ChangeEventArgs e)
+    {
+        string inputValue = e.Value.ToString();
+        errorMessage = Validation.ValidateNumber(inputValue);
+        StateHasChanged();
+
     }
 
-   
 }

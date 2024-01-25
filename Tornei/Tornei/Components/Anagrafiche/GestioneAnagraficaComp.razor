@@ -101,9 +101,11 @@
                             <div class="form-group">
                                 @* [LUCA]: Manage with the onkeypress="" event the fact that you can only enter numbers *@
                                 @*    [XXXX] this is blazor form validation and recomended as this is more secure , this is recomended but if you say we can use java script validation *@
-                                <InputText id="Telefono" @bind-Value="anagrafica.Telefono" class="form-control" />
-
-                                <ValidationMessage For="@(() => anagrafica.Telefono)" />
+                                <input type="text" maxlength="15" id="Telefono" @oninput="validateTelefun" @bind="anagrafica.Telefono" class="form-control" />
+                                @if (ValidateTelefun != null)
+                                {
+                                    <label style="color:red">@ValidateTelefun</label>
+                                }
                             </div>
                         </div>
                     </div>
@@ -118,9 +120,11 @@
                             <div class="form-group">
                                 @* [LUCA]: Manage with the onkeypress="" event the fact that you can only enter numbers *@
                                 @*[XXXX]: Completed*@
-                                <InputText id="Cellulare" @onkeypress="@(e => ValidateNumber(anagrafica.Cellulare))" @bind-Value="anagrafica.Cellulare" class="form-control" />
-                                <span class="text-danger">@errorMessage</span>
-                                <ValidationMessage For="@(() => anagrafica.Cellulare)" />
+                                <input type="text" maxlength="15" id="Cellulare" @oninput="validateCellular" @bind="anagrafica.Cellulare" class="form-control" />
+                                @if (errorMessage != null)
+                                {
+                                    <label style="color:red">@errorMessage</label>
+                                }
                             </div>
                         </div>
                     </div>
@@ -301,7 +305,7 @@
 
     @inject ComuneService comuneService;
     @inject AnagraficaService anagraficaService ;
-
+    @inject ValidationServices Validation;
     public string[] MultiVal { get; set; } = new string[] { };
     public List<string> MultiVals { get; set; } = new List<string>();
     List<AspNetRole> roles = new List<AspNetRole>();
@@ -396,15 +400,13 @@
                     string fullPath = anagrafica.Immagine;
                     string fileName = System.IO.Path.GetFileName(fullPath);
 
-
+                    // Trovo il percorso dove salvare
                     var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-                    var Mittente = Configurazione.GetValue<string>("Percorsi:Profilo");
-                    imageModel.ImageName = fileName;
-                    desiredPath = Mittente + "\\" + imageModel.ImageName;
-                    fileExists = System.IO.File.Exists(fullPath);
-
-                    StateHasChanged();
-
+                    var Percorso = Configurazione.GetValue<string>("Percorsi:Profilo");
+                    imageModel.ImageName = fileName; // Recupero il nome del file
+                    desiredPath = Percorso + "\\" + imageModel.ImageName; // Aggiungo il nome del file
+                    fileExists = System.IO.File.Exists(fullPath); // Salvo su disco
+                    StateHasChanged(); // Aggiorno lo stato
                 }
             }
             else
@@ -415,7 +417,6 @@
                 var userid = encodedUserId?.Replace("\"", "");
                 if (userid != null)
                 {
-                    // userid = "fca9bf6f-b554-48e2-a8cc-9462b9f32145";
                     var anarg = await anagraficaService.GetAnagraficaByUserIdAsync(userid.ToString());
                     if (anarg != null)
                     {
@@ -425,14 +426,18 @@
 
                         string fullPath = anagrafica.Immagine;
                         string fileName = System.IO.Path.GetFileName(fullPath);
-                        
-                        var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-                        var Mittente = Configurazione.GetValue<string>("Percorsi:Profilo");
-                        imageModel.ImageName = fileName;
-                        desiredPath = Mittente + "\\" + imageModel.ImageName;
-                        fileExists = System.IO.File.Exists(fullPath);
 
-                        StateHasChanged();
+                        // [LUCA]: this code is repeated several times, isn't it better to use a procedure to call passing the parameters
+                        // instead of repeating it every time? from start to end
+                        // START
+                        // Trovo il percorso dove salvare
+                        var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+                        var Percorso = Configurazione.GetValue<string>("Percorsi:Profilo");
+                        imageModel.ImageName = fileName; // Recupero il nome del file
+                        desiredPath = Percorso + "\\" + imageModel.ImageName; // Aggiungo il nome del file
+                        fileExists = System.IO.File.Exists(fullPath); // Salvo su disco
+                        StateHasChanged(); // Aggiorno lo stato
+                                           // END
 
                     }
                 }
@@ -520,10 +525,6 @@
         try
         {
             // Carico l'immagine dal file upload al modello
-            // var imageBytes = new byte[e.File.Size];
-            // await e.File.OpenReadStream().ReadAsync(imageBytes);
-            // imageModel.ImageData = imageBytes;
-            // imageModel.ImageName = e.File.Name;
             int filesize = 10051200;
             using var memorystream = new MemoryStream();
             await e.File.OpenReadStream(filesize).CopyToAsync(memorystream);
@@ -531,10 +532,7 @@
             imageModel.ImageData = imageBytes;
             imageModel.ImageName = e.File.Name;
             desiredPath = null;
-            StateHasChanged();
-
-            // Notifica al componente che il suo stato è cambiato. Quando applicabile, questo lo farà fa sì che il componente venga nuovamente renderizzato.
-            StateHasChanged();
+            StateHasChanged(); // Aggiorno lo stato
         }
         catch (Exception ex)
         {
@@ -548,33 +546,47 @@
         imageModel.ImageName = null;
         StateHasChanged(); // Notifica al componente che il suo stato è cambiato. Quando applicabile, questo lo farà fa sì che il componente venga nuovamente renderizzato.
     }
+
     public void ShowSppiner()
     {
         this.visible = true;
     }
+
     public async void HideSppiner()
     {
-        // await Task.Delay(5000);
         this.visible = false;
     }
-    private string errorMessage = "";
 
-    private void ValidateNumber(string inputValue)
+    // [LUCA]
+    // this is the code of the function that checks whether the pressed key is a number, if it is it leaves it, if it is not it cancels it.
+    // function SoloNumeriInteri(Evento)
+    // {
+    //    var Carattere = (Evento.which) ? Evento.which : Evento.keyCode;
+    //    if (Carattere > 31 && (Carattere < 48 || Carattere > 57))
+    //    {
+    //       return false;
+    //    }
+    //    return true;
+    // }
+    // In my opinion, the procedure below should be modified and MOVED to the "Common Procedures" section as
+    // it will be recalled from every page of the project that needs it.
+    private string errorMessage = "";
+    private string ValidateTelefun = "";
+
+
+
+    public void validateTelefun(ChangeEventArgs e)
     {
-        // Use InvokeAsync to run the asynchronous logic
-        InvokeAsync(async () =>
-        {
-            if (int.TryParse(inputValue, out _))
-            {
-                // It's a valid number
-                errorMessage = "";
-            }
-            else
-            {
-                // It's not a valid number
-                errorMessage = "Please enter a valid number.";
-            }
-        });
+        string inputValue = e.Value.ToString();
+        ValidateTelefun = Validation.ValidateNumber(inputValue);
+        StateHasChanged();
+    }
+    public void validateCellular(ChangeEventArgs e)
+    {
+        string inputValue = e.Value.ToString();
+        errorMessage = Validation.ValidateNumber(inputValue);
+        StateHasChanged();
+
     }
 }
 

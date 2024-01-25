@@ -145,9 +145,11 @@
             </div>
             <div class="col-md-8 ">
                 <div class="form-group">
-                    <InputText id="Telefono" @onkeypress="@(e => ValidateNumber(objSocieta.Telefono))" @bind-Value="objSocieta.Telefono" class="form-control" />
-                    <span class="text-danger">@errorMessage</span>
-                        <ValidationMessage For="@(() => objSocieta.Telefono)" />
+                    <input id="Telefono" type="text" @oninput="validateTelefun" @bind="objSocieta.Telefono" class="form-control" maxlength="15" />
+                    @if (ValidateTelefun != null)
+                    {
+                        <label style="color:red">@ValidateTelefun</label>
+                    }
                 </div>
             </div>
         </div>
@@ -160,8 +162,11 @@
             </div>
             <div class="col-md-8 ">
                 <div class="form-group">
-                    <InputText id="Cellulare" @bind-Value="objSocieta.Cellulare" class="form-control" />
-                    <ValidationMessage For="@(() => objSocieta.Cellulare)" />
+                    <input id="Cellulare" type="text" @oninput="validateCellular" @bind="objSocieta.Cellulare" maxlength="15" class="form-control" />
+                    @if (errorMessage != null)
+                    {
+                        <label style="color:red">@errorMessage</label>
+                    }
                 </div>
             </div>
         </div>
@@ -266,11 +271,14 @@
     public string email { get; set; } = string.Empty;
     public string comuneTitle = string.Empty;
     private List<string> QualificaClubValues = new List<string> { "NC", "1 LV", "2 LV", "3 LV", "4 LV", "A" }; // Lista valori per Qualifica club
+
     string desiredPath;
     public bool visible { get; set; } = false;
     bool fileExists;
+
     @inject ComuneService comuneService; // Dichiaro di voler usare le procedure per la gestione dei comuni
     @inject SocietaService societaService; // Dichiaro di voler usare le procedure per la gestione della società
+    @inject ValidationServices Validation;
 
     Societa objSocieta = new Societa(); // Creo l'oggetto società
 
@@ -324,20 +332,14 @@
                     string fullPath = objSocieta.Logo; // leggo il percorso e nome del file
                     string fileName = System.IO.Path.GetFileName(fullPath);
 
-                    // imposto il path dell'immagine
-                    // [LUCA]: don't use the path put in the code, read it from app settings with this command
-                    // [XXXX]:Completed
+
+                    // Trovo il percorso dove salvare
                     var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-                    var Mittente = Configurazione.GetValue<string>("Percorsi:Profilo");
-                    imageModel.ImageName = fileName;
-                    desiredPath = Mittente + "\\" + imageModel.ImageName;// @"Dati\Tornei\Profilo\" + fileName;
-                  
-                    fileExists = System.IO.File.Exists(fullPath);
-
-
-
-                    StateHasChanged(); // [LUCA]: StateHasChanged this function is also called after the GetProfile function, so I don't think it is necessary to call it inside too, or am I wrong see  procedure OnAfterRender
-                    //[XXXX]: If we don't change state here then it will not update the object
+                    var Percorso = Configurazione.GetValue<string>("Percorsi:Profilo");
+                    imageModel.ImageName = fileName; // Recupero il nome del file
+                    desiredPath = Percorso + "\\" + imageModel.ImageName; // Aggiungo il nome del file
+                    fileExists = System.IO.File.Exists(fullPath); // Salvo su disco
+                    StateHasChanged(); // Aggiorno lo stato
                 }
             }
         }
@@ -352,22 +354,6 @@
     {
         try
         {
-            // [LUCA]: the logo is not a mandatory field, if I don't add it I save it and point the record to the default logo.
-            //[XXXX]: Complete
-            // Controllo se nel modello immagine ho qualcosa, se non ho nulla mando un messaggio di errore
-            // if (imageModel.ImageName == null)
-            // {
-            //    // Pop up errore
-            //    await toast.ShowAsync(new ToastModel
-            //       {
-            //          Title = "Error",
-            //          Content = "Select Logo",
-            //          CssClass = "e-toast-danger"
-            //       });
-            //    return;
-            // }
-            // else
-            // {
             // Leggo il percorso dove uploadare l'immagine
             var Configurazione = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
             var Percorso = Configurazione.GetValue<string>("Percorsi:Profilo");
@@ -378,6 +364,7 @@
 
             // Effettuo la ricerca del comune per descrizione
             // [LUCA]: as far as I know the syncfusion controls work via code and return the description themselves and vice versa, for me there is no need to search by description also because it may not give correct results
+            //[xxxx] i never used sync fusion conrols but acording to documentation search work for value property and we can only bind value property
             var selectedcomune = ComuneList.FirstOrDefault(x => x.DesComuneEstesa == comuneTitle);
             if (selectedcomune != null) // Se la trovo
                 objSocieta.CodComune = selectedcomune.CodComune; // Prendo il codice del comune
@@ -419,7 +406,6 @@
                     Content = "Operation completed successfully",
                     CssClass = "e-toast-success"
                 });
-            // }
         }
         catch (Exception ex)
         {
@@ -446,8 +432,6 @@
         try
         {
             // Carico l'immagine dal file upload al modello
-            // [LUCA]: I need explanations here on what you do from start to end
-            // Start
             int filesize = 10051200;
             using var memorystream = new MemoryStream();
             await e.File.OpenReadStream(filesize).CopyToAsync(memorystream);
@@ -456,7 +440,6 @@
             imageModel.ImageName = e.File.Name;
             desiredPath = null;
             StateHasChanged(); // Aggiorno lo stato
-                               // End
         }
         catch (Exception ex)
         {
@@ -483,25 +466,37 @@
         this.visible = false;
     }
 
-
+    // [LUCA]
+    // this is the code of the function that checks whether the pressed key is a number, if it is it leaves it, if it is not it cancels it.
+    // function SoloNumeriInteri(Evento)
+    // {
+    //    var Carattere = (Evento.which) ? Evento.which : Evento.keyCode;
+    //    if (Carattere > 31 && (Carattere < 48 || Carattere > 57))
+    //    {
+    //       return false;
+    //    }
+    //    return true;
+    // }
+    // In my opinion, the procedure below should be modified and MOVED to the "Common Procedures" section as
+    // it will be recalled from every page of the project that needs it.
     private string errorMessage = "";
+    private string ValidateTelefun = "";
 
-    private void ValidateNumber(string inputValue)
+
+
+    public void validateTelefun(ChangeEventArgs e)
     {
-        // Use InvokeAsync to run the asynchronous logic
-        InvokeAsync(async () =>
-        {
-            if (int.TryParse(inputValue, out _))
-            {
-                // It's a valid number
-                errorMessage = "";
-            }
-            else
-            {
-                // It's not a valid number
-                errorMessage = "Please enter a valid number.";
-            }
-        });
+        string inputValue = e.Value.ToString();
+        ValidateTelefun = Validation.ValidateNumber(inputValue);
+        StateHasChanged();
     }
+    public void validateCellular(ChangeEventArgs e)
+    {
+        string inputValue = e.Value.ToString();
+        errorMessage = Validation.ValidateNumber(inputValue);
+        StateHasChanged();
+
+    }
+
 
 }
