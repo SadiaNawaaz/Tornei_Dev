@@ -22,6 +22,11 @@ namespace Database.Services
             else
             {
                 // It's not a valid number
+                if (string.IsNullOrEmpty(inputValue))
+                {
+                    return errorMessage = "";
+
+                }
                 return errorMessage = "Deve contenere solo numeri[0 a 9]";
             }
         }
