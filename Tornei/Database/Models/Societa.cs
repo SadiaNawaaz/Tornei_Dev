@@ -39,9 +39,11 @@ public partial class Societa
     public string Indirizzo { get; set; } = null!;
 
     [StringLength(15)]
+    [RegularExpression("^[0-9]*$", ErrorMessage = "Cellulare deve contenere solo numeri [0 a 9]")]
     public string Telefono { get; set; } = null!;
 
     [StringLength(15)]
+    [RegularExpression("^[0-9]*$", ErrorMessage = "Cellulare deve contenere solo numeri [0 a 9]")]
     public string Cellulare { get; set; } = null!;
 
     [Required(ErrorMessage = "Email is required.")]

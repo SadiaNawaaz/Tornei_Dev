@@ -25,7 +25,7 @@
     <ToastPositionSettings X="calc(100% - 10px)" Y="10px"></ToastPositionSettings>
 </SfToast>
 
-<EditForm Model="@objSocieta" OnInitializedAsync="LoadSocietaData" OnInvalidSubmit="invalid" OnValidSubmit="SaveOrUpdateSocieta">
+<EditForm Model="@objSocieta" OnInitializedAsync="LoadSocietaData" OnValidSubmit="SaveOrUpdateSocieta">
     <DataAnnotationsValidator />
     @*   <ValidationSummary /> *@
 
