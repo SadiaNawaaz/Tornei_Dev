@@ -4015,23 +4015,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\INAM\\.nuget\\packages\\": {},
+    "C:\\Users\\Jahangir\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\Database.csproj",
+      "projectUniqueName": "D:\\GitCode\\Tornei_Dev\\Tornei\\Database\\Database.csproj",
       "projectName": "Database",
-      "projectPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\Database.csproj",
-      "packagesPath": "C:\\Users\\INAM\\.nuget\\packages\\",
-      "outputPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\obj\\",
+      "projectPath": "D:\\GitCode\\Tornei_Dev\\Tornei\\Database\\Database.csproj",
+      "packagesPath": "C:\\Users\\Jahangir\\.nuget\\packages\\",
+      "outputPath": "D:\\GitCode\\Tornei_Dev\\Tornei\\Database\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\INAM\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Jahangir\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

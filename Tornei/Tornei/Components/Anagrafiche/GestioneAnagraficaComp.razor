@@ -25,8 +25,10 @@
 
         <div class="col-md-9">
             <EditForm Model="@anagrafica" OnValidSubmit="SaveOrUpdateAnagrafica">
+
                 <DataAnnotationsValidator />
-                <ValidationSummary />
+                @*
+                <ValidationSummary /> *@
 
                 <div class="container">
 
@@ -138,7 +140,8 @@
                         <div class="col-md-8 mb-1">
                             <div class="form-group">
                                 <InputText id="Mail" @bind-Value="anagrafica.Mail" class="form-control" />
-                  
+                                <ValidationMessage For="@(() => anagrafica.Mail)" />
+
                             </div>
                         </div>
                     </div>

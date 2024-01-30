@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Tornei.csproj": {}
+    "D:\\GitCode\\Tornei_Dev\\Tornei\\Tornei\\Tornei.csproj": {}
   },
   "projects": {
-    "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\Database.csproj": {
+    "D:\\GitCode\\Tornei_Dev\\Tornei\\Database\\Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\Database.csproj",
+        "projectUniqueName": "D:\\GitCode\\Tornei_Dev\\Tornei\\Database\\Database.csproj",
         "projectName": "Database",
-        "projectPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\Database.csproj",
-        "packagesPath": "C:\\Users\\INAM\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\obj\\",
+        "projectPath": "D:\\GitCode\\Tornei_Dev\\Tornei\\Database\\Database.csproj",
+        "packagesPath": "C:\\Users\\Jahangir\\.nuget\\packages\\",
+        "outputPath": "D:\\GitCode\\Tornei_Dev\\Tornei\\Database\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\INAM\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jahangir\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -76,20 +76,20 @@
         }
       }
     },
-    "D:\\Documents\\Torni\\Torni Git\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj": {
+    "D:\\GitCode\\Tornei_Dev\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\Torni\\Torni Git\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj",
+        "projectUniqueName": "D:\\GitCode\\Tornei_Dev\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj",
         "projectName": "ProcedureComuni",
-        "projectPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj",
-        "packagesPath": "C:\\Users\\INAM\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\ProcedureComuni\\obj\\",
+        "projectPath": "D:\\GitCode\\Tornei_Dev\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj",
+        "packagesPath": "C:\\Users\\Jahangir\\.nuget\\packages\\",
+        "outputPath": "D:\\GitCode\\Tornei_Dev\\Tornei\\ProcedureComuni\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\INAM\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jahangir\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -136,20 +136,20 @@
         }
       }
     },
-    "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Tornei.csproj": {
+    "D:\\GitCode\\Tornei_Dev\\Tornei\\Tornei\\Tornei.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Tornei.csproj",
+        "projectUniqueName": "D:\\GitCode\\Tornei_Dev\\Tornei\\Tornei\\Tornei.csproj",
         "projectName": "Tornei",
-        "projectPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\Tornei.csproj",
-        "packagesPath": "C:\\Users\\INAM\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Tornei\\obj\\",
+        "projectPath": "D:\\GitCode\\Tornei_Dev\\Tornei\\Tornei\\Tornei.csproj",
+        "packagesPath": "C:\\Users\\Jahangir\\.nuget\\packages\\",
+        "outputPath": "D:\\GitCode\\Tornei_Dev\\Tornei\\Tornei\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\INAM\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jahangir\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -165,11 +165,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\Database.csproj": {
-                "projectPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\Database\\Database.csproj"
+              "D:\\GitCode\\Tornei_Dev\\Tornei\\Database\\Database.csproj": {
+                "projectPath": "D:\\GitCode\\Tornei_Dev\\Tornei\\Database\\Database.csproj"
               },
-              "D:\\Documents\\Torni\\Torni Git\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj": {
-                "projectPath": "D:\\Documents\\Torni\\Torni Git\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj"
+              "D:\\GitCode\\Tornei_Dev\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj": {
+                "projectPath": "D:\\GitCode\\Tornei_Dev\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj"
               }
             }
           }
@@ -209,6 +209,10 @@
               "version": "[8.0.0, )"
             },
             "Syncfusion.Blazor.DropDowns": {
+              "target": "Package",
+              "version": "[23.2.7, )"
+            },
+            "Syncfusion.Blazor.Grid": {
               "target": "Package",
               "version": "[23.2.7, )"
             },

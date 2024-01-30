@@ -41,8 +41,10 @@ public partial class Anagrafica
 
    [StringLength(50)]
 
-   [RegularExpression(@"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$", ErrorMessage = "Formato Mail non valido.")]
-   public string Mail { get; set; } = null!;
+    /* [RegularExpression(@"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$", ErrorMessage = "Formato Mail non valido.")]*/
+    [RegularExpression(@"^\s*$|^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$", ErrorMessage = "Formato Mail non valido.")]
+
+    public string Mail { get; set; } = null!;
 
    public bool NoMail { get; set; }
 

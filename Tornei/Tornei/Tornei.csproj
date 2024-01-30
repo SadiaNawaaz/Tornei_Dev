@@ -19,6 +19,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0" />
     <PackageReference Include="Syncfusion.Blazor.DropDowns" Version="23.2.7" />
+    <PackageReference Include="Syncfusion.Blazor.Grid" Version="23.2.7" />
     <PackageReference Include="Syncfusion.Blazor.Notifications" Version="23.2.7" />
     <PackageReference Include="Syncfusion.Blazor.Popups" Version="24.1.41" />
     <PackageReference Include="Syncfusion.Blazor.SplitButtons" Version="23.2.7" />

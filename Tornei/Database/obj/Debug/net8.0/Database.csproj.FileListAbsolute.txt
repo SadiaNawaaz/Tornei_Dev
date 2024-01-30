@@ -211,3 +211,18 @@ D:\Documents\Torni\Torni Git\Tornei\Database\obj\Debug\net8.0\refint\Database.dl
 D:\Documents\Torni\Torni Git\Tornei\Database\obj\Debug\net8.0\Database.pdb
 D:\Documents\Torni\Torni Git\Tornei\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
 D:\Documents\Torni\Torni Git\Tornei\Database\obj\Debug\net8.0\ref\Database.dll
+D:\GitCode\Tornei_Dev\Tornei\Database\bin\Debug\net8.0\Database.deps.json
+D:\GitCode\Tornei_Dev\Tornei\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+D:\GitCode\Tornei_Dev\Tornei\Database\bin\Debug\net8.0\Database.dll
+D:\GitCode\Tornei_Dev\Tornei\Database\bin\Debug\net8.0\Database.pdb
+D:\GitCode\Tornei_Dev\Tornei\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+D:\GitCode\Tornei_Dev\Tornei\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitCode\Tornei_Dev\Tornei\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+D:\GitCode\Tornei_Dev\Tornei\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+D:\GitCode\Tornei_Dev\Tornei\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+D:\GitCode\Tornei_Dev\Tornei\Database\obj\Debug\net8.0\Database.sourcelink.json
+D:\GitCode\Tornei_Dev\Tornei\Database\obj\Debug\net8.0\Database.dll
+D:\GitCode\Tornei_Dev\Tornei\Database\obj\Debug\net8.0\refint\Database.dll
+D:\GitCode\Tornei_Dev\Tornei\Database\obj\Debug\net8.0\Database.pdb
+D:\GitCode\Tornei_Dev\Tornei\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+D:\GitCode\Tornei_Dev\Tornei\Database\obj\Debug\net8.0\ref\Database.dll
