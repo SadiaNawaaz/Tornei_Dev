@@ -46,9 +46,8 @@ public partial class Societa
     [RegularExpression("^[0-9]*$", ErrorMessage = "Cellulare deve contenere solo numeri [0 a 9]")]
     public string Cellulare { get; set; } = null!;
 
-    [Required(ErrorMessage = "Email is required.")]
     [StringLength(50)]
-
+    [RegularExpression(@"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$", ErrorMessage = "Formato Mail non valido.")]
     public string Mail { get; set; } = null!;
 
     public string SitoInternet { get; set; } = null!;

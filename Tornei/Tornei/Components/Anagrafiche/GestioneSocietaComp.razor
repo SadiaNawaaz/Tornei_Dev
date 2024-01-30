@@ -227,6 +227,26 @@
                         </div>
                     </div>
 
+                    @if (CodSocieta != 0)
+                    {
+                        <div class="row mb-1">
+
+                            <div class="col-md-3 mb-1">
+                                <div class="form-group">
+                                    <label for="Iban">Rulo:</label>
+
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <!-- Role list  goes here -->
+                                <div>
+                                    <SfMultiSelect TValue="string[]" TItem="AspNetRole" Placeholder="Select A Role" @bind-Value="@MultiVal" DataSource="@roles">
+                                        <MultiSelectFieldSettings Text="Name" Value="Id"></MultiSelectFieldSettings>
+                                    </SfMultiSelect>
+                                </div>
+                            </div>
+                        </div>
+                    }
                     <h3 class="mt-3"> PROFILO ONLINE</h3>
 
                     <div class="row mb-1">
@@ -265,17 +285,7 @@
                 <SfSpinner @bind-Visible="visible"></SfSpinner>
             </EditForm>
         </div>
-        @if (CodSocieta != 0)
-        {
-            <div class="col-md-3">
-                <!-- Role list  goes here -->
-                <div>
-                    <SfMultiSelect TValue="string[]" TItem="AspNetRole" Placeholder="Select A Role" @bind-Value="@MultiVal" DataSource="@roles">
-                        <MultiSelectFieldSettings Text="Name" Value="Id"></MultiSelectFieldSettings>
-                    </SfMultiSelect>
-                </div>
-            </div>
-        }
+
     </div>
 </div>
 

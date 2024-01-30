@@ -138,7 +138,7 @@
                         <div class="col-md-8 mb-1">
                             <div class="form-group">
                                 <InputText id="Mail" @bind-Value="anagrafica.Mail" class="form-control" />
-                                <ValidationMessage For="@(() => anagrafica.Mail)" />
+                  
                             </div>
                         </div>
                     </div>
@@ -229,6 +229,25 @@
                             </div>
                         </div>
                     </div>
+
+                    @if (CodAnagrafica != 0)
+                    {
+                        <div class="row mb-1">
+                            <div class="col-md-3 mb-1">
+                                <div class="form-group">
+                                    <label for="IndirizzoResidenza">Rulo:</label>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <!-- Role list  goes here -->
+                                <div>
+                                    <SfMultiSelect TValue="string[]" TItem="AspNetRole" Placeholder="Select A Role" @bind-Value="@MultiVal" DataSource="@roles">
+                                        <MultiSelectFieldSettings Text="Name" Value="Id"></MultiSelectFieldSettings>
+                                    </SfMultiSelect>
+                                </div>
+                            </div>
+                        </div>
+                    }
                     <div class="row mb-1">
                         <div class="col-md-3 mb-1">
                             <div class="form-group">
@@ -270,17 +289,7 @@
                 <SfSpinner @bind-Visible="visible"></SfSpinner>
             </EditForm>
         </div>
-        @if (CodAnagrafica != 0)
-        {
-            <div class="col-md-3">
-                <!-- Role list  goes here -->
-                <div>
-                    <SfMultiSelect TValue="string[]" TItem="AspNetRole" Placeholder="Select A Role" @bind-Value="@MultiVal" DataSource="@roles">
-                        <MultiSelectFieldSettings Text="Name" Value="Id"></MultiSelectFieldSettings>
-                    </SfMultiSelect>
-                </div>
-            </div>
-        }
+
     </div>
 </div>
 <style>
