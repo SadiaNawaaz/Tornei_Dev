@@ -370,11 +370,11 @@
         try
         {
             int j = 0;
-            var encodedUserId = await LocalStorage.GetItemAsStringAsync("LoginUserId"); // Leggo lo user ID dal local storage dove l'ho memorizzato
-            var userid = encodedUserId?.Replace("\"", ""); // Lo codifico rimpiazzando le / con niente
-            if (userid != null) // Se è diverso da null
+          //  var encodedUserId = await LocalStorage.GetItemAsStringAsync("LoginUserId"); // Leggo lo user ID dal local storage dove l'ho memorizzato
+        //    var userid = encodedUserId?.Replace("\"", ""); // Lo codifico rimpiazzando le / con niente
+            if (CodSocieta != null) // Se è diverso da null
             {
-                var soc = await societaService.GetSocietaByUserIdAsync(userid.ToString());
+                var soc = await societaService.GetSocietaByCodeAsync(CodSocieta);
                 if (soc != null) // Se la società viene trovata
                 {
                     objSocieta = soc; // Passo la società letta

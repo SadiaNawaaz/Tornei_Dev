@@ -322,6 +322,7 @@
             var userid = encodedUserId?.Replace("\"", ""); // Lo codifico rimpiazzando le / con niente
             if (userid != null) // Se è diverso da null
             {
+
                 var soc = await societaService.GetSocietaByUserIdAsync(userid.ToString());
                 if (soc != null) // Se la società viene trovata
                 {
@@ -340,6 +341,10 @@
                     fileExists = System.IO.File.Exists(fullPath); // Salvo su disco
                     StateHasChanged(); // Aggiorno lo stato
                 }
+            }
+            else
+            {
+                
             }
         }
         catch (Exception)

@@ -15,9 +15,27 @@ namespace Database.Services
         }
 
         // Cerca la società tramite il suo Codice
-        public async Task<Societa> GetSocietaByCodeAsync(int codSocieta)
+        public async Task<Societa> GetSocietaByCodeAsync(int id)
         {
-            return await _dbContext.Societa.FindAsync(codSocieta);
+            var res = await _dbContext.Societa.FindAsync(id);
+            if (res != null)
+            {
+                var user = _dbContext.AspNetUsers.FirstOrDefault(x => x.CodSocieta == id);
+                if (user != null) // Se lo trova
+                {
+                    var soc = user.CodSocieta; // Memorizzo il codice
+                    var societaObj = await _dbContext.Societa.FindAsync(soc); // Effettuo la ricerca sulla tabella delle societa              
+                    if (societaObj != null) // Se la trovo
+                    {
+                        // Cerco i ruoli della società
+                        var UserRole = await _dbContext.AspNetUserRoles.Where(x => x.UserId == user.Id).ToListAsync();
+                        societaObj.UserRoleList = UserRole; // 
+                        return societaObj; // Ritorno il codice trovato
+                    }
+                }
+            }
+            return default;
+
         }
 
         // Cerca la società tramite lo Userd ID
@@ -108,20 +126,20 @@ namespace Database.Services
                 if (entityUpdate != null) // Se la trovo
                 {
                     // Aggiorno ogni campo con il valore passato 
-                    entityUpdate.PartitaIva = societa.PartitaIva;
+                    entityUpdate.PartitaIva = societa.PartitaIva ??= "";
                     entityUpdate.Matricola = societa.Matricola;
-                    entityUpdate.QualificaClub = societa.QualificaClub;
-                    entityUpdate.CodComune = societa.CodComune;
-                    entityUpdate.Indirizzo = societa.Indirizzo;
-                    entityUpdate.Telefono = societa.Telefono;
-                    entityUpdate.Cellulare = societa.Cellulare;
-                    entityUpdate.Mail = societa.Mail;
-                    entityUpdate.SitoInternet = societa.SitoInternet;
-                    entityUpdate.Nota = societa.Nota;
-                    entityUpdate.CodiceDestinatario = societa.CodiceDestinatario;
-                    entityUpdate.Iban = societa.Iban;
-                    entityUpdate.Pec = societa.Pec;
-                    entityUpdate.Logo = societa.Logo;
+                    entityUpdate.QualificaClub = societa.QualificaClub ??= "";
+                    entityUpdate.CodComune = societa.CodComune ??= "";
+                    entityUpdate.Indirizzo = societa.Indirizzo ??= "";
+                    entityUpdate.Telefono = societa.Telefono ??= "";
+                    entityUpdate.Cellulare = societa.Cellulare ??= "";
+                    entityUpdate.Mail = societa.Mail ??= "";
+                    entityUpdate.SitoInternet = societa.SitoInternet ??= "";
+                    entityUpdate.Nota = societa.Nota ??= "";
+                    entityUpdate.CodiceDestinatario = societa.CodiceDestinatario ??= "";
+                    entityUpdate.Iban = societa.Iban ??= "";
+                    entityUpdate.Pec = societa.Pec ??= "";
+                    entityUpdate.Logo = societa.Logo ??= "";
                 }
                 // // Aggiorna i dati sul DB
                 await _dbContext.SaveChangesAsync();
@@ -168,20 +186,20 @@ namespace Database.Services
                 if (entityUpdate != null) // Se la trovo
                 {
                     // Aggiorno ogni campo con il valore passato 
-                    entityUpdate.PartitaIva = societa.PartitaIva;
+                    entityUpdate.PartitaIva = societa.PartitaIva ??= "";
                     entityUpdate.Matricola = societa.Matricola;
-                    entityUpdate.QualificaClub = societa.QualificaClub;
-                    entityUpdate.CodComune = societa.CodComune;
-                    entityUpdate.Indirizzo = societa.Indirizzo;
-                    entityUpdate.Telefono = societa.Telefono;
-                    entityUpdate.Cellulare = societa.Cellulare;
-                    entityUpdate.Mail = societa.Mail;
-                    entityUpdate.SitoInternet = societa.SitoInternet;
-                    entityUpdate.Nota = societa.Nota;
-                    entityUpdate.CodiceDestinatario = societa.CodiceDestinatario;
-                    entityUpdate.Iban = societa.Iban;
-                    entityUpdate.Pec = societa.Pec;
-                    entityUpdate.Logo = societa.Logo;
+                    entityUpdate.QualificaClub = societa.QualificaClub ??= "";
+                    entityUpdate.CodComune = societa.CodComune ??= "";
+                    entityUpdate.Indirizzo = societa.Indirizzo ??= "";
+                    entityUpdate.Telefono = societa.Telefono ??= "";
+                    entityUpdate.Cellulare = societa.Cellulare ??= "";
+                    entityUpdate.Mail = societa.Mail ??= "";
+                    entityUpdate.SitoInternet = societa.SitoInternet ??= "";
+                    entityUpdate.Nota = societa.Nota ??= "";
+                    entityUpdate.CodiceDestinatario = societa.CodiceDestinatario ??= "";
+                    entityUpdate.Iban = societa.Iban ??= "";
+                    entityUpdate.Pec = societa.Pec ??= "";
+                    entityUpdate.Logo = societa.Logo ??= "";
                 }
                 // // Aggiorna i dati sul DB
                 await _dbContext.SaveChangesAsync(); // Aggiorno il database

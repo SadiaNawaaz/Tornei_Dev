@@ -54,7 +54,9 @@ public partial class Anagrafica
    public DateOnly? DataDiNascita { get; set; }
 
    [StringLength(50)]
-   public string Sesso { get; set; } = null!;
+    [Required]
+
+    public string Sesso { get; set; } = null!;
 
    [StringLength(5)]
    public string CodComuneResidenza { get; set; } = null!;

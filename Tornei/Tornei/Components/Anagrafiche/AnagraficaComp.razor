@@ -197,6 +197,8 @@
                     <label for="Sesso">Sesso:</label>
                     <SfDropDownList TValue="string" TItem="string" @bind-Value="anagrafica.Sesso" DataSource="@GenderList" Placeholder="Select Gender">
                     </SfDropDownList>
+                    <ValidationMessage For="@(() => anagrafica.Sesso)" />
+
                 </div>
             </div>
         </div>

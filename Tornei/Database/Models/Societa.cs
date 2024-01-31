@@ -31,7 +31,7 @@ public partial class Societa
     [Required]
     [StringLength(5)]
     public string QualificaClub { get; set; } = null!;
-
+    [Required]
     [StringLength(5)]
     public string CodComune { get; set; } = null!;
 
