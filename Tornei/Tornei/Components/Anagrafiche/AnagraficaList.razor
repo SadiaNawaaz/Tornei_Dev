@@ -28,27 +28,26 @@
             <GridEditSettings AllowAdding="true" AllowDeleting="true"></GridEditSettings>
             <GridEvents TValue="Anagrafica"></GridEvents>
             <GridColumns>
-               <GridColumn Width="160" TextAlign="TextAlign.Center" HeaderText="Actions">
+               <GridColumn Width="90" TextAlign="TextAlign.Left" HeaderText="Actions">
                   <Template>
                      @{
                         var currentItem = context as Anagrafica;
                      }
-                     <button class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                            <button class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" style="width:32px;height:35px"
                              @onclick="(e) => EditNavigation(currentItem, e)">
-                        <i class="fa-solid fa-pencil"></i>
+                                <i class="fa-solid fa-pencil" style="font-size:12px"></i>
                      </button>
-                     <button class="btn btn-danger" @onclick="(e) => DeleteItem(currentItem, e)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                        <i class="fa-regular fa-trash-can"></i>
+                            <button class="btn btn-danger" @onclick="(e) => DeleteItem(currentItem, e)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" style="width:32px;height:35px">
+                                <i class="fa-regular fa-trash-can" style="font-size:12px"></i>
                      </button>
                   </Template>
                </GridColumn>
-               <GridColumn Field=@nameof(Anagrafica.CodAnagrafica) HeaderText="CodSocieta" TextAlign="TextAlign.Center" Width="160"></GridColumn>
-               <GridColumn Field=@nameof(Anagrafica.Cognome) HeaderText="CodSocieta" Width="160" TextAlign="TextAlign.Center"></GridColumn>
-               <GridColumn Field=@nameof(Anagrafica.CodComuneDiNascita) HeaderText="DesSocieta" TextAlign="TextAlign.Center" Width="160"></GridColumn>
-               <GridColumn Field=@nameof(Anagrafica.Telefono) HeaderText="PartitaIva" TextAlign="TextAlign.Center" Width="160"></GridColumn>
-               <GridColumn Field=@nameof(Anagrafica.Cellulare) HeaderText="Telefono" TextAlign="TextAlign.Center" Width="160"></GridColumn>
-               <GridColumn Field=@nameof(Anagrafica.Mail) HeaderText="Email" TextAlign="TextAlign.Center" Width="160"></GridColumn>
-               <GridColumn Field=@nameof(Anagrafica.Mail) HeaderText="Email" TextAlign="TextAlign.Center" Width="160"></GridColumn>
+                    <GridColumn Field=@nameof(Anagrafica.CodComuneDiNascita) HeaderText="DesSocieta" TextAlign="TextAlign.Left" Width="140"></GridColumn>
+               <GridColumn Field=@nameof(Anagrafica.CodAnagrafica) HeaderText="CodSocieta" TextAlign="TextAlign.Left" Width="140"></GridColumn>
+               <GridColumn Field=@nameof(Anagrafica.Cognome) HeaderText="CodSocieta" Width="140" TextAlign="TextAlign.Left"></GridColumn>
+                    <GridColumn Field=@nameof(Anagrafica.Telefono) HeaderText="PartitaIva" TextAlign="TextAlign.Left" Width="140"></GridColumn>
+                    <GridColumn Field=@nameof(Anagrafica.Cellulare) HeaderText="Telefono" TextAlign="TextAlign.Left" Width="140"></GridColumn>
+                    <GridColumn Field=@nameof(Anagrafica.Mail) HeaderText="Email" TextAlign="TextAlign.Left" Width="140"></GridColumn>
             </GridColumns>
          </SfGrid>
       </div>

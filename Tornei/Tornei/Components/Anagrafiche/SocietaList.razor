@@ -28,26 +28,26 @@
             <GridEditSettings AllowAdding="true" AllowDeleting="true"></GridEditSettings>
             <GridEvents TValue="Societa"></GridEvents>
             <GridColumns>
-               <GridColumn Width="160" TextAlign="TextAlign.Center" HeaderText="Actions">
+               <GridColumn Width="90" TextAlign="TextAlign.Left" HeaderText="Actions">
                   <Template>
                      @{
                         var currentItem = context as Societa;
                      }
-                     <button class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                     <button class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" style="width:32px;height:35px"
                              @onclick="(e) => EditNavigation(currentItem, e)">
-                        <i class="fa-solid fa-pencil"></i>
+                                <i class="fa-solid fa-pencil" style="font-size:12px"></i>
                      </button>
-                     <button class="btn btn-danger" @onclick="(e) => DeleteItem(currentItem, e)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                        <i class="fa-regular fa-trash-can"></i>
+                            <button class="btn btn-danger" @onclick="(e) => DeleteItem(currentItem, e)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" style="width:32px;height:35px">
+                                <i class="fa-regular fa-trash-can" style="font-size:12px"></i>
                      </button>
                   </Template>
                </GridColumn>
-               <GridColumn Field=@nameof(Societa.CodiceDestinatario) HeaderText="Codice Destinatario" Width="160"></GridColumn>
-               <GridColumn Field=@nameof(Societa.DesSocieta) HeaderText="DesSocieta" Width="160"></GridColumn>
-               <GridColumn Field=@nameof(Societa.CodComune) HeaderText="Cod Comune" Width="160"></GridColumn>
-               <GridColumn Field=@nameof(Societa.Telefono) HeaderText="PartitaIva" TextAlign="TextAlign.Right" Width="160"></GridColumn>
-               <GridColumn Field=@nameof(Societa.Cellulare) HeaderText="Telefono" TextAlign="TextAlign.Right" Width="160"></GridColumn>
-               <GridColumn Field=@nameof(Societa.Mail) HeaderText="Telefono" TextAlign="TextAlign.Right" Width="160"></GridColumn>
+               <GridColumn Field=@nameof(Societa.DesSocieta) HeaderText="DesSocieta" Width="140"></GridColumn>
+               <GridColumn Field=@nameof(Societa.CodiceDestinatario) HeaderText="Codice Destinatario" Width="140"></GridColumn>
+               <GridColumn Field=@nameof(Societa.CodComune) HeaderText="Cod Comune" Width="140"></GridColumn>
+               <GridColumn Field=@nameof(Societa.Telefono) HeaderText="PartitaIva" TextAlign="TextAlign.Right" Width="140"></GridColumn>
+               <GridColumn Field=@nameof(Societa.Cellulare) HeaderText="Telefono" TextAlign="TextAlign.Right" Width="140"></GridColumn>
+               <GridColumn Field=@nameof(Societa.Mail) HeaderText="Telefono" TextAlign="TextAlign.Right" Width="140"></GridColumn>
             </GridColumns>
          </SfGrid>
       </div>
