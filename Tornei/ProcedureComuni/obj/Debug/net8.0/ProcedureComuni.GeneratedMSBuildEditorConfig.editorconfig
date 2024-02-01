@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ProcedureComuni
-build_property.ProjectDir = D:\GitCode\Tornei_Dev\Tornei\ProcedureComuni\
+build_property.ProjectDir = E:\Dev Ops\Tornei\Tornei\ProcedureComuni\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
