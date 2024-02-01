@@ -27,24 +27,23 @@ public partial class Anagrafica
 
    [StringLength(50)]
    //[LUCA]: it does not have to check the typing after typing, but on the client side while typing it must deactivate everything except the numbers with the javascript code I sent you or something equivalent in C#
-   
+
    //[XXXX] this is blazor form validation and recomended as this is more secure , this is recomended but if you say we can use java script validation.
    [RegularExpression("^[0-9]*$", ErrorMessage = "Telefono deve contenere solo numeri [0 a 9]")]
    public string Telefono { get; set; } = null!;
 
    [StringLength(50)]
-    //[LUCA]: it does not have to check the typing after typing, but on the client side while typing it must deactivate everything except the numbers with the javascript code I sent you or something equivalent in C#
-    //[XXXX] this is blazor form validation and recomended as this is more secure , this is recomended but if you say we can use java script validation.
-    
-    [RegularExpression("^[0-9]*$", ErrorMessage = "Cellulare deve contenere solo numeri [0 a 9]")]
+   //[LUCA]: it does not have to check the typing after typing, but on the client side while typing it must deactivate everything except the numbers with the javascript code I sent you or something equivalent in C#
+   //[XXXX] this is blazor form validation and recomended as this is more secure , this is recomended but if you say we can use java script validation.
+
+   [RegularExpression("^[0-9]*$", ErrorMessage = "Cellulare deve contenere solo numeri [0 a 9]")]
    public string Cellulare { get; set; } = null!;
 
    [StringLength(50)]
 
-    /* [RegularExpression(@"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$", ErrorMessage = "Formato Mail non valido.")]*/
-    [RegularExpression(@"^\s*$|^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$", ErrorMessage = "Formato Mail non valido.")]
+   [RegularExpression(@"^\s*$|^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$", ErrorMessage = "Formato Mail non valido.")]
 
-    public string Mail { get; set; } = null!;
+   public string Mail { get; set; } = null!;
 
    public bool NoMail { get; set; }
 
@@ -54,9 +53,9 @@ public partial class Anagrafica
    public DateOnly? DataDiNascita { get; set; }
 
    [StringLength(50)]
-    [Required]
+   [Required]
 
-    public string Sesso { get; set; } = null!;
+   public string Sesso { get; set; } = null!;
 
    [StringLength(5)]
    public string CodComuneResidenza { get; set; } = null!;
@@ -78,10 +77,10 @@ public partial class Anagrafica
    public virtual Comune CodComuneResidenzaNavigation { get; set; } = null!;
 
 
-    [NotMapped]
-    public List<MenuRuolo>? RoleList { get; set; }
-    [NotMapped]
-    public List<AspNetUserRoles>? UserRoleList { get; set; }
-    [NotMapped]
-    public List<AspNetRole>? AspRoleList { get; set; }
+   [NotMapped]
+   public List<MenuRuolo>? RoleList { get; set; }
+   [NotMapped]
+   public List<AspNetUserRoles>? UserRoleList { get; set; }
+   [NotMapped]
+   public List<AspNetRole>? AspRoleList { get; set; }
 }

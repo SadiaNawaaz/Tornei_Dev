@@ -1,34 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Database.Services
+﻿namespace Database.Services
 {
-    public class ValidationServices
-    {
-        private string errorMessage = "";
-        public string ValidateNumber(string inputValue)
-        {
-            // Use InvokeAsync to run the asynchronous logic
 
-            if (double.TryParse(inputValue, out _))
+   //[Luca]: 
+   public class ValidationServices
+   {
+
+      private string errorMessage = "";
+
+      public string ValidateNumber(string inputValue)
+      {
+         // Utilizzare InvokeAsync per eseguire la logica asincrona
+
+         if (double.TryParse(inputValue, out _))
+         {
+            // Se ho un numero valido
+            return errorMessage = "";
+         }
+         else
+         {
+            // Se il numero non è valido
+            if (string.IsNullOrEmpty(inputValue))
             {
-                // It's a valid number
-                return errorMessage = "";
-
+               return errorMessage = "";
             }
-            else
-            {
-                // It's not a valid number
-                if (string.IsNullOrEmpty(inputValue))
-                {
-                    return errorMessage = "";
-
-                }
-                return errorMessage = "Deve contenere solo numeri[0 a 9]";
-            }
-        }
-    }
+            return errorMessage = "Deve contenere solo numeri[0 a 9]";
+         }
+      }
+   }
 }

@@ -226,3 +226,32 @@ D:\GitCode\Tornei_Dev\Tornei\Database\obj\Debug\net8.0\refint\Database.dll
 D:\GitCode\Tornei_Dev\Tornei\Database\obj\Debug\net8.0\Database.pdb
 D:\GitCode\Tornei_Dev\Tornei\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
 D:\GitCode\Tornei_Dev\Tornei\Database\obj\Debug\net8.0\ref\Database.dll
+C:\Users\INAM\Desktop\Tornei (25)\Database\bin\Debug\net8.0\Database.deps.json
+C:\Users\INAM\Desktop\Tornei (25)\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+C:\Users\INAM\Desktop\Tornei (25)\Database\bin\Debug\net8.0\Database.dll
+C:\Users\INAM\Desktop\Tornei (25)\Database\bin\Debug\net8.0\Database.pdb
+C:\Users\INAM\Desktop\Tornei (25)\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+C:\Users\INAM\Desktop\Tornei (25)\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\INAM\Desktop\Tornei (25)\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+C:\Users\INAM\Desktop\Tornei (25)\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+C:\Users\INAM\Desktop\Tornei (25)\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+C:\Users\INAM\Desktop\Tornei (25)\Database\obj\Debug\net8.0\Database.dll
+C:\Users\INAM\Desktop\Tornei (25)\Database\obj\Debug\net8.0\refint\Database.dll
+C:\Users\INAM\Desktop\Tornei (25)\Database\obj\Debug\net8.0\Database.pdb
+C:\Users\INAM\Desktop\Tornei (25)\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+C:\Users\INAM\Desktop\Tornei (25)\Database\obj\Debug\net8.0\ref\Database.dll
+E:\Dev Ops\Tornei\Tornei\Database\bin\Debug\net8.0\Database.deps.json
+E:\Dev Ops\Tornei\Tornei\Database\bin\Debug\net8.0\Database.runtimeconfig.json
+E:\Dev Ops\Tornei\Tornei\Database\bin\Debug\net8.0\Database.dll
+E:\Dev Ops\Tornei\Tornei\Database\bin\Debug\net8.0\Database.pdb
+E:\Dev Ops\Tornei\Tornei\Database\obj\Debug\net8.0\Database.csproj.AssemblyReference.cache
+E:\Dev Ops\Tornei\Tornei\Database\obj\Debug\net8.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+E:\Dev Ops\Tornei\Tornei\Database\obj\Debug\net8.0\Database.AssemblyInfoInputs.cache
+E:\Dev Ops\Tornei\Tornei\Database\obj\Debug\net8.0\Database.AssemblyInfo.cs
+E:\Dev Ops\Tornei\Tornei\Database\obj\Debug\net8.0\Database.csproj.CoreCompileInputs.cache
+E:\Dev Ops\Tornei\Tornei\Database\obj\Debug\net8.0\Database.sourcelink.json
+E:\Dev Ops\Tornei\Tornei\Database\obj\Debug\net8.0\Database.dll
+E:\Dev Ops\Tornei\Tornei\Database\obj\Debug\net8.0\refint\Database.dll
+E:\Dev Ops\Tornei\Tornei\Database\obj\Debug\net8.0\Database.pdb
+E:\Dev Ops\Tornei\Tornei\Database\obj\Debug\net8.0\Database.genruntimeconfig.cache
+E:\Dev Ops\Tornei\Tornei\Database\obj\Debug\net8.0\ref\Database.dll

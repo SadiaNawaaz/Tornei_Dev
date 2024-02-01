@@ -1,14 +1,10 @@
 ﻿using Database.Models;
+
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Database.Services
 {
-    public class CampoServices
+   public class CampoServices
     {
         private readonly TorneiContext _dbContext;
         public CampoServices(TorneiContext dbContext)

@@ -1,0 +1,20 @@
+﻿@page "/esempi/keypress"
+
+<script>
+   /*Permette l'imput di soli numeri interi decimali*/
+   function Solo_Numeri_Interi(Evento) {
+      var Carattere = (Evento.which) ? Evento.which : Evento.keyCode;
+      if (Carattere > 31 && (Carattere < 48 || Carattere > 57)) {
+         return false;
+      }
+      return true;
+   }
+</script>
+
+<input @bind="Telefono" onkeypress="return Solo_Numeri_Interi(event)" />
+
+@code {
+
+   int Telefono { get; set; }
+
+}

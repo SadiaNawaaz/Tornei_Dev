@@ -1,11 +1,10 @@
 ﻿using Database.Models;
 
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel;
 
 namespace Database.Services
 {
-    public class SocietaService
+   public class SocietaService
     {
         private readonly TorneiContext _dbContext;
 
@@ -125,7 +124,7 @@ namespace Database.Services
                 var entityUpdate = await _dbContext.Societa.FindAsync(societa.CodSocieta);
                 if (entityUpdate != null) // Se la trovo
                 {
-                    // Aggiorno ogni campo con il valore passato 
+                    // Aggiorno ogni campo con il valore passato toglieldo i valori nulli
                     entityUpdate.PartitaIva = societa.PartitaIva ??= "";
                     entityUpdate.Matricola = societa.Matricola;
                     entityUpdate.QualificaClub = societa.QualificaClub ??= "";

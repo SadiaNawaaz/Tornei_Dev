@@ -31,6 +31,8 @@ public partial class Societa
     [Required]
     [StringLength(5)]
     public string QualificaClub { get; set; } = null!;
+
+   //[LUCA]: This field is non required, if blank take code 0
     [Required]
     [StringLength(5)]
     public string CodComune { get; set; } = null!;

@@ -1,15 +1,52 @@
-﻿@page "/esempi/toast"
-@rendermode InteractiveServer
-@inject IToastService ToastService
+﻿@page "/esempi/toaster"
 
-<h3>Toaster</h3>
-<button class="btn btn-info" @onclick="@(()=> ToastService.ShowInfo("Benvenuto messaggio: Info"))">Info</button>
-<button class="btn btn-success" @onclick="@(()=> ToastService.ShowSuccess("Benvenuto messaggio: Successo"))">Success</button>
-<button class="btn btn-warning" @onclick="@(()=> ToastService.ShowWarning("Benvenuto messaggio: Warning"))">Warning</button>
-<button class="btn btn-danger" @onclick="@(()=> ToastService.ShowError ("Benvenuto messaggio: Errore"))">Errore</button>
+@using Syncfusion.Blazor.Notifications
 
-<Tornei.Components.Condivisi.MioPopup></Tornei.Components.Condivisi.MioPopup>
+<h3>BlazorToast</h3>
+
+@* Syncfusion Toast *@
+<SfToast @ref="Messaggio1" Target="#target">
+   <ToastPosition X="Right"></ToastPosition>
+</SfToast>
+<SfToast ID="toast_default" @ref="Messaggio2" Content="@TitoloMessaggio2" Timeout="5000" CssClass="e-toast-danger" Title="Errore">
+   <ToastPosition X="@MessaggioPosizione"></ToastPosition>
+</SfToast>
+<button @onclick="VisualizzaMessaggio" class="btn btn-default btn-primary">Messaggio</button>
+<button class="e-btn" @onclick="@MostraMessaggio2OnClick">Show Toasts</button>
+<button class="e-btn" @onclick="@NascondiMessaggio2OnClick">Hide All</button>
 
 @code {
 
+   private SfToast Messaggio1;
+   private SfToast Messaggio2;
+   private string MessaggioPosizione = "Right";
+
+   private async Task VisualizzaMessaggio()
+   {
+      // Pop up operazione riuscita
+      await Messaggio1.ShowAsync(new ToastModel
+         {
+            Title = "Successo",
+            Content = "Operatione conclusa con successo",
+            CssClass = "e-toast-info"
+            //
+            // CssClass "e-toast-warning", "e-toast-success", "e-toast-danger", "e-toast-info"
+            // Avvertimento, Successo, Errore, Informazioni
+         });
+   }
+
+
+   private string TitoloMessaggio2 = "Conference Room 01 / Building 135 10:00 AM-10:30 AM";
+
+   private async Task MostraMessaggio2OnClick()
+   {
+      await this.Messaggio2.ShowAsync();
+   }
+
+   private async Task NascondiMessaggio2OnClick()
+   {
+      await this.Messaggio2.HideAsync("All");
+   }
+
 }
+

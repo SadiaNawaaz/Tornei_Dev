@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Tornei")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+421e7fd0d64955cd77fbc77ca48d6c2c84347e0b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tornei")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tornei")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

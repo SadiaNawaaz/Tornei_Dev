@@ -5621,23 +5621,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jahangir\\.nuget\\packages\\": {},
+    "C:\\Users\\INAM\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitCode\\Tornei_Dev\\Tornei\\Tornei\\Tornei.csproj",
+      "projectUniqueName": "E:\\Dev Ops\\Tornei\\Tornei\\Tornei\\Tornei.csproj",
       "projectName": "Tornei",
-      "projectPath": "D:\\GitCode\\Tornei_Dev\\Tornei\\Tornei\\Tornei.csproj",
-      "packagesPath": "C:\\Users\\Jahangir\\.nuget\\packages\\",
-      "outputPath": "D:\\GitCode\\Tornei_Dev\\Tornei\\Tornei\\obj\\",
+      "projectPath": "E:\\Dev Ops\\Tornei\\Tornei\\Tornei\\Tornei.csproj",
+      "packagesPath": "C:\\Users\\INAM\\.nuget\\packages\\",
+      "outputPath": "E:\\Dev Ops\\Tornei\\Tornei\\Tornei\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Jahangir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\INAM\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5653,11 +5653,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\GitCode\\Tornei_Dev\\Tornei\\Database\\Database.csproj": {
-              "projectPath": "D:\\GitCode\\Tornei_Dev\\Tornei\\Database\\Database.csproj"
+            "E:\\Dev Ops\\Tornei\\Tornei\\Database\\Database.csproj": {
+              "projectPath": "E:\\Dev Ops\\Tornei\\Tornei\\Database\\Database.csproj"
             },
-            "D:\\GitCode\\Tornei_Dev\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj": {
-              "projectPath": "D:\\GitCode\\Tornei_Dev\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj"
+            "E:\\Dev Ops\\Tornei\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj": {
+              "projectPath": "E:\\Dev Ops\\Tornei\\Tornei\\ProcedureComuni\\ProcedureComuni.csproj"
             }
           }
         }

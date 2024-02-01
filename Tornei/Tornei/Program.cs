@@ -39,7 +39,6 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
 // INIZIO MODIFICHE
 
 // Registro la licenza di syncfusion
-//Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NHaF1cWWhIfEx1RHxQdld5ZFRHallYTnNWUj0eQnxTdEZiW35YcHBVRGRVWEBxWA==");
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NAaF5cWWJCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWX5eeHRTQmVfV0N3X0E=");
 
 //builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
@@ -56,9 +55,9 @@ builder.Services.AddScoped<UserService>(); // Gestione Utenti
 builder.Services.AddScoped<SocietaService>(); // Societa Profilo
 builder.Services.AddScoped<AnagraficaService>(); // Anagrafica Profilo
 builder.Services.AddScoped<MenuService>(); // Menu
-builder.Services.AddScoped<RoleService>();
-builder.Services.AddScoped<CampoServices>();
-builder.Services.AddScoped<ValidationServices>();
+builder.Services.AddScoped<RoleService>(); // Ruolo
+builder.Services.AddScoped<CampoServices>(); // Campo
+builder.Services.AddScoped<ValidationServices>(); // Nuovo Servizio di validazione
 builder.Services.AddDbContext<TorneiContext>(options => options.UseSqlServer(connectionString)); // Connessione dal database Tornei
 //[LUCA]: ServiceLifetime.Scoped  what is this addition in the line above for
 // FINE  MODIFICHE
