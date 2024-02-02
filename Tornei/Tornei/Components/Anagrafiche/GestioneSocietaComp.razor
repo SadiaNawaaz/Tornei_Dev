@@ -145,11 +145,8 @@
                         </div>
                         <div class="col-md-8 ">
                             <div class="form-group">
-                                <input type="text" maxlength="15" id="Telefono" @oninput="validateTelefun" @bind="objSocieta.Telefono" class="form-control" />
-                                @if (ValidateTelefun != null)
-                                {
-                                    <label style="color:red">@ValidateTelefun</label>
-                                }
+                                <input type="text" maxlength="15" id="Telefono"  @bind="objSocieta.Telefono" class="form-control" onkeypress="return Solo_Numeri_Interi(event)" />
+                                
                             </div>
                         </div>
                     </div>
@@ -162,11 +159,8 @@
                         </div>
                         <div class="col-md-8 ">
                             <div class="form-group">
-                                <input type="text" maxlength="15" id="Cellulare" @oninput="validateCellular" @bind="objSocieta.Cellulare" class="form-control" />
-                                @if (errorMessage != null)
-                                {
-                                    <label style="color:red">@errorMessage</label>
-                                }
+                                <input type="text" maxlength="15" id="Cellulare"  @bind="objSocieta.Cellulare" class="form-control" onkeypress="return Solo_Numeri_Interi(event)" />
+                               
                             </div>
                         </div>
                     </div>
@@ -529,22 +523,5 @@
     {
         this.visible = false;
     }
-    private string errorMessage = "";
-    private string ValidateTelefun = "";
-
-
-
-    public void validateTelefun(ChangeEventArgs e)
-    {
-        string inputValue = e.Value.ToString();
-        ValidateTelefun = Validation.ValidateNumber(inputValue);
-        StateHasChanged();
-    }
-    public void validateCellular(ChangeEventArgs e)
-    {
-        string inputValue = e.Value.ToString();
-        errorMessage = Validation.ValidateNumber(inputValue);
-        StateHasChanged();
-
-    }
+   
 }

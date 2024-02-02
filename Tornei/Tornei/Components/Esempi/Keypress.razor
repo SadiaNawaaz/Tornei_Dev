@@ -1,6 +1,6 @@
 ﻿@page "/esempi/keypress"
-
-<script>
+@inject IJSRuntime JSRuntime
+@* <script>
    /*Permette l'imput di soli numeri interi decimali*/
    function Solo_Numeri_Interi(Evento) {
       var Carattere = (Evento.which) ? Evento.which : Evento.keyCode;
@@ -9,12 +9,26 @@
       }
       return true;
    }
-</script>
+</script> *@
 
 <input @bind="Telefono" onkeypress="return Solo_Numeri_Interi(event)" />
-
+@*<input @bind="Telefono" onkeypress="@SoloNumeriInteri" />*@
 @code {
 
-   int Telefono { get; set; }
+    int Telefono { get; set; }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            //await JSRuntime.InvokeVoidAsync("Solo_Numeri_Interi");
+        }
+    }
 
+    private async Task SoloNumeriInteri(KeyboardEventArgs args)
+    {
+        if (!await JSRuntime.InvokeAsync<bool>("Solo_Numeri_Interi", args))
+        {
+            Console.WriteLine("i am called");
+        }
+    }
 }

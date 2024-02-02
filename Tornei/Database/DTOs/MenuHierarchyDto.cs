@@ -16,7 +16,7 @@ namespace Database.DTOs
       public int Mostra { get; set; }
       public DateTime DataInizioPubblicazione { get; set; }
       public DateTime DataFinePubblicazione { get; set; }
-      public string? UserId { get; set; }
+  
 
 
       // [LUCA]: This field not exist

@@ -99,11 +99,8 @@
                     @* [LUCA]: Manage with the onkeypress="" event the fact that you can only enter numbers *@
                     @* [XXXX] this is blazor form validation and recomended as this is more secure , this is recomended but if you say we can use java script validation *@
                    
-                    <input type="text" maxlength="15" id="Telefono" @oninput="validateTelefun" @bind="anagrafica.Telefono" class="form-control" />
-                    @if (ValidateTelefun != null)
-                    {
-                        <label style="color:red">@ValidateTelefun</label>
-                    }
+                    <input type="text" maxlength="15" id="Telefono"  @bind="anagrafica.Telefono" class="form-control" onkeypress="return Solo_Numeri_Interi(event)"  />
+                   
                 </div>
             </div>
         </div>
@@ -117,11 +114,8 @@
             <div class="col-md-8 mb-1">
                 <div class="form-group">
                     @* [LUCA]: Manage with the onkeypress="" event the fact that you can only enter numbers *@
-                    <input type="text" maxlength="15" id="Cellulare" @oninput="validateCellular" @bind="anagrafica.Cellulare" class="form-control" />
-                    @if (ValidateTelecell != null)
-                    {
-                        <label style="color:red">@ValidateTelecell</label>
-                    }
+                    <input type="text" maxlength="15" id="Cellulare"  @bind="anagrafica.Cellulare" class="form-control" onkeypress="return Solo_Numeri_Interi(event)" />
+                 
                 </div>
             </div>
         </div>
@@ -529,32 +523,6 @@
     // }
     // In my opinion, the procedure below should be modified and MOVED to the "Common Procedures" section as
     // it will be recalled from every page of the project that needs it.
-    private string ValidateTelecell = "";
-    private string ValidateTelefun = "";
-
-
-
-    public void validateTelefun(ChangeEventArgs e)
-    {
-        string inputValue = e.Value.ToString();
-        ValidateTelefun = Validation.ValidateNumber(inputValue);
-        if (ValidateTelefun != string.Empty)
-        {
-            anagrafica.Telefono = string.Empty;
-        }
-        StateHasChanged();
-    }
-    public void validateCellular(ChangeEventArgs e)
-    {
-        string inputValue = e.Value.ToString();
-        ValidateTelecell = Validation.ValidateNumber(inputValue);
-        if (ValidateTelecell != string.Empty)
-        {
-            anagrafica.Cellulare = string.Empty;
-        }
-
-        StateHasChanged();
-
-    }
+  
 
 }

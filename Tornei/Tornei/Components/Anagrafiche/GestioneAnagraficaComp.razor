@@ -15,16 +15,7 @@
 </SfToast>
 
 @* [Luca]: this procedure is found in the site.js file, how do I reference that instead of rewriting it here?  *@
-<script>
-   /*Permette l'imput di soli numeri interi decimali*/
-   function Solo_Numeri_Interi(Evento) {
-      var Carattere = (Evento.which) ? Evento.which : Evento.keyCode;
-      if (Carattere > 31 && (Carattere < 48 || Carattere > 57)) {
-         return false;
-      }
-      return true;
-   }
-</script>
+
 
 
 @* <div class="row">
@@ -117,7 +108,7 @@
                      <div class="form-group">
                         @* [LUCA]: this code works perfectly *@
                         @* <input type="text" maxlength="15" id="Telefono" onkeypress="return Solo_Numeri_Interi(event)" @bind="anagrafica.Telefono" class="form-control" on /> *@
-                        <input type="text" maxlength="15" onkeypress="return Solo_Numeri_Interi(event)" @bind="anagrafica.Telefono" class="form-control" on />
+                                <input type="text" maxlength="15" onkeypress="return Solo_Numeri_Interi(event)" @bind="anagrafica.Telefono" class="form-control" />
                      </div>
                   </div>
                </div>
@@ -131,7 +122,7 @@
                   <div class="col-md-8 mb-1">
                      <div class="form-group">
                         @* [LUCA]: this code works perfectly *@
-                        <input type="text" maxlength="15" onkeypress="return Solo_Numeri_Interi(event)" @bind="anagrafica.Cellulare" class="form-control" />
+                                <input type="text" maxlength="15" onkeypress="return Solo_Numeri_Interi(event)" @bind="anagrafica.Cellulare" class="form-control" />
                      </div>
                   </div>
                </div>

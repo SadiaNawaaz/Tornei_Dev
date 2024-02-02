@@ -14,12 +14,12 @@ function SoloNumeriDecimali(Evento) {
 
 /*Permette l'imput di soli numeri interi decimali*/
 /*Allows input of decimal integers only. In Italy, it is the decimal separator*/
-function SoloNumeriInteri(Evento) {
-   var Carattere = (Evento.which) ? Evento.which : Evento.keyCode;
-   if (Carattere > 31 && (Carattere < 48 || Carattere > 57)) {
-      return false;
-   }
-   return true;
+function Solo_Numeri_Interi(Evento) {
+    var Carattere = (Evento.which) ? Evento.which : Evento.keyCode;
+    if (Carattere > 31 && (Carattere < 48 || Carattere > 57)) {
+        return false
+    }
+    return true;
 }
 
 
